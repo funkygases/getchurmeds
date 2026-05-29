@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APP: Central Nervous System (Part 1) — Study Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f2ee;
+    --surface: #faf8f5;
+    --border: #ddd8d0;
+    --border-light: #eae6e0;
+    --text: #1c1a18;
+    --text-muted: #6b6560;
+    --text-light: #9c968e;
+
+    /* Phase accent colors — warm, high-contrast, not loud */
+    --phase1: #5c3d1e;   /* deep warm brown — foundations */
+    --phase1-bg: #f9f0e6;
+    --phase1-border: #d4a96a;
+    --phase1-light: #fdf6ec;
+
+    --phase2: #1e4a5c;   /* deep teal — sensory & pathways */
+    --phase2-bg: #e8f3f7;
+    --phase2-border: #6ab0c8;
+    --phase2-light: #f0f8fb;
+
+    --phase3: #3d1e5c;   /* deep plum — pain & special senses */
+    --phase3-bg: #f2ecf9;
+    --phase3-border: #a87cc8;
+    --phase3-light: #f8f4fc;
+
+    --phase4: #1e5c3a;   /* deep forest — pathophysiology */
+    --phase4-bg: #e8f5ee;
+    --phase4-border: #6ac88a;
+    --phase4-light: #f0fbf4;
+
+    /* callout boxes */
+    --hy-bg: #fdf3e3;
+    --hy-border: #c8801a;
+    --hy-text: #7a4800;
+    --kt-bg: #e8f0fa;
+    --kt-border: #3a6aba;
+    --kt-text: #1a3a7a;
+    --sc-bg: #f0f8ee;
+    --sc-border: #3a8a4a;
+    --sc-text: #1a5a28;
+
+    --card-radius: 10px;
+    --shadow: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-open: 0 4px 18px rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 16px;
+  }
+
+  /* ─── HEADER ─── */
+  .site-header {
+    background: var(--text);
+    color: #f5f2ee;
+    padding: 10px 28px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #c8c0b6;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #1c1a18 0%, #3a2e24 50%, #2a1e3a 100%);
+    color: #f5f2ee;
+    padding: 56px 40px 44px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(200,160,80,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #c8a850;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    color: #faf8f5;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: #b8b0a6;
+    max-width: 680px;
+    line-height: 1.6;
+    margin-bottom: 26px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ─── TAB BAR ─── */
+  .tab-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+    justify-content: center;
+  }
+
+  .tab-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #c8c0b6;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .tab-btn:hover, .tab-btn.active {
+    background: rgba(200,168,80,0.25);
+    border-color: #c8a850;
+    color: #f5f2ee;
+  }
+
+  /* ─── LEGEND ─── */
+  .legend-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .legend-dot {
+    width: 12px; height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .ld-hy { background: var(--hy-border); }
+  .ld-kt { background: var(--kt-border); }
+  .ld-sc { background: var(--sc-border); }
+
+  /* ─── CONTROLS ─── */
+  .controls {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 28px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .ctrl-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 5px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+    letter-spacing: 0.03em;
+  }
+
+  .ctrl-btn:hover {
+    border-color: var(--text-muted);
+    color: var(--text);
+    background: var(--border-light);
+  }
+
+  /* ─── MAIN CONTENT ─── */
+  .content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 32px 60px;
+  }
+
+  /* ─── PHASE HEADER ─── */
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 48px 0 20px;
+    padding-left: 4px;
+  }
+
+  .phase-header:first-of-type { margin-top: 0; }
+
+  .phase-number {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+    color: white;
+  }
+
+  .p1 .phase-number { background: var(--phase1); }
+  .p2 .phase-number { background: var(--phase2); }
+  .p3 .phase-number { background: var(--phase3); }
+  .p4 .phase-number { background: var(--phase4); }
+
+  .phase-title-block {}
+  .phase-title-block .phase-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .p1 .phase-label { color: var(--phase1); }
+  .p2 .phase-label { color: var(--phase2); }
+  .p3 .phase-label { color: var(--phase3); }
+  .p4 .phase-label { color: var(--phase4); }
+
+  .phase-title-block h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* ─── PHASE BLOCK INDENT ─── */
+  .phase-block {
+    padding-left: 24px;
+    border-left: 3px solid var(--border-light);
+    margin-left: 16px;
+  }
+
+  /* ─── CARD ─── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+
+  .card.open { box-shadow: var(--shadow-open); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .card-header:hover { background: var(--border-light); }
+
+  .card-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    color: white;
+  }
+  .p1 .card-num { background: var(--phase1); }
+  .p2 .card-num { background: var(--phase2); }
+  .p3 .card-num { background: var(--phase3); }
+  .p4 .card-num { background: var(--phase4); }
+
+  .card-title-block { flex: 1; }
+  .card-section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 2px;
+  }
+  .card-title {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .card-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .card-toggle {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: none;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1;
+  }
+  .card.open .card-toggle {
+    background: var(--text);
+    border-color: var(--text);
+    color: white;
+    transform: rotate(45deg);
+  }
+
+  /* ─── CARD BODY ─── */
+  .card-body {
+    display: none;
+    padding: 0 20px 20px;
+    border-top: 1px solid var(--border-light);
+  }
+  .card.open .card-body { display: block; }
+
+  .card-body h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 18px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .card-body h3:first-child { margin-top: 14px; }
+
+  .card-body ul {
+    padding-left: 18px;
+    margin: 6px 0 10px;
+  }
+  .card-body ul li { margin-bottom: 5px; line-height: 1.55; }
+  .card-body ul li ul { margin-top: 4px; margin-bottom: 4px; }
+
+  .card-body p { margin: 6px 0 10px; }
+
+  /* ─── KEY TERM inline ─── */
+  .kt {
+    background: var(--kt-bg);
+    border-radius: 3px;
+    padding: 1px 5px;
+    color: var(--kt-text);
+    font-weight: 600;
+    border-bottom: 2px solid var(--kt-border);
+    font-size: 0.95em;
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .callout {
+    border-radius: 7px;
+    padding: 12px 15px;
+    margin: 12px 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .callout strong { display: block; margin-bottom: 4px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .callout-hy {
+    background: var(--hy-bg);
+    border-left: 4px solid var(--hy-border);
+    color: var(--hy-text);
+  }
+  .callout-hy strong { color: var(--hy-border); }
+
+  .callout-kt {
+    background: var(--kt-bg);
+    border-left: 4px solid var(--kt-border);
+    color: var(--kt-text);
+  }
+  .callout-kt strong { color: var(--kt-border); }
+
+  /* ─── SELF CHECK ─── */
+  .self-check {
+    background: var(--sc-bg);
+    border: 1px solid var(--sc-border);
+    border-radius: 7px;
+    padding: 12px 15px;
+    margin: 14px 0 4px;
+  }
+
+  .self-check-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sc-border);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .sc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 6px;
+    font-size: 13.5px;
+    color: var(--sc-text);
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  .sc-item input[type="checkbox"] {
+    margin-top: 3px;
+    accent-color: var(--sc-border);
+    width: 14px; height: 14px;
+    flex-shrink: 0;
+  }
+
+  .sc-item.checked span { text-decoration: line-through; opacity: 0.5; }
+
+  /* ─── TABLE ─── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin: 10px 0 14px;
+  }
+
+  .data-table th {
+    background: var(--text);
+    color: #faf8f5;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 9px 12px;
+    text-align: left;
+  }
+
+  .data-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .data-table tr:nth-child(even) td { background: var(--bg); }
+  .data-table tr:last-child td { border-bottom: none; }
+
+  /* ─── CONNECTOR — vertical dashed line between cards ─── */
+  .connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 0 44px;
+    padding: 2px 0;
+    position: relative;
+  }
+  .connector::before {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 28px;
+    border-left: 2px dashed var(--border);
+  }
+  .connector span {
+    font-size: 12px;
+    color: var(--text-light);
+    font-style: italic;
+    text-align: left;
+    align-self: flex-start;
+    margin-left: 10px;
+    margin-top: 2px;
+  }
+
+  /* ─── PHASE DIVIDER — dashed vertical between phases ─── */
+  .phase-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 44px;
+    margin: 8px 0;
+  }
+  .phase-divider::before {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 40px;
+    border-left: 2px dashed var(--border);
+    margin-left: 18px;
+  }
+
+  /* ─── FLOW ARROW ─── */
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin: 10px 0;
+    font-size: 13.5px;
+  }
+  .flow-step {
+    background: var(--kt-bg);
+    border: 1px solid var(--kt-border);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: var(--kt-text);
+    font-weight: 500;
+    line-height: 1.35;
+  }
+  .flow-arrow {
+    color: var(--text-light);
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ─── ORDER OF BLOCKADE highlight ─── */
+  .blockade-list {
+    background: #fef7e8;
+    border: 1px solid #d4a030;
+    border-radius: 7px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 13.5px;
+  }
+  .blockade-list strong { color: #7a4800; display: block; margin-bottom: 6px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .blockade-list ol { padding-left: 20px; }
+  .blockade-list li { margin-bottom: 3px; }
+  .blockade-list li span.first { font-weight: 700; color: #7a4800; }
+
+  /* ─── WARNING ─── */
+  .callout-warn {
+    background: #fdf0f0;
+    border-left: 4px solid #c0392b;
+    color: #7a1a1a;
+    border-radius: 7px;
+    padding: 12px 15px;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+  .callout-warn strong { color: #c0392b; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+
+  /* ─── RESET BAR ─── */
+  .reset-bar {
+    text-align: center;
+    padding: 32px 0 16px;
+  }
+
+  .reset-btn {
+    background: var(--text);
+    color: #f5f2ee;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: 0.04em;
+  }
+
+  .reset-btn:hover { background: #3a2e24; }
+
+  /* ─── FOOTER ─── */
+  .site-footer {
+    background: var(--text);
+    color: #6b6560;
+    padding: 14px 28px;
+    font-size: 11px;
+    text-align: center;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── HIDDEN (filtered) ─── */
+  .phase-block.hidden { display: none; }
+  .phase-block.hidden + .phase-divider { display: none; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 32px 20px 28px; }
+    .hero h1 { font-size: 2rem; }
+    .content { padding: 20px 14px 48px; }
+    .data-table { font-size: 12px; }
+    .phase-block { padding-left: 14px; margin-left: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">Anatomy, Physiology &amp; Pathophysiology</header>
+
+<div class="hero">
+  <div class="hero-label">APP · CNS Part 1</div>
+  <h1>Central Nervous System</h1>
+  <p class="hero-sub">From synapses and transmitters through sensory pathways, pain, special senses, and perioperative neurocognitive pathophysiology. Click any card to expand it.</p>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="filterPhase('all',this)">All Phases</button>
+    <button class="tab-btn" onclick="filterPhase('p1',this)">Foundations &amp; Synapses</button>
+    <button class="tab-btn" onclick="filterPhase('p2',this)">Sensory Pathways</button>
+    <button class="tab-btn" onclick="filterPhase('p3',this)">Pain &amp; Special Senses</button>
+    <button class="tab-btn" onclick="filterPhase('p4',this)">Pathophysiology</button>
+  </div>
+</div>
+
+<div class="legend-bar">
+  <div class="legend-item"><div class="legend-dot ld-hy"></div>High-yield / must-know</div>
+  <div class="legend-item"><div class="legend-dot ld-kt"></div>Key term</div>
+  <div class="legend-item"><div class="legend-dot ld-sc"></div>Self-check</div>
+</div>
+
+<div class="controls">
+  <button class="ctrl-btn" onclick="expandAll()">Expand all</button>
+  <button class="ctrl-btn" onclick="collapseAll()">Collapse all</button>
+</div>
+
+<div class="content">
+
+<!-- ════════════════════════════════════════
+     PHASE 1 — FOUNDATIONS & SYNAPSES
+════════════════════════════════════════ -->
+<div class="phase-block p1" data-phase="p1">
+  <div class="phase-header p1">
+    <div class="phase-number">1</div>
+    <div class="phase-title-block">
+      <div class="phase-label">Phase 1</div>
+      <h2>Foundations — General Design, Synapses &amp; Signal Mechanics</h2>
+    </div>
+  </div>
+
+  <!-- Card 1 -->
+  <div class="card p1" id="card-1">
+    <div class="card-header" onclick="toggleCard('card-1')">
+      <div class="card-num">1</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 1 · General Design</div>
+        <div class="card-title">The CNS: Sensory, Motor &amp; Autonomic Axes</div>
+        <div class="card-sub">The three functional divisions and the neuron structure</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <h3>Functional Divisions</h3>
+      <ul>
+        <li><strong>Sensory:</strong> Receptors (sensory receptors) bring information from the periphery to the CNS.</li>
+        <li><strong>Motor:</strong> Effectors perform functions dictated by nerve signals — includes contraction of skeletal muscle, smooth muscle, and secretion via exocrine/endocrine glands.</li>
+        <li><strong>Autonomic:</strong> Operates in parallel to the skeletal motor nerve axis; the automatic, instantaneous response to stimuli.</li>
+      </ul>
+
+      <h3>Neuron Anatomy — Key Terms</h3>
+      <ul>
+        <li><span class="kt">Soma</span> — main cell body</li>
+        <li><span class="kt">Axon</span> — extends from soma into a peripheral nerve; primary signal conductor</li>
+        <li><span class="kt">Dendrites</span> — branching projections off soma; most fail to transmit action potentials (few voltage-gated Na⁺ channels, excitation threshold too high)</li>
+        <li><span class="kt">Presynaptic membrane</span> — membrane of the signaling neuron (1st neuron)</li>
+        <li><span class="kt">Postsynaptic membrane</span> — membrane of the receiving neuron (2nd neuron)</li>
+        <li><span class="kt">Cerebral cortex</span> — where most memory storage occurs</li>
+        <li><span class="kt">Facilitation</span> — process by which synapses become more capable of transmitting the same sensory signal over time; can eventually fire even without sensory input</li>
+      </ul>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Sensory = afferent (periphery → CNS); Motor = efferent (CNS → effectors)</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Why most dendrites can't transmit APs: few voltage-gated Na⁺ channels</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Facilitation: synapses strengthen over time — can fire even without input</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="connector"><span>Next — the two synapse types that govern every signal...</span></div>
+
+  <!-- Card 2 -->
+  <div class="card p1" id="card-2">
+    <div class="card-header" onclick="toggleCard('card-2')">
+      <div class="card-num">2</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 2 · Synapses</div>
+        <div class="card-title">Chemical vs. Electrical Synapses</div>
+        <div class="card-sub">Mechanism, transmitters, and where each type is found</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <h3>Chemical Synapses</h3>
+      <ul>
+        <li>1st (presynaptic) neuron secretes a <span class="kt">neurotransmitter</span> → acts on receptor proteins in the membrane of the 2nd (postsynaptic) neuron.</li>
+        <li>Can <strong>excite, inhibit, or modify sensitivity</strong> of the receiving neuron.</li>
+        <li>Synaptic cleft: 200–300 Å wide.</li>
+        <li>Common transmitters: acetylcholine, norepinephrine, epinephrine, histamine, GABA, glycine, serotonin, glutamate.</li>
+      </ul>
+
+      <h3>Electrical Synapses (Gap Junctions)</h3>
+      <ul>
+        <li>Cytoplasms of adjacent cells directly connected by clusters of ion channels (<span class="kt">gap junctions</span>) → free movement of ions between cells.</li>
+        <li>Intercellular gap: 20–40 Å.</li>
+        <li>Found in <strong>smooth muscle fibers &amp; cardiac muscle cells</strong>.</li>
+      </ul>
+
+      <div class="callout callout-hy">
+        <strong>⭐ High-Yield</strong>
+        Chemical synapse = neurotransmitter released into synaptic cleft → ionotropic (ion channel) or metabotropic (second messenger) receptor. Electrical synapse = direct ion flow via gap junctions, no transmitter needed. Smooth muscle and cardiac muscle use electrical synapses for coordinated contraction.
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Chemical: 1st neuron releases neurotransmitter → acts on 2nd neuron's receptor</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Electrical: gap junctions → direct ion flow, no transmitter</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Gap junctions found in: smooth muscle + cardiac muscle</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="connector"><span>How do those chemical signals propagate intracellularly?</span></div>
+
+  <!-- Card 3 -->
+  <div class="card p1" id="card-3">
+    <div class="card-header" onclick="toggleCard('card-3')">
+      <div class="card-num">3</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 3 · Second Messengers</div>
+        <div class="card-title">G Protein &amp; Intracellular Signaling</div>
+        <div class="card-sub">The cascade from receptor binding to cellular change</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <h3>What Is a Second Messenger?</h3>
+      <p>A molecule that protrudes into the cell cytoplasm and activates one or more substances inside the postsynaptic neuron.</p>
+
+      <h3>G Protein System</h3>
+      <ul>
+        <li>Most common second messenger system in the CNS.</li>
+        <li>Inactive G protein complex (free in cytosol) = GDP + <strong>α subunit</strong> (activator) + β + γ subunits.</li>
+      </ul>
+
+      <div class="flow">
+        <div class="flow-step">Neurotransmitter binds receptor</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Receptor conformational change</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">α subunit releases GDP, binds GTP</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">α-GTP separates from β+γ</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">4 possible downstream effects</div>
+      </div>
+
+      <h3>Four Downstream Effects of α-GTP</h3>
+      <ul>
+        <li>① Open ion channel in postsynaptic membrane (e.g., K⁺)</li>
+        <li>② Activate enzyme system in neuron membrane → ↑ cAMP or cGMP → activate metabolic machinery</li>
+        <li>③ Activate one or more intracellular enzymes → specific cellular chemical activators</li>
+        <li>④ Activate gene transcription → formation of new proteins &amp; structural changes</li>
+      </ul>
+
+      <div class="callout callout-hy">
+        <strong>⭐ High-Yield</strong>
+        Inactivation: GTP bound to α is hydrolyzed → GDP; β and γ reassociate with α → G protein returns to inactive state.
+      </div>
+
+      <h3>Postsynaptic Response: Excitation vs. Inhibition</h3>
+      <table class="data-table">
+        <thead><tr><th>Response</th><th>Mechanism</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Excitation</strong> — ↑ membrane potential toward positive</td><td>Opening Na⁺ channels; depressed conductance of Cl⁻/K⁺; changes in internal metabolism ↑ excitatory receptors</td></tr>
+          <tr><td><strong>Inhibition</strong> — ↑ negativity inside neuron</td><td>Opening Cl⁻ channels; ↑ K⁺ conductance out; ↑ inhibitory receptors; can occur pre- or postsynaptically</td></tr>
+        </tbody>
+      </table>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>4 G protein downstream effects: ion channel, cAMP/cGMP, intracellular enzymes, gene transcription</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Excitation = Na⁺ in (↑ membrane potential); Inhibition = Cl⁻ in or K⁺ out (↑ negativity)</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>G protein inactivation: GTP hydrolyzed → GDP → β+γ reassociate</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="connector"><span>What factors modulate whether signals actually propagate?</span></div>
+
+  <!-- Card 4 -->
+  <div class="card p1" id="card-4">
+    <div class="card-header" onclick="toggleCard('card-4')">
+      <div class="card-num">4</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 4 · Transmission Modifiers</div>
+        <div class="card-title">Transmission Considerations &amp; Summation</div>
+        <div class="card-sub">Factors that alter neuronal excitability</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <table class="data-table">
+        <thead><tr><th>Factor</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Fatigue</strong></td><td>Exhaustion of transmitter stores; inactivation of postsynaptic receptors → ↓ transmission</td></tr>
+          <tr><td><strong>Acidosis</strong></td><td>Depresses neuronal activity</td></tr>
+          <tr><td><strong>Alkalosis</strong></td><td>Increases neuronal activity</td></tr>
+          <tr><td><strong>Hypoxia</strong></td><td>Depresses neuronal activity</td></tr>
+          <tr><td><strong>Caffeine / Theophylline</strong></td><td>Increase excitability</td></tr>
+          <tr><td><strong>Anesthetics</strong></td><td>Decrease excitability</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Summation &amp; Convergence</h3>
+      <ul>
+        <li><span class="kt">Spatial Summation</span> — signal strength increases by recruiting progressively more fibers; stronger signals spread to more fibers.</li>
+        <li><span class="kt">Temporal Summation</span> — increasing the frequency of nerve impulses in each fiber.</li>
+        <li><span class="kt">Convergence</span> — signals from multiple inputs uniting to excite a single neuron; allows summation of information from different sources.</li>
+      </ul>
+
+      <div class="callout callout-hy">
+        <strong>⭐ CRNA Connection</strong>
+        Anesthetics work by decreasing neuronal excitability. Hypoxia &amp; acidosis also depress the CNS — relevant when interpreting altered mental status perioperatively.
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Acidosis → depresses; Alkalosis → excites neuronal activity</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Spatial = more fibers; Temporal = higher frequency; Convergence = multiple inputs → 1 neuron</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="connector"><span>The transmitters themselves — small molecule vs. neuropeptides...</span></div>
+
+  <!-- Card 5 -->
+  <div class="card p1" id="card-5">
+    <div class="card-header" onclick="toggleCard('card-5')">
+      <div class="card-num">5</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 5 · Transmitters</div>
+        <div class="card-title">Neurotransmitters: Small-Molecule &amp; Neuropeptide Classes</div>
+        <div class="card-sub">Where each is secreted and its primary role</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <h3>Small-Molecule Transmitters (Rapidly Acting)</h3>
+      <p>Synthesized in the cytosol of the presynaptic terminal; absorbed via active transport into vesicles; <strong>recycled and reused</strong>.</p>
+
+      <table class="data-table">
+        <thead><tr><th>Transmitter</th><th>Where Secreted</th><th>Key Role</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Acetylcholine</strong></td><td>Motor cortex, basal ganglia, motor neurons (skeletal muscle), preganglionic ANS, postganglionic PSNS, some postganglionic SNS</td><td>Excitatory/inhibitory depending on receptor</td></tr>
+          <tr><td><strong>Norepinephrine</strong></td><td>Brain stem, hypothalamus, postganglionic SNS</td><td>Arousal, autonomic regulation</td></tr>
+          <tr><td><strong>Dopamine</strong></td><td>Substantia nigra</td><td>Motor control, reward; depleted in Parkinson's</td></tr>
+          <tr><td><strong>Glycine</strong></td><td>Spinal cord</td><td>Inhibitory transmitter</td></tr>
+          <tr><td><strong>GABA</strong></td><td>Spinal cord, cerebellum, basal ganglia, cortex</td><td>Primary inhibitory neurotransmitter of the CNS</td></tr>
+          <tr><td><strong>Glutamate</strong></td><td>Presynaptic terminals of sensory pathways &amp; CNS</td><td>Primary excitatory neurotransmitter</td></tr>
+          <tr><td><strong>Serotonin</strong></td><td>Brain, spinal cord, hypothalamus</td><td>Mood, pain modulation</td></tr>
+          <tr><td><strong>Nitric Oxide</strong></td><td>Brain</td><td>Retrograde messenger; vasodilation</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Neuropeptides (Large-Molecule, Slower Acting)</h3>
+      <ul>
+        <li>Synthesized by ribosomes in the neuronal cell body as large protein molecules.</li>
+        <li>Vesicle is <strong>autolyzed and NOT reused</strong> (unlike small molecule transmitters).</li>
+        <li>Often more potent and cause <strong>prolonged actions</strong>.</li>
+        <li>Examples: growth hormone, substance P, vasopressin, insulin, glucagon, bradykinin.</li>
+      </ul>
+
+      <div class="callout callout-hy">
+        <strong>⭐ High-Yield</strong>
+        GABA = primary CNS inhibitory transmitter. Glutamate = primary CNS excitatory transmitter. Dopamine is secreted in the substantia nigra — loss here causes Parkinson's disease. Substance P and glutamate are the pain neurotransmitters (slow and fast, respectively).
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>GABA = primary inhibitory; Glutamate = primary excitatory</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Dopamine secreted in substantia nigra — loss causes Parkinson's</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Neuropeptides: synthesized in cell body, NOT recycled, more potent, prolonged action</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Small molecule transmitters: made in presynaptic terminal, vesicles recycled</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="connector"><span>The CNS has three levels of organization beyond the synapse...</span></div>
+
+  <!-- Card 6 -->
+  <div class="card p1" id="card-6">
+    <div class="card-header" onclick="toggleCard('card-6')">
+      <div class="card-num">6</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 6 · CNS Levels</div>
+        <div class="card-title">Levels of CNS Function</div>
+        <div class="card-sub">Spinal cord, lower brain, and cortical levels</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <table class="data-table">
+        <thead><tr><th>Level</th><th>Structures</th><th>Functions</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Spinal Cord</strong></td><td>Spinal cord tracts &amp; gray matter</td><td>Walking movements, withdrawal reflex, anti-gravity reflexes, blood vessel control, GI movements, urinary excretion; conduit between periphery &amp; brain</td></tr>
+          <tr><td><strong>Lower Brain (Subcortical)</strong></td><td>Medulla, pons, mesencephalon, hypothalamus, thalamus, cerebellum, basal ganglia</td><td>Arterial pressure, equilibrium, salivation, many emotions (anger, excitement)</td></tr>
+          <tr><td><strong>Higher Brain (Cortical)</strong></td><td>Cerebral cortex</td><td>Large memory storehouse; NEVER functions alone — always in association with lower centers</td></tr>
+        </tbody>
+      </table>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Cortex = memory storage, but ALWAYS works WITH lower centers</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Spinal cord: reflexes + conduit; Subcortical: BP, equilibrium, emotions</span></label>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end phase 1 -->
+
+<div class="phase-divider"></div>
+
+<!-- ════════════════════════════════════════
+     PHASE 2 — SENSORY RECEPTORS & PATHWAYS
+════════════════════════════════════════ -->
+<div class="phase-block p2" data-phase="p2">
+  <div class="phase-header p2">
+    <div class="phase-number">2</div>
+    <div class="phase-title-block">
+      <div class="phase-label">Phase 2</div>
+      <h2>Sensory Receptors, Nerve Fibers &amp; Ascending Pathways</h2>
+    </div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card p2" id="card-7">
+    <div class="card-header" onclick="toggleCard('card-7')">
+      <div class="card-num">7</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 7 · Receptors</div>
+        <div class="card-title">Types of Sensory Receptors &amp; Adaptation</div>
+        <div class="card-sub">Five receptor classes and tonic vs. phasic adaptation</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <table class="data-table">
+        <thead><tr><th>Receptor Type</th><th>What It Detects</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Mechanoreceptors</strong></td><td>Mechanical compression or stretching</td></tr>
+          <tr><td><strong>Thermoreceptors</strong></td><td>Changes in temperature</td></tr>
+          <tr><td><strong>Nociceptors</strong></td><td>Physical or chemical damage (pain receptors — free nerve endings)</td></tr>
+          <tr><td><strong>Electromagnetic Receptors</strong></td><td>Light on the retina</td></tr>
+          <tr><td><strong>Chemoreceptors</strong></td><td>Taste, smell, O₂ levels, osmolality, CO₂ concentration</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Adaptation</h3>
+      <ul>
+        <li>Sensory receptors adapt partially or completely to a constant stimulus over time.</li>
+        <li>Continuous stimulus → receptor fires rapidly at first, then progressively slower, until few or no APs fire.</li>
+        <li><span class="kt">Tonic receptors</span> — slow-adapting; include vestibular macula receptors, pain receptors, baroreceptors, chemoreceptors of carotid &amp; aortic bodies.</li>
+      </ul>
+
+      <div class="callout callout-hy">
+        <strong>⭐ High-Yield</strong>
+        Pain receptors (nociceptors = free nerve endings) adapt very poorly — hyperalgesia is a demonstration of this. Contrast with rapidly-adapting touch receptors that stop firing quickly.
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Pain receptors are free nerve endings — nociceptors</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Tonic (slow-adapting): pain, baroreceptors, vestibular, chemoreceptors</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Hyperalgesia = ↑ sensitivity of pain receptors = poor adaptation</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="connector"><span>The fiber type determines how fast the signal travels...</span></div>
+
+  <!-- Card 8 -->
+  <div class="card p2" id="card-8">
+    <div class="card-header" onclick="toggleCard('card-8')">
+      <div class="card-num">8</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 8 · Nerve Fibers</div>
+        <div class="card-title">Nerve Fiber Classification &amp; Differential Blockade</div>
+        <div class="card-sub">Type A, B, C — size, speed, function, and blockade order</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <h3>Fiber Classification</h3>
+      <table class="data-table">
+        <thead><tr><th>Fiber</th><th>Diameter</th><th>Myelination</th><th>Velocity</th><th>Function</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Aα (A-alpha)</strong></td><td>12–20 μm</td><td>Heavily myelinated</td><td>Fastest</td><td>Motor function &amp; proprioception</td></tr>
+          <tr><td><strong>Aβ (A-beta)</strong></td><td>5–12 μm</td><td>Myelinated</td><td>Fast</td><td>Motor function, touch, pressure</td></tr>
+          <tr><td><strong>Aγ (A-gamma)</strong></td><td>3–6 μm</td><td>Myelinated</td><td>Moderate</td><td>Innervate muscle spindles, responsible for reflexes</td></tr>
+          <tr><td><strong>Aδ (A-delta)</strong></td><td>1–5 μm</td><td>Lightly myelinated</td><td>Slow (slowest A)</td><td><strong>Fast/sharp pain</strong> &amp; temperature</td></tr>
+          <tr><td><strong>B fibers</strong></td><td>&lt;3 μm</td><td>Myelinated</td><td>Slow</td><td>Preganglionic autonomic efferents</td></tr>
+          <tr><td><strong>C fibers</strong></td><td>0.3–1.2 μm</td><td>Unmyelinated</td><td>Slowest</td><td><strong>Slow/aching pain</strong>, itch, temperature, crude touch; postganglionic autonomic</td></tr>
+        </tbody>
+      </table>
+
+      <div class="blockade-list">
+        <strong>⭐ Neuraxial Blockade Order — memorize this sequence</strong>
+        <ol>
+          <li><span class="first">B fibers</span> — preganglionic sympathetic efferent (blocked first)</li>
+          <li>C &amp; Aδ — pain, temperature, touch afferents; postganglionic sympathetic neurons</li>
+          <li>Aγ — muscle spindle afferents</li>
+          <li>Aβ — touch &amp; pressure</li>
+          <li>Aα — motor &amp; proprioception (blocked last)</li>
+        </ol>
+      </div>
+
+      <div class="callout callout-hy">
+        <strong>⭐ Differential Blockade Rule</strong>
+        Smaller fibers are more easily blocked. Sympathetic blockade may be 2–5 segments HIGHER than sensory block (pain &amp; touch), which is 2–5 segments HIGHER than motor blockade.
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Aδ = fast/sharp pain; C = slow/aching pain</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>B fibers blocked FIRST in neuraxial block; Aα (motor) blocked LAST</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Sympathetic block 2–5 segments above sensory; sensory 2–5 above motor</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>C fibers: unmyelinated, half of all peripheral sensory fibers, also postganglionic autonomic</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="connector"><span>Signals travel to the cortex via two distinct ascending pathways...</span></div>
+
+  <!-- Card 9 -->
+  <div class="card p2" id="card-9">
+    <div class="card-header" onclick="toggleCard('card-9')">
+      <div class="card-num">9</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 9 · Sensory Pathways</div>
+        <div class="card-title">Dorsal Column-Medial Lemniscal vs. Anterolateral System</div>
+        <div class="card-sub">Two ascending pathways — what they carry and where they cross</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <table class="data-table">
+        <thead><tr><th></th><th>Dorsal Column–Medial Lemniscal</th><th>Anterolateral (Spinothalamic)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Fiber size</strong></td><td>Large, myelinated</td><td>Smaller, myelinated</td></tr>
+          <tr><td><strong>Entry</strong></td><td>Dorsal root → ascend in dorsal columns ipsilaterally</td><td>Dorsal root → synapse dorsal horn laminae I, IV, V, VI → cross immediately to opposite side at anterior commissure</td></tr>
+          <tr><td><strong>Where crosses</strong></td><td>Crosses at the medulla (lower)</td><td>Crosses at spinal cord level (immediately)</td></tr>
+          <tr><td><strong>Path upward</strong></td><td>→ Medulla synapse (2nd-order) → crosses → thalamus via medial lemniscus → cortex (3rd-order)</td><td>→ Ascend anterior &amp; lateral spinothalamic tracts → reticular nuclei of brain stem &amp; thalamus</td></tr>
+          <tr><td><strong>Sensations</strong></td><td>Fine touch (high localization), vibration, movement against skin, joint position, pressure</td><td>Pain, thermal, crude touch, tickle &amp; itch, sexual sensations</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Somatosensory Cortex</h3>
+      <ul>
+        <li><span class="kt">Central sulcus (fissure of Rolando)</span> — extends horizontally; sensory signals terminate posterior to it; motor cortex is anterior.</li>
+        <li><span class="kt">Somatosensory Area I</span> — posterior to central fissure (postcentral gyrus, Brodmann's areas 3, 1, &amp; 2); high degree of localization; does NOT include pain &amp; temperature.</li>
+        <li><span class="kt">Somatosensory Area II</span> — poor degree of localization.</li>
+        <li><span class="kt">Brodmann's Areas</span> — 52 distinct cortical areas based on histological structural differences.</li>
+      </ul>
+
+      <h3>Dermatomes</h3>
+      <p>Each spinal nerve innervates a segmental skin field. Despite appearing distinct, there is overlap between adjacent dermatomes.</p>
+
+      <div class="callout callout-hy">
+        <strong>⭐ High-Yield</strong>
+        Dorsal column crosses at the MEDULLA. Anterolateral (spinothalamic) crosses at SPINAL CORD LEVEL. This is the anatomical basis for Brown-Séquard syndrome: ipsilateral motor and dorsal column loss, contralateral spinothalamic loss (pain/temp).
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Dorsal column: crosses at MEDULLA — carries fine touch, vibration, joint position</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Anterolateral: crosses at SPINAL CORD — carries pain, temp, crude touch</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Somatosensory I: postcentral gyrus, Brodmann's 3/1/2 — high localization, NOT pain/temp</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Sensory terminates POSTERIOR to central sulcus; motor is ANTERIOR</span></label>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end phase 2 -->
+
+<div class="phase-divider"></div>
+
+<!-- ════════════════════════════════════════
+     PHASE 3 — PAIN & SPECIAL SENSES
+════════════════════════════════════════ -->
+<div class="phase-block p3" data-phase="p3">
+  <div class="phase-header p3">
+    <div class="phase-number">3</div>
+    <div class="phase-title-block">
+      <div class="phase-label">Phase 3</div>
+      <h2>Pain, Vision, Hearing, Taste &amp; Pain Abnormalities</h2>
+    </div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="card p3" id="card-10">
+    <div class="card-header" onclick="toggleCard('card-10')">
+      <div class="card-num">10</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 10 · Pain</div>
+        <div class="card-title">Pain Types, Causes, Transmission &amp; Analgesia System</div>
+        <div class="card-sub">Aδ vs. C fiber pain, the endogenous analgesic pathway, and referred pain</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <h3>Types of Pain</h3>
+      <table class="data-table">
+        <thead><tr><th>Type</th><th>Onset</th><th>Quality</th><th>Stimulus</th><th>Fiber</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Fast pain</strong></td><td>&lt;0.1 sec</td><td>Sharp, pricking, acute, electric</td><td>Mechanical &amp; thermal</td><td>Aδ fibers</td></tr>
+          <tr><td><strong>Slow pain</strong></td><td>&gt;1 sec, builds</td><td>Burning, aching, throbbing, chronic</td><td>Tissue destruction (mechanical, thermal, chemical)</td><td>C fibers</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Causes of Pain</h3>
+      <ul>
+        <li><strong>Mechanical</strong> — tissue disruption</li>
+        <li><strong>Thermal</strong> — temperature extremes</li>
+        <li><strong>Chemical</strong> — bradykinin, serotonin, histamine, K⁺ ions, acids, acetylcholine, proteolytic enzymes excite pain receptors; prostaglandins &amp; substance P enhance sensitivity</li>
+        <li><strong>Tissue ischemia</strong> — lactic acid accumulation + bradykinin + proteolytic enzymes</li>
+        <li><strong>Muscle spasm</strong> — direct stimulation of mechanoreceptors + compression of blood vessels</li>
+      </ul>
+
+      <h3>Pain Transmission Pathways</h3>
+      <div class="callout callout-kt">
+        <strong>Key Term</strong>
+        <strong>Fast pain (Aδ → Neospinothalamic pathway):</strong> Lamina I of dorsal horn → 2nd-order neuron → anterolateral column → reticular areas of brain stem (few) + thalamus (most) → somatosensory cortex. Neurotransmitter: <strong>Glutamate</strong>.<br><br>
+        <strong>Slow pain (C → Paleospinothalamic pathway):</strong> Laminae II &amp; III (substantia gelatinosa) → 2nd-order neuron (short) → lamina V → anterolateral pathway → brain stem (reticular nuclei, tectal area, periaqueductal gray). Neurotransmitters: <strong>Glutamate + Substance P</strong>.
+      </div>
+
+      <h3>Endogenous Analgesia System</h3>
+      <div class="flow">
+        <div class="flow-step">Periaqueductal gray + periventricular areas</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Raphe magnus nucleus</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Dorsolateral columns of spinal cord</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Pain inhibitory complex in dorsal horn</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Blocks pain before it reaches brain</div>
+      </div>
+      <p>Neurotransmitters: <strong>Enkephalin, endorphins, serotonin</strong>. Morphine-like drugs inactivate these pathways → suppress pain signals from peripheral nerves.</p>
+
+      <h3>Referred Pain</h3>
+      <ul>
+        <li>Definition: pain felt in a body part remote from the tissue causing it.</li>
+        <li>Mechanism: visceral pain fibers synapse on the SAME 2nd-order neurons that receive skin signals — brain misattributes the source.</li>
+        <li>Localized to the <strong>dermatomal segment from which the visceral organ originated embryologically</strong> (not where it now lies). Example: heart originated in neck/upper thorax → pain referred to C3–T5.</li>
+        <li>Two pathways: Visceral (via autonomic nerve bundles) vs. Parietal (direct spinal nerves, more localized).</li>
+      </ul>
+
+      <div class="callout callout-hy">
+        <strong>⭐ High-Yield</strong>
+        Stimulation of Aβ sensory fibers can depress pain signal transmission from the same area — basis for TENS and rubbing near painful skin. The periaqueductal gray is the key site for opioid analgesia.
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Fast pain: Aδ → Glutamate → neospinothalamic → thalamus → cortex</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Slow pain: C fibers → Glutamate + Substance P → paleospinothalamic → periaqueductal gray</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Endogenous analgesia neurotransmitters: enkephalin, endorphins, serotonin</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Referred pain: visceral fibers share 2nd-order neurons with skin → mislocalized</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Heart pain referred to C3–T5 (embryological origin in neck/upper thorax)</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="connector"><span>Important pain abnormalities with CRNA relevance...</span></div>
+
+  <!-- Card 11 -->
+  <div class="card p3" id="card-11">
+    <div class="card-header" onclick="toggleCard('card-11')">
+      <div class="card-num">11</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 11 · Pain Abnormalities</div>
+        <div class="card-title">Herpes Zoster, Trigeminal Neuralgia, Brown-Séquard, CRPS &amp; Headache</div>
+        <div class="card-sub">Perioperatively relevant pain syndromes</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <h3>Herpes Zoster (Shingles)</h3>
+      <p>Infects the <strong>dorsal root ganglion</strong> → severe pain in the dermatomal segment supplied by that ganglion.</p>
+
+      <h3>Trigeminal Neuralgia (Tic Douloureux)</h3>
+      <ul>
+        <li>Also called glossopharyngeal neuralgia.</li>
+        <li>Stabbing pain over one side of the face in the sensory distribution of cranial nerve V or IX.</li>
+        <li>Usually triggered by a <strong>mechanoreceptive stimulus</strong> (light touch, chewing, cold air).</li>
+      </ul>
+
+      <h3>Brown-Séquard Syndrome (Hemisection of spinal cord)</h3>
+      <table class="data-table">
+        <thead><tr><th>Finding</th><th>Side / Extent</th><th>Pathway Affected</th></tr></thead>
+        <tbody>
+          <tr><td>All motor functions blocked</td><td>Ipsilateral (below lesion)</td><td>Corticospinal (descends ipsilaterally then crosses above)</td></tr>
+          <tr><td>Pain, heat, cold <strong>lost</strong></td><td><strong>Contralateral</strong>, 2–6 dermatomes below</td><td>Spinothalamic (crosses at cord level)</td></tr>
+          <tr><td>Proprioception, vibration, fine touch <strong>lost</strong></td><td><strong>Ipsilateral</strong>, all dermatomes below</td><td>Dorsal column (crosses at medulla)</td></tr>
+          <tr><td>Light touch impaired</td><td>Ipsilateral, all dermatomes below</td><td>Dorsal column</td></tr>
+          <tr><td>Crude touch persists</td><td>Partial — both sides</td><td>Partial transmission in opposite spinothalamic tract</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Headache</h3>
+      <ul>
+        <li>Brain tissue itself is almost totally insensitive to pain.</li>
+        <li>Pain-sensitive areas: venous sinuses, tentorium, dura at base of brain, meningeal blood vessels, middle meningeal artery.</li>
+        <li><strong>Intracranial hypotension</strong> (CSF leak, dural tear) → distorts dural structures → pain relieved by horizontal position → treatment: supportive, epidural blood patch, or surgery.</li>
+      </ul>
+
+      <h3>Complex Regional Pain Syndrome (CRPS)</h3>
+      <ul>
+        <li>May follow injury or surgery, most frequently in a limb.</li>
+        <li>Symptoms: pain, swelling, ↓ hair growth, skin changes, bone demineralization.</li>
+        <li>Budapest Criteria for diagnosis: continued/disproportionate pain + ≥1 symptom in ≥3 of 4 categories (sensory, vasomotor, sudomotor, motor/trophic).</li>
+        <li>Management: prevention with vitamin C supplementation after injury, multimodal pain control, physical therapy.</li>
+      </ul>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Brown-Séquard: ipsilateral motor + dorsal column loss; CONTRALATERAL pain/temp loss</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Intracranial hypotension → dural distortion → relieved by lying flat</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Trigeminal neuralgia: CN V or IX distribution, triggered by mechanoreceptive stimulus</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>CRPS prevention: vitamin C supplementation</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="connector"><span>Now the special senses — vision first, then hearing &amp; taste...</span></div>
+
+  <!-- Card 12 -->
+  <div class="card p3" id="card-12">
+    <div class="card-header" onclick="toggleCard('card-12')">
+      <div class="card-num">12</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 12 · Vision</div>
+        <div class="card-title">Eye Anatomy, Autonomic Effects, IOP, Retina &amp; Eye Movement</div>
+        <div class="card-sub">Perioperative ophthalmic complications and pupil control</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <h3>Corneal Abrasion</h3>
+      <ul>
+        <li><strong>Most common perioperative ophthalmic complication.</strong></li>
+        <li>Signs: pain, foreign body sensation, photophobia, excessive tearing, conjunctival erythema.</li>
+        <li>Etiology: corneal drying, reduced tear production, direct trauma.</li>
+        <li>Diagnosis: fluorescein stain + cobalt blue penlight.</li>
+        <li>Prevention: <strong>tape eyelids closed</strong>. Treatment: antibiotic drops, topical NSAIDs, eye patch — often self-limiting.</li>
+      </ul>
+
+      <h3>Fluid System of the Eye</h3>
+      <ul>
+        <li><span class="kt">Aqueous humor</span> — in front of lens; freely flowing; continually formed &amp; reabsorbed → regulates IOP.</li>
+        <li><span class="kt">Vitreous humor</span> — between lens and retina; gelatinous, held by fine fibrillar network.</li>
+        <li><span class="kt">Canal of Schlemm</span> — thin-walled vein circling the eye → empties into extraocular veins; normally contains aqueous humor (not blood).</li>
+      </ul>
+
+      <h3>Autonomic Effects on the Eye</h3>
+      <table class="data-table">
+        <thead><tr><th>Division</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Parasympathetic</strong></td><td>Ciliary muscle <em>contraction</em> (focus near); Pupil <strong>constriction (miosis)</strong></td></tr>
+          <tr><td><strong>Sympathetic</strong></td><td>Ciliary muscle <em>relaxation</em> (focus far); Pupil <strong>dilation (mydriasis)</strong>; Eyelid elevation</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Intraocular Pressure (IOP)</h3>
+      <ul>
+        <li>Normal: ~15 mmHg.</li>
+        <li><span class="kt">Glaucoma</span> — pathologically high IOP compresses optic nerve axons at optic disc → common cause of blindness.</li>
+        <li>Mechanism: ↑ resistance to aqueous outflow through trabecular spaces in Canal of Schlemm.</li>
+        <li>Treatment: eye drops (↓ secretion or ↑ reabsorption of aqueous humor); operative techniques to open trabecular spaces.</li>
+      </ul>
+
+      <h3>Retina</h3>
+      <ul>
+        <li>Light-sensitive layer at back of eye; converts light → electrical signals via photoreceptors (rods &amp; cones) → optic nerve → brain.</li>
+        <li>Blood supply: <strong>central retinal artery</strong> (internal layers); <strong>choroid</strong> (outer layers — highly vascular tissue between retina &amp; sclera).</li>
+        <li><strong>Posterior segment</strong> of optic nerve has significantly LESS baseline blood flow than anterior segment — makes it more vulnerable to ischemia.</li>
+      </ul>
+
+      <div class="callout callout-warn">
+        <strong>⚠ Perioperative Visual Complications</strong>
+        <strong>Ischemic Optic Neuropathy (ION):</strong> Suspect with visual loss in first week post-op.<br>
+        — Anterior ION: sudden, painless monocular deficit; arteritic (ciliary artery inflammation) or nonarteritic (↓ O₂ delivery to optic disc from hypotension/anemia); minimal recovery.<br>
+        — Posterior ION: more common perioperatively; ↓ O₂ to posterior optic nerve + impaired venous outflow; risk: male sex, obesity, Wilson frame, long procedure, ↑ blood loss.<br>
+        <strong>Cortical Blindness:</strong> May follow profound hypotension or circulatory arrest.<br>
+        <strong>Retinal Artery Occlusion:</strong> Painless monocular blindness; emboli from carotid atherosclerotic plaque; visual fields may partially improve.
+      </div>
+
+      <h3>Eye Muscles &amp; Movement</h3>
+      <ul>
+        <li>3 pairs: medial/lateral recti (side to side), superior/inferior recti (up/down), superior/inferior obliques (rotation).</li>
+        <li>Innervated by CN III, IV, VI.</li>
+        <li><span class="kt">Strabismus</span> — squint/cross-eye; lack of fusion in horizontal, vertical, or rotational coordinates.</li>
+      </ul>
+
+      <h3>Pupillary Diameter &amp; Horner's Syndrome</h3>
+      <ul>
+        <li>Light reflex: afferent = CN II (optic); efferent = CN III (oculomotor).</li>
+        <li>Diseases blocking pupillary reflexes: syphilis, alcoholism, encephalitis.</li>
+      </ul>
+
+      <div class="callout callout-hy">
+        <strong>⭐ Horner's Syndrome</strong>
+        Results from interruption of sympathetic nerves to the eye. Classic triad: miosis (pupil constriction), ptosis (eyelid droop), anhidrosis (no sweating) on the affected side. Also: flushing/redness on affected side.
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Most common periop ophthalmic complication: corneal abrasion — prevent with tape</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>PSNS → miosis + ciliary contraction (near); SNS → mydriasis + ciliary relaxation (far) + eyelid elevation</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Glaucoma: ↑ IOP → ↑ resistance in Canal of Schlemm → optic nerve compression</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Posterior ION: more common periop; risk = male, obese, Wilson frame, long procedure, ↑ blood loss</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Horner's: miosis + ptosis + anhidrosis (sympathetic interruption)</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Light reflex: afferent CN II; efferent CN III</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="connector"><span>Hearing and taste — gross anatomy overview...</span></div>
+
+  <!-- Card 13 -->
+  <div class="card p3" id="card-13">
+    <div class="card-header" onclick="toggleCard('card-13')">
+      <div class="card-num">13</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 13 · Hearing &amp; Taste</div>
+        <div class="card-title">Ear Anatomy &amp; Neuronal Transmission of Taste</div>
+        <div class="card-sub">Structural overview of outer/middle/inner ear and taste pathway</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <h3>Ear Anatomy</h3>
+      <ul>
+        <li><strong>Outer ear:</strong> External acoustic meatus → tympanic membrane.</li>
+        <li><strong>Middle ear:</strong> Ossicles — malleus, incus, stapes; stapedius &amp; tensor tympani muscles; oval &amp; round windows; Eustachian tube.</li>
+        <li><strong>Inner ear:</strong> Cochlea (hearing — scala tympani, scala vestibuli); vestibular nerve; cochlear nerve.</li>
+      </ul>
+
+      <h3>Taste Pathway</h3>
+      <ul>
+        <li>Taste buds in papillae of the tongue.</li>
+        <li>Anterior 2/3 tongue: cranial nerve VII (chorda tympani branch).</li>
+        <li>Posterior 1/3 tongue: cranial nerve IX (glossopharyngeal).</li>
+        <li>Signals transmitted centrally via CN VII and IX to the brain stem.</li>
+      </ul>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Ossicles in order: malleus → incus → stapes</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Taste: anterior 2/3 tongue = CN VII; posterior 1/3 = CN IX</span></label>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end phase 3 -->
+
+<div class="phase-divider"></div>
+
+<!-- ════════════════════════════════════════
+     PHASE 4 — PATHOPHYSIOLOGY
+════════════════════════════════════════ -->
+<div class="phase-block p4" data-phase="p4">
+  <div class="phase-header p4">
+    <div class="phase-number">4</div>
+    <div class="phase-title-block">
+      <div class="phase-label">Phase 4</div>
+      <h2>Neurocognitive &amp; Neurological Pathophysiology</h2>
+    </div>
+  </div>
+
+  <!-- Card 14 -->
+  <div class="card p4" id="card-14">
+    <div class="card-header" onclick="toggleCard('card-14')">
+      <div class="card-num">14</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 14 · Alzheimer &amp; Parkinson</div>
+        <div class="card-title">Alzheimer Disease &amp; Parkinson Disease</div>
+        <div class="card-sub">Pathology, mechanism, and treatment strategy</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <h3>Alzheimer Disease</h3>
+      <ul>
+        <li>Chronic, neurodegenerative disease; <strong>most common cause of dementia</strong>.</li>
+        <li>Hallmark pathology: diffuse <span class="kt">amyloid beta-rich plaques</span> and <span class="kt">neurofibrillary tangles</span>.</li>
+        <li>Patients often confused and uncooperative — important anesthetic consideration for consent and postop monitoring.</li>
+      </ul>
+
+      <h3>Parkinson Disease</h3>
+      <ul>
+        <li>Neurodegenerative disorder with characteristic <strong>loss of dopaminergic fibers in the basal ganglia</strong>.</li>
+        <li>Dopamine normally inhibits firing rate of extrapyramidal motor neurons. Loss → ↓ inhibition → <strong>unopposed acetylcholine stimulation</strong>.</li>
+        <li><strong>Classic triad:</strong> skeletal muscle tremor, rigidity, akinesia.</li>
+      </ul>
+
+      <div class="callout callout-hy">
+        <strong>⭐ Treatment Strategy — Two Approaches</strong>
+        1. Increase dopamine concentration in basal ganglia (levodopa, dopamine agonists, MAO-B inhibitors, COMT inhibitors).<br>
+        2. Decrease neuronal effects of acetylcholine (anticholinergics).<br>
+        Failure of pharmacologic therapy → deep brain stimulator (DBS).
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Alzheimer hallmarks: amyloid beta plaques + neurofibrillary tangles</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Parkinson: dopamine loss in substantia nigra/basal ganglia → unopposed ACh → tremor, rigidity, akinesia</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Parkinson treatment: ↑ dopamine OR ↓ ACh effects</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="connector"><span>Seizures — classification and status epilepticus management...</span></div>
+
+  <!-- Card 15 -->
+  <div class="card p4" id="card-15">
+    <div class="card-header" onclick="toggleCard('card-15')">
+      <div class="card-num">15</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 15 · Seizures</div>
+        <div class="card-title">Seizure Classification &amp; Status Epilepticus</div>
+        <div class="card-sub">Focal vs. generalized, and emergency management</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <h3>Definition</h3>
+      <p>Transient, paroxysmal, synchronous discharge of groups of neurons. Classified by loss of consciousness and brain regions affected.</p>
+
+      <h3>Classification</h3>
+      <table class="data-table">
+        <thead><tr><th>Type</th><th>Spread</th><th>Consciousness</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Simple Partial</strong></td><td>Focal — 1 hemisphere area</td><td>Intact</td><td>Usually localized organic lesion</td></tr>
+          <tr><td><strong>Complex Partial</strong></td><td>Focal — 1 hemisphere</td><td>Impaired</td><td>Usually localized organic lesion</td></tr>
+          <tr><td><strong>Generalized (Tonic-Clonic)</strong></td><td>Both hemispheres diffusely</td><td>Lost</td><td><strong>Airway often compromised</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Status Epilepticus</h3>
+      <div class="callout callout-warn">
+        <strong>⚠ Medical Emergency</strong>
+        Life-threatening condition manifesting as continuous seizure activity.<br>
+        Management: IV access + pharmacologic suppression (benzos → phenytoin/phenobarbital/valproic acid if needed) + <strong>airway support</strong>.
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Generalized seizure: both hemispheres + airway often compromised</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Complex partial: consciousness impaired; Simple partial: consciousness intact</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Status epilepticus: IV access + pharmacologic suppression + airway</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="connector"><span>Perioperative neurocognitive disorders — the most CRNA-relevant pathophysiology...</span></div>
+
+  <!-- Card 16 -->
+  <div class="card p4" id="card-16">
+    <div class="card-header" onclick="toggleCard('card-16')">
+      <div class="card-num">16</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 16 · Periop Neurocognitive</div>
+        <div class="card-title">Postoperative Delirium &amp; Postop Cognitive Dysfunction (POCD)</div>
+        <div class="card-sub">Risk factors, diagnosis, and management</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <h3>Postoperative Delirium (POD)</h3>
+      <ul>
+        <li>Acute disruption of perception, thinking, memory, psychomotor behavior, sleep-wake cycle, consciousness, attention.</li>
+        <li>Can be <strong>hypoactive or hyperactive</strong>.</li>
+        <li>Typically manifests acutely; can last days to weeks.</li>
+      </ul>
+
+      <div class="callout callout-hy">
+        <strong>⭐ POD Risk Factors — Know These</strong>
+        Strongest predisposing factor: <strong>preexisting cognitive impairment / dementia</strong>.<br>
+        Others: age &gt;65, male gender, EEG suppression during anesthesia, ETOH abuse, depression, longer duration of anesthesia, poor functional status, abnormal electrolytes, Parkinson's disease, CV disease, dehydration, metabolic disease, anticholinergics used intraop, ICU admission, inadequate pain control, ASA ≥3, low serum albumin, aortic or orthopedic surgery.
+      </div>
+
+      <h3>Diagnosing Delirium — Confusion Assessment Method (CAM)</h3>
+      <p>Requires features <strong>(1) and (2) AND either (3) or (4)</strong>:</p>
+      <ul>
+        <li>(1) Acute onset &amp; fluctuating course — evidence of acute change in mental status</li>
+        <li>(2) Inattention — difficulty focusing</li>
+        <li>(3) Disorganized thinking — incoherent</li>
+        <li>(4) Altered level of consciousness — any answer other than "alert"</li>
+      </ul>
+
+      <h3>Treatment of POD</h3>
+      <ul>
+        <li>Target reversible risk factors.</li>
+        <li>Limit sedatives; avoid drugs with atropine (anticholinergic) properties.</li>
+        <li>Judicious treatment of pain; careful use of antipsychotics.</li>
+        <li>Nonpharmacologic interventions.</li>
+      </ul>
+
+      <h3>Postop Cognitive Dysfunction (POCD)</h3>
+      <ul>
+        <li>Array of cognitive impairments: memory deficit, ↓ concentration, impaired comprehension, delayed psychomotor speed.</li>
+        <li>Onset subtle; weeks to months after surgery (vs. acute for POD).</li>
+        <li>No universally accepted diagnostic criteria — requires neurocognitive testing pre &amp; post-op.</li>
+        <li>Predominant risk factor: age &gt;65. Others: lower education, longer anesthesia duration, preop depression/cognitive decline, postop infection.</li>
+        <li><strong>Important:</strong> Surgery and anesthesia are unlikely to cause persistent cognitive decline or dementia — relationship is unclear.</li>
+      </ul>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Strongest POD risk factor: preexisting cognitive impairment / dementia</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>CAM criteria: (1)+(2) + either (3) or (4) = delirium</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>POD: acute, days-weeks; POCD: subtle, weeks-months; different timecourses</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Avoid anticholinergic drugs in at-risk patients (delirium risk)</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Anesthesia/surgery unlikely to cause persistent dementia — evidence unclear</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="connector"><span>Depression and Guillain-Barré — final pathophysiology topics...</span></div>
+
+  <!-- Card 17 -->
+  <div class="card p4" id="card-17">
+    <div class="card-header" onclick="toggleCard('card-17')">
+      <div class="card-num">17</div>
+      <div class="card-title-block">
+        <div class="card-section-label">Section 17 · Depression &amp; GBS</div>
+        <div class="card-title">Depression &amp; Guillain-Barré Syndrome</div>
+        <div class="card-sub">Neurotransmitter basis of depression and GBS anesthetic implications</div>
+      </div>
+      <button class="card-toggle">+</button>
+    </div>
+    <div class="card-body">
+
+      <h3>Depression</h3>
+      <ul>
+        <li>Evidence suggests diminished <strong>norepinephrine and/or serotonin</strong> responsible for symptoms.</li>
+        <li>Treatment: drugs that increase NE and serotonin.</li>
+        <li>Drug classes: SSRIs (Serotonin Reuptake Inhibitors), Tricyclic antidepressants (TCAs), Monoamine oxidase inhibitors (MAOIs).</li>
+      </ul>
+
+      <h3>Guillain-Barré Syndrome (Acute Idiopathic Polyneuritis)</h3>
+      <ul>
+        <li>Rare, autoimmune disorder causing <strong>multifocal inflammatory demyelination of peripheral nerves</strong>.</li>
+        <li>Mechanism: antibody &amp; cell-mediated immunologic reaction.</li>
+      </ul>
+
+      <h3>GBS Clinical Implications</h3>
+      <table class="data-table">
+        <thead><tr><th>Domain</th><th>Manifestation</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ventilation / Airway</strong></td><td>Intercostal weakness; pharyngeal muscle weakness → dysphagia; may require mechanical ventilation</td></tr>
+          <tr><td><strong>Muscle</strong></td><td>Sudden onset skeletal muscle weakness/paralysis beginning in legs → spreads cephalad (arms, trunk, face); denervation → <strong>upregulation of ACh receptors</strong></td></tr>
+          <tr><td><strong>Sensory</strong></td><td>Paresthesia and pain</td></tr>
+          <tr><td><strong>Autonomic</strong></td><td>BP fluctuations, sudden diaphoresis, peripheral vasoconstriction, resting tachycardia, cardiac conduction abnormalities</td></tr>
+          <tr><td><strong>Thromboembolism</strong></td><td>↑ risk due to immobility</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-warn">
+        <strong>⚠ GBS — Critical Anesthetic Concern</strong>
+        Denervation → upregulation of ACh receptors across the entire muscle membrane → use of <strong>succinylcholine can cause life-threatening hyperkalemia</strong>. Avoid succinylcholine in GBS patients.
+      </div>
+
+      <h3>GBS Diagnosis</h3>
+      <p><strong>Features required:</strong> progressive bilateral weakness in arms &amp; legs + areflexia.</p>
+      <p><strong>Supporting:</strong> symptom progression 2–4 weeks, symmetry, mild sensory signs, cranial nerve involvement, spontaneous recovery starting 2–4 weeks after progression halts, ANS dysfunction, elevated CSF protein with cell count &lt;10/mm³, ↓ nerve conduction velocity.</p>
+      <p><strong>Makes diagnosis unlikely:</strong> definite sensory level, marked persistent asymmetry, persistent bowel/bladder dysfunction, &gt;50 WBCs/mm³ in CSF.</p>
+
+      <h3>Treatment</h3>
+      <ul>
+        <li>Symptomatic management (supportive care).</li>
+        <li>Mechanical ventilation as necessary.</li>
+        <li>DVT prophylaxis.</li>
+      </ul>
+
+      <div class="self-check">
+        <div class="self-check-label">✓ Self-Check</div>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Depression: ↓ norepinephrine and/or serotonin → SSRIs, TCAs, MAOIs treat by increasing these</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>GBS: demyelinating, autoimmune, peripheral nerves, ascending weakness from legs up</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>GBS: AVOID succinylcholine — ACh receptor upregulation → fatal hyperkalemia</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>GBS diagnosis requires: bilateral progressive weakness + areflexia</span></label>
+        <label class="sc-item"><input type="checkbox" onchange="toggleCheck(this)"><span>GBS CSF: elevated protein + cell count &lt;10/mm³ (albuminocytologic dissociation)</span></label>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end phase 4 -->
+
+<div class="reset-bar">
+  <button class="reset-btn" onclick="resetAll()">Reset all self-checks</button>
+</div>
+
+</div><!-- end .content -->
+
+<footer class="site-footer">Anatomy, Physiology &amp; Pathophysiology · Central Nervous System Part 1</footer>
+
+<script>
+  function toggleCard(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+
+  function expandAll() {
+    document.querySelectorAll('.card').forEach(c => {
+      if (!c.classList.contains('hidden')) c.classList.add('open');
+    });
+  }
+
+  function collapseAll() {
+    document.querySelectorAll('.card').forEach(c => c.classList.remove('open'));
+  }
+
+  function filterPhase(phase, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.phase-block').forEach(block => {
+      if (phase === 'all' || block.dataset.phase === phase) {
+        block.classList.remove('hidden');
+      } else {
+        block.classList.add('hidden');
+      }
+    });
+  }
+
+  function toggleCheck(el) {
+    const item = el.closest('.sc-item');
+    if (el.checked) {
+      item.classList.add('checked');
+    } else {
+      item.classList.remove('checked');
+    }
+  }
+
+  function resetAll() {
+    document.querySelectorAll('.sc-item input[type="checkbox"]').forEach(cb => {
+      cb.checked = false;
+      cb.closest('.sc-item').classList.remove('checked');
+    });
+  }
+</script>
+</body>
+</html>
