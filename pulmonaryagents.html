@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Respiratory Medications — Study Roadmap</title>
+<style>
+  @font-face { font-family: 'Fraunces'; src: local('Georgia'); }
+</style>
+<style>
+  :root{
+    --ink:#16191d;
+    --paper:#f0f2ee;
+    --paper-2:#e4e8e0;
+    --line:#c2c9bc;
+    --forest:#1e4030;
+    --forest-soft:#2d6048;
+    --sage:#4a7c5f;
+    --rust:#8b3a1e;
+    --rust-soft:#b04d28;
+    --amber:#8a6820;
+    --plum:#5a2f44;
+    --teal:#1a6060;
+    --crit:#8b1e2f;
+    --crit-bg:#f5e2e5;
+    --shadow:rgba(20,35,25,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(30,64,48,.07), transparent 40%),
+      radial-gradient(circle at 88% 92%, rgba(139,58,30,.05), transparent 42%),
+      var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:80px;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+
+  /* ---------- HEADER ---------- */
+  header{padding:60px 0 30px;text-align:center;position:relative}
+  .kicker{
+    font-family:'Spline Sans Mono',monospace;font-size:.72rem;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--forest);font-weight:600;margin-bottom:16px;
+  }
+  h1{
+    font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-weight:900;font-size:clamp(2.4rem,6.5vw,4.6rem);
+    line-height:.96;letter-spacing:-.02em;color:var(--ink);
+  }
+  h1 .accent{color:var(--rust);font-style:italic;font-weight:400}
+  .sub{font-family:'Newsreader',serif;font-style:italic;font-size:1.12rem;color:#5a6455;margin-top:14px}
+  .byline{font-family:'Spline Sans Mono',monospace;font-size:.72rem;color:#7a8475;margin-top:8px;letter-spacing:.04em}
+  .meta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+  .pill{
+    font-family:'Spline Sans Mono',monospace;font-size:.7rem;letter-spacing:.07em;
+    text-transform:uppercase;padding:6px 13px;border:1px solid var(--line);
+    border-radius:30px;background:rgba(255,255,255,.55);color:#5a6455;
+  }
+  .howto{
+    margin:26px auto 8px;max-width:780px;background:rgba(255,255,255,.6);
+    border:1px solid var(--line);border-radius:14px;padding:16px 22px;
+    font-size:.98rem;color:#4a5545;
+  }
+  .howto b{color:var(--forest);font-weight:600}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-family:'Spline Sans Mono',monospace;font-size:.7rem;letter-spacing:.03em;color:#5a6455}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+  .dot{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .legend .crit-dot{background:var(--crit)}
+  .legend .term-dot{background:var(--amber)}
+  .legend .check-dot{border:2px solid var(--sage);border-radius:3px;width:12px;height:12px}
+
+  /* phase divider */
+  .phase{display:flex;align-items:center;gap:16px;margin:38px 0 6px;padding-left:80px}
+  @media(max-width:680px){.phase{padding-left:58px}}
+  .phase .ptxt{
+    font-family:'Spline Sans Mono',monospace;font-size:.74rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--forest);font-weight:600;white-space:nowrap;
+  }
+  .phase .pline{flex:1;height:1px;background:var(--line)}
+
+  /* ---------- ROADMAP SPINE ---------- */
+  .roadmap{position:relative;margin-top:30px}
+  .roadmap::before{
+    content:"";position:absolute;left:31px;top:18px;bottom:40px;width:3px;
+    background:repeating-linear-gradient(to bottom,var(--forest-soft) 0 12px,transparent 12px 22px);
+    opacity:.45;
+  }
+  @media(max-width:680px){.roadmap::before{left:22px}}
+
+  .node{position:relative;padding-left:80px;margin-bottom:16px;scroll-margin-top:20px}
+  @media(max-width:680px){.node{padding-left:58px}}
+
+  .marker{
+    position:absolute;left:0;top:0;width:64px;height:64px;border-radius:50%;
+    background:var(--paper);border:3px solid var(--forest);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:900;font-size:1.5rem;color:var(--forest);
+    box-shadow:0 4px 14px var(--shadow);z-index:3;
+  }
+  @media(max-width:680px){.marker{width:46px;height:46px;font-size:1.1rem}}
+
+  .dis .marker{border-color:var(--forest);color:var(--forest)}
+  .ans .marker{border-color:var(--rust);color:var(--rust)}
+  .drug .marker{border-color:var(--teal);color:var(--teal)}
+  .infl .marker{border-color:var(--amber);color:var(--amber)}
+  .other .marker{border-color:var(--plum);color:var(--plum)}
+
+  .card{
+    background:rgba(255,255,255,.66);backdrop-filter:blur(2px);
+    border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    box-shadow:0 2px 10px rgba(20,35,25,.05);transition:box-shadow .25s;
+  }
+  .card:hover{box-shadow:0 8px 26px var(--shadow)}
+  .card-head{padding:18px 22px;cursor:pointer;display:flex;align-items:flex-start;gap:16px;user-select:none}
+  .card-head:hover{background:rgba(30,64,48,.035)}
+  .head-text{flex:1}
+  .sec-tag{font-family:'Spline Sans Mono',monospace;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:#8a9285;margin-bottom:5px}
+  .card-head h2{    font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;font-weight:700;font-size:1.42rem;line-height:1.12;letter-spacing:-.01em;color:var(--ink)}
+  @media(max-width:680px){.card-head h2{font-size:1.14rem}}
+  .blurb{font-size:.96rem;color:#5a6455;font-style:italic;margin-top:6px}
+  .toggle{
+    flex-shrink:0;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--forest);
+    transition:transform .3s,background .2s;background:rgba(255,255,255,.6);
+  }
+  .card.open .toggle{transform:rotate(45deg);background:var(--forest);color:#fff;border-color:var(--forest)}
+  .card-body{max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.4,0,.2,1)}
+  .card.open .card-body{max-height:9000px}
+  .body-inner{padding:4px 22px 24px;border-top:1px dashed var(--line)}
+
+  h3.block{
+    font-family:'Spline Sans Mono',monospace;font-size:.73rem;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--forest);margin:20px 0 9px;font-weight:600;
+    display:flex;align-items:center;gap:9px;
+  }
+  .ans h3.block{color:var(--rust)}.drug h3.block{color:var(--teal)}.infl h3.block{color:var(--amber)}.other h3.block{color:var(--plum)}
+  h3.block::before{content:"";width:22px;height:2px;background:currentColor;display:inline-block}
+
+  ul.facts{list-style:none;margin:0 0 6px}
+  ul.facts li{position:relative;padding-left:22px;margin-bottom:8px;font-size:1.01rem;color:#2c332a}
+  ul.facts li::before{content:"\25AA";position:absolute;left:2px;top:2px;color:var(--forest-soft);font-size:.7rem}
+  .ans ul.facts li::before{color:var(--rust-soft)}.drug ul.facts li::before{color:var(--teal)}.infl ul.facts li::before{color:var(--amber)}.other ul.facts li::before{color:var(--plum)}
+  ul.facts ul{list-style:none;margin:7px 0 4px 4px}
+  ul.facts ul li{padding-left:20px;font-size:.95rem;color:#4a5545}
+  ul.facts ul li::before{content:"\2013";color:#9aa295}
+
+  .term{font-weight:600;color:var(--ink);border-bottom:2px solid rgba(138,104,32,.45)}
+  .val{font-family:'Spline Sans Mono',monospace;font-size:.9em;color:var(--forest-soft);font-weight:600}
+
+  /* flow chain */
+  .flow{
+    display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin:12px 0 14px;
+    padding:14px 16px;background:rgba(30,64,48,.06);border-radius:12px;border:1px solid rgba(30,64,48,.18);
+  }
+  .flow .step{
+    font-family:'Spline Sans Mono',monospace;font-size:.8rem;background:#fff;
+    border:1px solid var(--line);border-radius:8px;padding:7px 11px;color:#2c332a;line-height:1.3;
+    display:flex;align-items:center;
+  }
+  .flow .arr{color:var(--rust-soft);font-weight:700;font-size:1.05rem;display:flex;align-items:center}
+
+  /* callouts */
+  .callout{margin:15px 0;border-radius:13px;padding:14px 18px;position:relative;border:1px solid;font-size:1rem}
+  .callout .tag{font-family:'Spline Sans Mono',monospace;font-size:.67rem;letter-spacing:.13em;text-transform:uppercase;font-weight:600;display:block;margin-bottom:7px}
+  .clinical{background:rgba(30,64,48,.07);border-color:rgba(30,64,48,.3)}
+  .clinical .tag{color:var(--forest)}
+  .critical{background:var(--crit-bg);border-color:rgba(139,30,47,.4)}
+  .critical .tag{color:var(--crit)}.critical strong{color:var(--crit)}
+  .compare{background:rgba(138,104,32,.08);border-color:rgba(138,104,32,.35)}
+  .compare .tag{color:var(--amber)}
+  .formula{background:rgba(30,64,48,.06);border-color:rgba(30,64,48,.3)}
+  .formula .tag{color:var(--forest)}
+  .formula code{font-family:'Spline Sans Mono',monospace;font-size:1.02rem;color:var(--forest);font-weight:600}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;margin:8px 0 4px;font-size:.93rem}
+  th{
+    font-family:'Spline Sans Mono',monospace;font-size:.66rem;letter-spacing:.06em;
+    text-transform:uppercase;text-align:left;padding:9px 11px;background:rgba(30,64,48,.12);
+    color:#1e3a28;border:1px solid var(--line);font-weight:600;vertical-align:top;
+  }
+  td{padding:9px 11px;border:1px solid var(--line);vertical-align:top;color:#2c332a;background:rgba(255,255,255,.45)}
+  td.k{font-family:'Spline Sans Mono',monospace;font-size:.85rem;color:var(--forest);font-weight:600;white-space:nowrap}
+
+  /* worked example */
+  .example{margin:12px 0;padding:13px 16px;border-radius:11px;background:rgba(139,58,30,.06);border:1px solid rgba(139,58,30,.28);font-size:.97rem}
+  .example .q{font-weight:600;color:var(--ink);margin-bottom:6px}
+  .example .a{font-family:'Spline Sans Mono',monospace;font-size:.86rem;color:var(--rust-soft);font-weight:600}
+  .example .ans-tag{font-family:'Spline Sans Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rust-soft);font-weight:600;display:block;margin-bottom:5px}
+
+  /* checklist */
+  .check-row{display:flex;align-items:flex-start;gap:11px;padding:7px 0;font-size:1rem;cursor:pointer}
+  .check-row input{display:none}
+  .box{flex-shrink:0;width:19px;height:19px;border:2px solid var(--sage);border-radius:5px;margin-top:3px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+  .check-row input:checked + .box{background:var(--sage);border-color:var(--sage)}
+  .box::after{content:"\2713";color:#fff;font-size:.85rem;opacity:0;transition:opacity .15s}
+  .check-row input:checked + .box::after{opacity:1}
+  .check-row input:checked ~ .lbl{text-decoration:line-through;color:#9aa295}
+  .lbl{color:#2c332a}
+
+  /* connector */
+  .builds{position:relative;padding-left:80px;margin:-4px 0 12px;font-family:'Spline Sans Mono',monospace;font-size:.71rem;letter-spacing:.04em;color:#9aa295}
+  @media(max-width:680px){.builds{padding-left:58px}}
+  .builds::before{content:"\2193 ";color:var(--forest-soft)}
+
+  footer{text-align:center;margin-top:54px;padding-top:28px;border-top:1px solid var(--line)}
+  footer .src{font-family:'Spline Sans Mono',monospace;font-size:.71rem;color:#9aa295;letter-spacing:.04em;line-height:1.7}
+  .controls{display:flex;gap:12px;justify-content:center;margin:28px 0}
+  .btn{
+    font-family:'Spline Sans Mono',monospace;font-size:.73rem;letter-spacing:.07em;text-transform:uppercase;
+    padding:11px 20px;border:1.5px solid var(--forest);border-radius:30px;background:transparent;
+    color:var(--forest);cursor:pointer;transition:all .2s;font-weight:600;
+  }
+  .btn:hover{background:var(--forest);color:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">ANES 629 · Anesthesia Pharmacology</div>
+    <h1>Respiratory <span class="accent">Medications</span></h1>
+    <div class="sub">From disease pathophysiology to drug class — and what it means in the OR</div>
+    <div class="byline">Travis Laffoon, DNP, APRN, CRNA · 36 slides covered</div>
+    <div class="meta-row">
+      <span class="pill">Asthma &amp; COPD</span>
+      <span class="pill">Bronchodilators</span>
+      <span class="pill">Anti-inflammatory</span>
+      <span class="pill">Anesthetic Airway Effects</span>
+      <span class="pill">Lung Pharmacology</span>
+    </div>
+    <div class="howto">
+      Four phases: first the <b>diseases</b> (asthma &amp; COPD, including crises and OR management), then the <b>ANS framework</b> that explains why the drugs work, then the <b>drug classes</b> (bronchodilators, anti-inflammatory, targeted therapy), and finally <b>other agents with airway influence</b> plus intrinsic lung pharmacology. Click any card to open it.
+      <div class="legend">
+        <span><span class="dot crit-dot"></span> High-yield / must-know</span>
+        <span><span class="dot term-dot"></span> Key term</span>
+        <span><span class="check-dot"></span> Self-check</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <button class="btn" id="expandAll">Expand all</button>
+    <button class="btn" id="collapseAll">Collapse all</button>
+  </div>
+
+  <div class="roadmap">
+
+    <!-- ===== PHASE 1 ===== -->
+    <div class="phase"><span class="ptxt">Phase 1 · Disease Foundations</span><span class="pline"></span></div>
+
+    <!-- S1 ASTHMA PATHOPHYSIOLOGY -->
+    <div class="node dis" id="s1">
+      <div class="marker">1</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 1 · Asthma</div>
+          <h2>Asthma — Pathophysiology &amp; Triggers</h2>
+          <div class="blurb">What's happening in the airway and what sets it off.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <h3 class="block">Definition &amp; Mechanism</h3>
+          <ul class="facts">
+            <li><span class="term">Reversible</span> airflow obstruction + chronic airway inflammation + bronchial hyper-reactivity + bronchoconstriction.</li>
+            <li>Inflammatory cascade → infiltration with <span class="val">neutrophils, mast cells, T-cells, eosinophils, leukotrienes</span> → airway edema (especially bronchi).</li>
+            <li>Thickening of basement membrane and airway wall also occurs.</li>
+            <li>Main inflammatory mediators: <span class="val">histamine, prostaglandin D2, leukotrienes</span>.</li>
+            <li>Cause is multifactorial: environmental + genetic. Risk factors include family history, maternal smoking in pregnancy, frequent viral infections, <strong>limited</strong> early allergen exposure.</li>
+          </ul>
+          <h3 class="block">Clinical Presentation &amp; Triggers</h3>
+          <ul class="facts">
+            <li>Episodic disease with acute exacerbations: dyspnea, eosinophilia, cough, tachypnea, hyperventilation, wheezing, chest tightness.</li>
+            <li>Attacks provoked by: allergens, infections, stress, exercise, and drugs — <span class="val">ASA, beta-antagonists, NSAIDs</span>.</li>
+            <li>Mild asthma typically accompanied by <strong>normal PaO2 and PaCO2</strong>.</li>
+          </ul>
+          <div class="callout compare"><span class="tag">Two-Category Treatment Framework</span>
+            <strong>1 — Control:</strong> corticosteroids + antileukotrienes (suppress the inflammation). <strong>2 — Rescue:</strong> beta-2 agonists (reverse the bronchoconstriction fast).</div>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">3 key features of asthma (reversible, inflammation, hyper-reactivity).</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Main inflammatory mediators.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Drugs that trigger attacks (ASA, beta-blockers, NSAIDs).</span></label>
+        </div></div>
+      </div>
+    </div>
+    <div class="builds">Now how you manage the asthmatic patient perioperatively…</div>
+
+    <!-- S2 ASTHMA ANESTHESIA -->
+    <div class="node dis" id="s2">
+      <div class="marker">2</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 2 · Asthma in the OR</div>
+          <h2>Perioperative Asthma Management</h2>
+          <div class="blurb">Pre-op planning, induction strategy, and what to do when bronchospasm happens anyway.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <h3 class="block">Pre-op</h3>
+          <ul class="facts">
+            <li>Goal: formulate a plan that <strong>prevents or blunts expiratory airflow obstruction</strong>.</li>
+            <li>Continue anti-inflammatory and bronchodilator therapy <strong>up to induction</strong>.</li>
+            <li>If steroid use &gt;6 months → consider <span class="val">stress-dose hydrocortisone or methylprednisolone</span>.</li>
+            <li>Regional anesthesia may be more advantageous than GA.</li>
+          </ul>
+          <h3 class="block">Induction &amp; Maintenance</h3>
+          <ul class="facts">
+            <li>Suppress airway reflexes to avoid bronchoconstriction: <span class="val">Propofol, Ketamine, Opioid, Lidocaine, Volatile agents</span>.</li>
+            <li><strong>LMA is less likely to cause bronchoconstriction than ETT.</strong></li>
+            <li>Patient may benefit from increased expiratory time.</li>
+          </ul>
+          <h3 class="block">Intraoperative Bronchospasm</h3>
+          <ul class="facts">
+            <li>Incidence: <span class="val">0.2–4.2%</span> of all procedures in asthma patients.</li>
+            <li>Signs: wheezing, ↑ peak pressure, ↓ exhaled TV, slowly rising ETCO2 waveform.</li>
+            <li>First response: <strong>deepen anesthesia with a volatile agent</strong>.</li>
+            <li>If persists: beta-2 agonist + corticosteroid.</li>
+            <li>Refractory: <span class="val">Aminophylline</span>.</li>
+          </ul>
+          <h3 class="block">Status Asthmaticus</h3>
+          <div class="callout critical"><span class="tag">Crisis — life-threatening bronchospasm unresponsive to treatment</span>
+            <strong>Continued resistance may indicate mucous plugging or severe edema.</strong><br>
+            Treatment: inhaled beta-2 agonists (intermittent or continuous) + supplemental O2 to keep sats &gt;90%.<br>
+            IV corticosteroids early (effects take hours): <span class="val">Cortisol 2 mg/kg + 0.5 mg/kg/hr</span> OR <span class="val">Methylprednisolone 60–125 mg IV Q6</span>.<br>
+            PaCO2 &gt;50 despite therapy → intubation + mechanical ventilation.<br>
+            May require GA to produce bronchodilation.</div>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">5 drugs that suppress airway reflexes at induction.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Signs of intraoperative bronchospasm.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Status asthmaticus corticosteroid doses.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">PaCO2 threshold for intubation in status asthmaticus.</span></label>
+        </div></div>
+      </div>
+    </div>
+    <div class="builds">Different disease, overlapping drugs — now COPD…</div>
+
+    <!-- S3 COPD -->
+    <div class="node dis" id="s3">
+      <div class="marker">3</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 3 · COPD</div>
+          <h2>COPD — Pathophysiology, Diagnosis &amp; Treatment</h2>
+          <div class="blurb">Chronic bronchitis vs. emphysema, risk factors, and the key PaO2 thresholds.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <h3 class="block">Definition</h3>
+          <ul class="facts">
+            <li>Consists of <span class="term">chronic bronchitis</span> and <span class="term">emphysema</span>.</li>
+            <li><strong>NOT fully reversible</strong> — distinguishes it from asthma.</li>
+            <li>Mechanisms: ↓ lung elasticity &amp; recoil, ↓ bronchiolar wall rigidity → collapse on exhalation, bronchospasm from secretions, enlargement of air sacs (emphysema).</li>
+          </ul>
+          <h3 class="block">Chronic Bronchitis vs. Emphysema</h3>
+          <table>
+            <tr><th>Feature</th><th>Chronic Bronchitis</th><th>Emphysema</th></tr>
+            <tr><td class="k">Main symptom</td><td>Chronic productive cough</td><td>Dyspnea</td></tr>
+            <tr><td class="k">Obstruction mechanism</td><td>↓ lumen diameter from mucus &amp; inflammation</td><td>Loss of elastic recoil</td></tr>
+            <tr><td class="k">CXR finding</td><td>—</td><td>Bullae = emphysema diagnosis</td></tr>
+          </table>
+          <ul class="facts">
+            <li>Hematocrit tends to <strong>increase</strong> in COPD to compensate for ↓ PaO2.</li>
+          </ul>
+          <h3 class="block">Risk Factors &amp; Alpha-1 Antitrypsin</h3>
+          <ul class="facts">
+            <li>Smoking, frequent respiratory infections, occupational dust (mining, textiles), pollution, genetic: <span class="term">alpha-1 antitrypsin deficiency</span> (rare homozygous condition).</li>
+            <li>Alpha-1 antitrypsin protects elastic lung tissue from neutrophil elastase. Defective form accumulates in liver → cirrhosis; absent normal form in lungs → COPD/asthma.</li>
+          </ul>
+          <div class="callout formula"><span class="tag">O2 thresholds — memorize</span>
+            <code>Supplement O2 if PaO2 &lt; 55 mmHg · Goal: maintain &gt; 60 mmHg</code></div>
+          <h3 class="block">Medical Treatment</h3>
+          <ul class="facts">
+            <li>Smoking cessation + supplemental O2 (most important).</li>
+            <li>Drug therapy: <span class="val">long-acting beta-2 agonists (LABA) + inhaled corticosteroids + long-acting anticholinergics (LAMA)</span>.</li>
+            <li>Cor pulmonale / right heart disease → add diuretics.</li>
+            <li>Exacerbations: systemic corticosteroids ± antibiotics.</li>
+          </ul>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Chronic bronchitis vs emphysema — symptom and mechanism.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">PaO2 thresholds for supplemental O2.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Alpha-1 antitrypsin — what it does, what deficiency causes.</span></label>
+        </div></div>
+      </div>
+    </div>
+    <div class="builds">COPD has specific anesthetic considerations…</div>
+
+    <!-- S4 COPD ANESTHESIA -->
+    <div class="node dis" id="s4">
+      <div class="marker">4</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 4 · COPD in the OR</div>
+          <h2>Anesthetic Management of COPD</h2>
+          <div class="blurb">Volatile agents, ventilator settings, and what to avoid.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <ul class="facts">
+            <li>Regional suitable for lower intra-abdominal and lower extremity procedures — as long as large sedative doses not needed.</li>
+            <li><strong>Volatile agents</strong> preferred: rapid elimination + bronchodilation.
+              <ul><li>Avoid <span class="val">nitrous oxide</span> in emphysema with known bullae.</li><li>Volatiles can attenuate HPV → may need to ↑ FiO2.</li></ul>
+            </li>
+            <li><strong>Opioids</strong> may be less useful due to prolonged ventilatory depression.</li>
+          </ul>
+          <div class="callout formula"><span class="tag">Ventilator strategy</span>
+            <code>TV 6–8 ml/kg · RR 6–10/min · ↓ I:E ratio</code><br>
+            <span style="font-size:.9rem;color:#4a5545">Slow rate + reduced I:E = adequate time for exhalation, reduced air trapping.</span></div>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Why volatile agents are preferred in COPD.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">TV and RR targets for the COPD ventilator strategy.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Why avoid N2O in emphysema with bullae.</span></label>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- ===== PHASE 2 ===== -->
+    <div class="phase"><span class="ptxt">Phase 2 · ANS Framework — Why the Drugs Work</span><span class="pline"></span></div>
+
+    <!-- S5 ANS -->
+    <div class="node ans" id="s5">
+      <div class="marker">5</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 5 · The Framework</div>
+          <h2>ANS Influence on the Airway</h2>
+          <div class="blurb">PSNS constricts, beta-2 dilates — the receptor logic behind every drug class.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <table>
+            <tr><th>System</th><th>Receptor</th><th>Mediator</th><th>Effect</th></tr>
+            <tr><td class="k">PSNS</td><td>Muscarinic <span class="val">M3</span></td><td>Acetylcholine (via vagus)</td><td><strong>Bronchoconstriction</strong>, ↑ glandular activity</td></tr>
+            <tr><td class="k">SNS</td><td>Beta-2 (smooth muscle)</td><td>Catecholamines</td><td><strong>Bronchodilation</strong> via G-protein → cAMP</td></tr>
+          </table>
+          <ul class="facts">
+            <li>PSNS also controls airway microvasculature and caliber; preganglionic fibers via vagus nerve synapse with postganglionic fibers in airway parasympathetic ganglia.</li>
+            <li>SNS has <strong>no direct control</strong> over airway tone — effect is mediated entirely through beta-2 receptors.</li>
+          </ul>
+          <div class="callout compare"><span class="tag">The drug logic</span>
+            Block PSNS (M3) → less bronchoconstriction = <strong>anticholinergics</strong>.<br>
+            Stimulate SNS (B2) → bronchodilation = <strong>beta-2 agonists</strong>.<br>
+            Suppress inflammation → <strong>corticosteroids, antileukotrienes, mast cell stabilizers</strong>.</div>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">M3 activation → bronchoconstriction.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Beta-2 → bronchodilation via G-protein → cAMP.</span></label>
+        </div></div>
+      </div>
+    </div>
+    <div class="builds">Now the drugs that exploit this framework…</div>
+
+    <!-- ===== PHASE 3 ===== -->
+    <div class="phase"><span class="ptxt">Phase 3 · Drug Classes</span><span class="pline"></span></div>
+
+    <!-- S6 INHALED B2 -->
+    <div class="node drug" id="s6">
+      <div class="marker">6</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 6 · Beta-2 Agonists (Inhaled)</div>
+          <h2>Inhaled Adrenergic Agonists</h2>
+          <div class="blurb">SABA vs. LABA, the B2→cAMP cascade, and what happens to 80–90% of the dose.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <h3 class="block">Mechanism</h3>
+          <div class="flow">
+            <span class="step">Drug binds B2 receptor</span><span class="arr">→</span>
+            <span class="step">G-protein activates adenylate cyclase</span><span class="arr">→</span>
+            <span class="step">ATP → cAMP</span><span class="arr">→</span>
+            <span class="step">Inactivates myosin light chain kinase + ↓ intracellular Ca²⁺</span><span class="arr">→</span>
+            <span class="step">Smooth muscle relaxation</span>
+          </div>
+          <h3 class="block">SABA vs. LABA</h3>
+          <table>
+            <tr><th></th><th>Short-Acting (SABA)</th><th>Long-Acting (LABA)</th></tr>
+            <tr><td class="k">Onset</td><td>&lt;5 min</td><td>5–10 min</td></tr>
+            <tr><td class="k">Duration</td><td>3–4 hours</td><td>12 hours</td></tr>
+            <tr><td class="k">Use</td><td>Rapid rescue: wheezing, bronchospasm</td><td>Maintenance, ↓ exacerbations</td></tr>
+            <tr><td class="k">Examples</td><td>Albuterol, Levalbuterol, Metaproterenol, Pirbuterol</td><td>Salmeterol, Formoterol, Arformoterol</td></tr>
+          </table>
+          <div class="callout clinical"><span class="tag">Deposition pearl</span>
+            <strong>80–90% of the total dose is deposited in the mouth or pharynx</strong> — not the lungs. To improve bronchial deposition: slow inhalation + breath-hold ~5 seconds at end of inspiration.</div>
+          <ul class="facts">
+            <li>Most preparations are mixtures of <span class="term">R and S isomers</span>.</li>
+            <li>Side effects: tremors &amp; tachycardia (B2 stimulation in skeletal muscle/vasculature), hyperglycemia, hypokalemia, hypomagnesemia, tolerance, temporary ↓ arterial O2 tension.</li>
+          </ul>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">The B2 → cAMP → smooth muscle relaxation chain.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">SABA onset/duration vs LABA onset/duration.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Why 80–90% of dose is wasted and how to minimize it.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">4+ side effects of inhaled B2 agonists.</span></label>
+        </div></div>
+      </div>
+    </div>
+    <div class="builds">The systemic version for rescue situations…</div>
+
+    <!-- S7 SYSTEMIC B2 -->
+    <div class="node drug" id="s7">
+      <div class="marker">7</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 7 · Beta-2 Agonists (Systemic)</div>
+          <h2>Systemic Adrenergic Agonists</h2>
+          <div class="blurb">Reserved for rescue; same mechanism, more systemic exposure.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <ul class="facts">
+            <li>Reserved for rescue therapy; same mechanism of action as inhaled agents.</li>
+            <li><span class="term">Terbutaline</span>: available oral, subcutaneous, IV.</li>
+            <li><span class="term">Epinephrine</span>: available IV &amp; SQ.
+              <ul>
+                <li>Rapid, effective bronchodilator: <span class="val">0.4 ml of 1 mg/ml SQ</span> or nebulized <span class="val">0.5 ml 2.25% solution diluted to 3 ml with NS</span>.</li>
+                <li>Maximal bronchodilation at <span class="val">15 min</span>, duration <span class="val">1 hour</span>.</li>
+              </ul>
+            </li>
+            <li>Side effect profile similar to inhaled agents — <strong>tremor and tachycardia most common</strong>.</li>
+          </ul>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Epinephrine SQ dose for bronchospasm.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Time to maximal bronchodilation with epi.</span></label>
+        </div></div>
+      </div>
+    </div>
+    <div class="builds">Block the PSNS side instead…</div>
+
+    <!-- S8 INHALED CHOLINERGIC -->
+    <div class="node drug" id="s8">
+      <div class="marker">8</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 8 · Anticholinergics (Inhaled)</div>
+          <h2>Inhaled Cholinergic Antagonists</h2>
+          <div class="blurb">Ipratropium vs. tiotropium, the M1/M2/M3 receptor roles, and the contraction cascade.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <h3 class="block">Mechanism — The Three Muscarinic Receptors</h3>
+          <table>
+            <tr><th>Receptor</th><th>Effect</th></tr>
+            <tr><td class="k">M1</td><td>Bronchoconstriction + mucus production</td></tr>
+            <tr><td class="k">M2</td><td><strong>Limits</strong> ACh production — protective against bronchoconstriction</td></tr>
+            <tr><td class="k">M3</td><td>Bronchoconstriction + mucus production</td></tr>
+          </table>
+          <div class="flow">
+            <span class="step">ACh binds M1/M3</span><span class="arr">→</span>
+            <span class="step">G-protein or ↑ cGMP</span><span class="arr">→</span>
+            <span class="step">Phospholipase C → IP3</span><span class="arr">→</span>
+            <span class="step">↑ Intracellular Ca²⁺</span><span class="arr">→</span>
+            <span class="step">Myosin light chain kinase → contraction</span>
+          </div>
+          <h3 class="block">Ipratropium vs. Tiotropium</h3>
+          <table>
+            <tr><th>Drug</th><th>Use</th><th>Duration</th></tr>
+            <tr><td class="k">Ipratropium</td><td>Maintenance <strong>AND</strong> rescue for COPD; asthma during acute exacerbations</td><td>Short-acting</td></tr>
+            <tr><td class="k">Tiotropium</td><td>Maintenance only (COPD + approved for asthma maintenance)</td><td>Long-acting</td></tr>
+          </table>
+          <ul class="facts">
+            <li>Primarily for <strong>COPD</strong> — not usually recommended in asthma except acute exacerbations.</li>
+            <li>Benefits: ↑ exercise tolerance, ↓ dyspnea, ↑ gas exchange, ↓ exacerbations.</li>
+            <li>Side effects: dry mouth, urinary retention, pupil dilation, blurred vision.</li>
+          </ul>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">M1/M3 = constrict; M2 = limit ACh (protective).</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Ipratropium (rescue + maintenance) vs tiotropium (maintenance only).</span></label>
+        </div></div>
+      </div>
+    </div>
+    <div class="builds">The systemic anticholinergic comparison…</div>
+
+    <!-- S9 SYSTEMIC CHOLINERGIC -->
+    <div class="node drug" id="s9">
+      <div class="marker">9</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 9 · Anticholinergics (Systemic)</div>
+          <h2>Systemic Cholinergic Antagonists</h2>
+          <div class="blurb">Atropine vs. glycopyrrolate — why BBB crossing matters.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <table>
+            <tr><th>Drug</th><th>Structure</th><th>Crosses BBB?</th><th>Consequences</th></tr>
+            <tr><td class="k">Atropine</td><td>Tertiary ammonium</td><td><strong>Yes</strong></td><td>CNS effects + tachycardia, GI upset, blurred vision, dry mouth — more side effects</td></tr>
+            <tr><td class="k">Glycopyrrolate</td><td>Quaternary ammonium</td><td><strong>No</strong></td><td>Fewer side effects; preferred when CNS effects are undesirable</td></tr>
+            <tr><td class="k">Scopolamine</td><td>Tertiary</td><td>Yes</td><td>Systemic use</td></tr>
+          </table>
+          <ul class="facts">
+            <li>Both act via the same mechanism as inhaled cholinergic antagonists.</li>
+            <li>Can be given IV or by inhalation, but use limited by side effect profile due to systemic absorption.</li>
+          </ul>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Atropine (tertiary) = crosses BBB → more side effects.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Glycopyrrolate (quaternary) = doesn't cross BBB → fewer side effects.</span></label>
+        </div></div>
+      </div>
+    </div>
+    <div class="builds">Now the anti-inflammatory drug classes…</div>
+
+    <!-- ===== PHASE 4 INFLAMMATION ===== -->
+    <div class="phase"><span class="ptxt">Phase 3 (continued) · Anti-inflammatory Drug Classes</span><span class="pline"></span></div>
+
+    <!-- S10 INFLAMMATION COMPARE -->
+    <div class="node infl" id="s10">
+      <div class="marker">10</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 10 · Inflammation</div>
+          <h2>Airway Inflammation — Asthma vs. COPD</h2>
+          <div class="blurb">Different cell types, different targets, same inflammatory cascade to suppress.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <table>
+            <tr><th>Disease</th><th>Dominant Cells</th></tr>
+            <tr><td class="k">Asthma</td><td>Eosinophils (primary), mast cells, macrophages, CD4+ T lymphocytes</td></tr>
+            <tr><td class="k">COPD</td><td>Neutrophils, macrophages, CD8+ T lymphocytes, eosinophils</td></tr>
+          </table>
+          <ul class="facts">
+            <li>Sputum cultures and biopsies can help identify mediators involved and guide therapy.</li>
+          </ul>
+          <div class="callout compare"><span class="tag">Drug class map (Table 25-2)</span>
+            Inhaled Corticosteroids · Leukotriene Modifiers · Mast Cell Stabilizers · Methylxanthines — all target different parts of this inflammatory process.</div>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Asthma = eosinophil-dominant; COPD = neutrophil/macrophage dominant.</span></label>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- S11 INHALED CORTICOSTEROIDS -->
+    <div class="node infl" id="s11">
+      <div class="marker">11</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 11 · ICS</div>
+          <h2>Inhaled Corticosteroids</h2>
+          <div class="blurb">First-line controller for asthma; adjunct only in moderate-severe COPD.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <ul class="facts">
+            <li>Mechanism: target <span class="term">glucocorticoid receptor</span> in the cytoplasm of airway epithelial cells → ↓ inflammatory changes, ↑ lung function, ↓ exacerbations.</li>
+            <li>Used as <strong>multimodal therapy</strong> when attacks increase in severity or frequency.</li>
+            <li>In COPD: <strong>only recommended in moderate-to-severe disease, combined with LABA</strong>.</li>
+          </ul>
+          <h3 class="block">Examples (Monotherapy)</h3>
+          <ul class="facts">
+            <li>Beclomethasone, Budesonide, Ciclesonide, Flunisolide, Fluticasone, Mometasone, Triamcinolone.</li>
+            <li><strong>Combination:</strong> Budesonide/Formoterol, Fluticasone/Salmeterol.</li>
+          </ul>
+          <div class="callout critical"><span class="tag">Side effect list — know them</span>
+            ↑ pneumonia, oropharyngeal candidiasis, pharyngitis, easy bruising, cataracts, ↑ IOP, osteoporosis, dysphonia, cough, minor growth reduction in children.</div>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">ICS target: glucocorticoid receptor in cytoplasm of airway epithelial cells.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">COPD: only moderate-severe + combined with LABA.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">5 ICS side effects.</span></label>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- S12 SYSTEMIC STEROIDS -->
+    <div class="node infl" id="s12">
+      <div class="marker">12</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 12 · Systemic Corticosteroids</div>
+          <h2>Systemic Corticosteroids (Oral &amp; IV)</h2>
+          <div class="blurb">Exacerbation rescue — doses, duration limits, and the side effect burden.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <ul class="facts">
+            <li>Used for COPD and asthma exacerbations. In asthma: <strong>only if severe or not responsive to beta-2 agents</strong>.</li>
+            <li>Some severe-disease patients may be on chronic oral corticosteroids.</li>
+          </ul>
+          <div class="callout formula"><span class="tag">Doses</span>
+            <code>Prednisone 30–60 mg PO per dose</code><br>
+            <code>Methylprednisolone 0.5–1 mg/kg IV Q6–12</code><br>
+            Duration: <strong>do not exceed 2 weeks</strong>.</div>
+          <ul class="facts">
+            <li>Side effects: hypertension, dermal thinning, ↑ infections, cataracts, <strong>adrenal suppression</strong>, psychosis, peptic ulcers, hyperglycemia.</li>
+          </ul>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Methylprednisolone dose range IV.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Max duration 2 weeks.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Adrenal suppression as a key systemic steroid side effect.</span></label>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- S13 LEUKOTRIENES -->
+    <div class="node infl" id="s13">
+      <div class="marker">13</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 13 · Leukotriene Modifiers</div>
+          <h2>Leukotriene Modifiers</h2>
+          <div class="blurb">Asthma-only long-term control; two classes, one liver-monitoring drug.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <ul class="facts">
+            <li><strong>Only used in asthma</strong> for long-term control as multimodal therapy with beta agonists ± ICS.</li>
+            <li>Two classes: <span class="term">leukotriene receptor antagonists</span> (Montelukast, Zafirlukast, Pranlukast) and <span class="term">leukotriene inhibitors</span> (Zileuton).</li>
+          </ul>
+          <div class="flow">
+            <span class="step">Arachidonic acid</span><span class="arr">→</span>
+            <span class="step">5-lipoxygenase pathway</span><span class="arr">→</span>
+            <span class="step">Leukotrienes → bronchoconstriction, edema, ↑ secretions, eosinophil migration</span>
+          </div>
+          <ul class="facts">
+            <li>Taken PO; bronchodilation within hours; maximal effect in a few days.</li>
+            <li>Generally well tolerated. <strong>Exception: Zileuton → reversible hepatitis in 2–4% → periodic liver labs required.</strong></li>
+          </ul>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Leukotrienes cause: bronchoconstriction, edema, ↑ secretions, eosinophil migration.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Zileuton → hepatitis (2–4%) → monitor liver labs.</span></label>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- S14 MAST CELL -->
+    <div class="node infl" id="s14">
+      <div class="marker">14</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 14 · Mast Cell Stabilizers</div>
+          <h2>Mast Cell Stabilizers</h2>
+          <div class="blurb">Prevention before exposure — minimal side effects, great for exercise-induced or allergen-triggered asthma.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <ul class="facts">
+            <li><span class="term">Cromolyn sodium</span> and <span class="term">nedocromil</span> — delivered by powder inhaler or nebulizer.</li>
+            <li>Stabilize submucosal and intraluminal mast cells by <strong>interfering with antigen-dependent release</strong> of mediators responsible for bronchoconstriction, edema, and mucus secretion.</li>
+            <li>Can be used as <strong>preventative treatment prior to known allergen exposure or exercise</strong>.</li>
+            <li>No major side effects; minor: GI upset, coughing, throat irritation.</li>
+          </ul>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Mechanism: prevent mediator release from mast cells (not a bronchodilator).</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Clinical use: pre-exposure/pre-exercise prevention.</span></label>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- S15 METHYLXANTHINES -->
+    <div class="node infl" id="s15">
+      <div class="marker">15</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 15 · Methylxanthines</div>
+          <h2>Methylxanthines (Theophylline / Aminophylline)</h2>
+          <div class="blurb">The alternative bronchodilator with a narrow therapeutic index — monitor levels.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <ul class="facts">
+            <li>Only recommended as an <strong>alternative</strong> treatment for COPD and asthma.</li>
+            <li>Dual mechanism: <span class="term">non-selective phosphodiesterase inhibitor</span> → ↑ cAMP &amp; cGMP → smooth muscle relaxation; and <span class="term">adenosine receptor antagonist</span> → inhibits histamine &amp; leukotriene release from mast cells + anti-inflammatory effects.</li>
+          </ul>
+          <div class="callout critical"><span class="tag">Narrow therapeutic index — blood levels monitored</span>
+            Significant side effects at blood levels <strong>&gt;20 mg/L</strong>: headache, nausea, vomiting, diuresis, reflux, abdominal discomfort, restlessness, <strong>seizures, cardiac arrhythmias, death</strong>.</div>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Dual mechanism: PDE inhibitor + adenosine antagonist.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Toxic level threshold: >20 mg/L.</span></label>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- S16 MONOCLONAL -->
+    <div class="node infl" id="s16">
+      <div class="marker">16</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 16 · Targeted Therapy</div>
+          <h2>Monoclonal Antibody Therapy</h2>
+          <div class="blurb">Anti-IgE and anti-IL-5 biologics for moderate-severe and eosinophilic asthma.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <table>
+            <tr><th>Class</th><th>Drug(s)</th><th>Target</th><th>Use</th><th>Key Side Effect</th></tr>
+            <tr><td class="k">Anti-IgE</td><td>Omalizumab</td><td>IgE binding</td><td>Moderate-severe asthma; SQ Q2–4 weeks; also chronic urticaria, peanut allergy</td><td>0.3% anaphylaxis risk</td></tr>
+            <tr><td class="k">Anti-IL-5</td><td>Mepolizumab, Reslizumab, Benralizumab</td><td>Pro-eosinophilic cytokine IL-5</td><td>Add-on maintenance for eosinophilic asthma</td><td>Reslizumab: 0.3% anaphylaxis; Mepolizumab: hypersensitivity, herpes zoster reactivation</td></tr>
+          </table>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Omalizumab: anti-IgE, SQ, dosed by IgE level + weight.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Anti-IL-5 agents → eosinophilic asthma.</span></label>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- ===== PHASE 4 OTHER ===== -->
+    <div class="phase"><span class="ptxt">Phase 4 · Other Agents &amp; Intrinsic Lung Pharmacology</span><span class="pline"></span></div>
+
+    <!-- S17 ANESTHETIC DRUGS -->
+    <div class="node other" id="s17">
+      <div class="marker">17</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 17 · Anesthetic Agents</div>
+          <h2>Anesthetic Drugs &amp; Airway Effects</h2>
+          <div class="blurb">Volatiles, propofol, ketamine, etomidate, lidocaine — what each does to the airway.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <table>
+            <tr><th>Drug</th><th>Airway Effect</th><th>Pulmonary Vasculature</th><th>Notes</th></tr>
+            <tr><td class="k">Volatile agents</td><td>Bronchodilation (↓ intracellular Ca²⁺ via ↑ cAMP). Least with desflurane.</td><td>Little-no effect on pulmonary vasculature; PAP may ↓ via ↓ CO</td><td>Inhibit HPV &gt;1 MAC; avoid N2O in emphysema with bullae; N2O ↑ PAP via SNS catecholamine stimulation</td></tr>
+            <tr><td class="k">Ketamine</td><td>Direct smooth muscle relaxation; <strong>↑ secretions</strong></td><td>↑ pulmonary vasoconstriction — <strong>caution in PHTN</strong></td><td>Good bronchodilator, bad in pulmonary HTN</td></tr>
+            <tr><td class="k">Propofol</td><td>Relaxes smooth muscle via ↓ vagal tone + muscarinic receptor effects</td><td>—</td><td>Preferred induction for asthmatic</td></tr>
+            <tr><td class="k">Etomidate</td><td>Little to no effect on bronchomotor tone</td><td>Vasorelaxant in pulmonary vasculature</td><td>Neutral airway profile</td></tr>
+            <tr><td class="k">Lidocaine (IV)</td><td>Prevents coughing, blunts hemodynamic response to intubation</td><td>—</td><td>Useful adjunct in asthmatic intubation</td></tr>
+          </table>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Ketamine: good bronchodilator, ↑ secretions, caution in PHTN.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Why N2O should be avoided with bullae and in pulmonary HTN.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Volatile HPV inhibition threshold: >1 MAC.</span></label>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- S18 OTHER DRUGS -->
+    <div class="node other" id="s18">
+      <div class="marker">18</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 18 · Other Agents</div>
+          <h2>Vasopressors, Vasodilators, PDE Inhibitors, Nitric Oxide &amp; Prostaglandins</h2>
+          <div class="blurb">Everything else that moves PAP — and the special case of inhaled NO.</div>
+        </div><div class="toggle">+</div></div>
+        <div class="card-body"><div class="body-inner">
+          <table>
+            <tr><th>Agent</th><th>Effect on PAP / Airway</th><th>Key Notes</th></tr>
+            <tr><td class="k">Vasopressors (Dopamine, Epi, NE, Phenylephrine)</td><td>All ↑ PAP to some degree</td><td>Pancuronium also ↑ PAP (↑ CO + muscarinic antagonism)</td></tr>
+            <tr><td class="k">Vasopressin</td><td>Complex: V1 → pulmonary vasodilation but studies show ↑ PAP possible</td><td>Use with caution in pulmonary HTN</td></tr>
+            <tr><td class="k">Nitroglycerin / Nitroprusside</td><td>Inhibit HPV</td><td>Vasodilators — watch for systemic hypotension</td></tr>
+            <tr><td class="k">Magnesium</td><td>Vasodilates systemic + pulmonary vasculature</td><td>Via cAMP synthesis + Ca²⁺ antagonism</td></tr>
+            <tr><td class="k">Milrinone (PDE-3 inhibitor)</td><td>Prevents cAMP breakdown → ↓ PVR &gt; SVR</td><td>Adenosine-3,5-cAMP selective</td></tr>
+            <tr><td class="k">Roflumilast (PDE-4 inhibitor)</td><td>Approved for COPD: ↑ pulmonary function, ↓ exacerbations</td><td>Oral maintenance</td></tr>
+          </table>
+          <h3 class="block">Inhaled Nitric Oxide (iNO)</h3>
+          <ul class="facts">
+            <li>Selectively delivered to <strong>ventilated lung</strong> → ↑ alveolar perfusion, ↓ intrapulmonary shunt.</li>
+            <li>Mechanism: activates <span class="term">guanylyl cyclase</span> → GTP → cGMP → vasodilation.</li>
+            <li>Only FDA-approved for <strong>infants with respiratory distress syndrome</strong> → reduces need for ECMO.</li>
+            <li>Monitor <span class="term">methemoglobin</span> levels when NO given &gt;24 hours.</li>
+            <li>Also has antithrombotic effects.</li>
+          </ul>
+          <h3 class="block">Prostaglandins</h3>
+          <ul class="facts">
+            <li>Prostanoids: vascular relaxation, inhibit smooth muscle cell proliferation, inhibit platelet aggregation → risk of intraoperative/postoperative <strong>bleeding</strong>.</li>
+            <li><span class="term">Epoprostenol</span>: must be delivered <strong>continuously</strong>. <span class="term">Treprostinil &amp; Iloprost</span>: can be given intermittently.</li>
+            <li>May cause temporary ↓ PaO2 during one-lung ventilation.</li>
+          </ul>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">iNO mechanism: guanylyl cyclase → GTP → cGMP → vasodilation.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">iNO: FDA-approved only for infant RDS; monitor methemoglobin >24 hr.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Epoprostenol = continuous; Treprostinil/Iloprost = intermittent.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Milrinone: ↓ PVR > SVR.</span></label>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- S19 INTRINSIC LUNG -->
+    <div class="node other" id="s19">
+      <div class="marker">19</div>
+      <div class="card">
+        <div class="card-head"><div class="head-text">
+          <div class="sec-tag">Section 19 · The Lung as an Organ of Drug Metabolism</div>
+          <h2>Intrinsic Pharmacologic Lung Effects</h2>
+          <div class="blurb">Pulmonary first-pass, ACE, RAAS, and eicosanoid metabolism — the lung does far more than gas exchange.</div>
+        </div><div class="body-inner">
+        </div></div>
+        <div class="card-body"><div class="body-inner">
+          <h3 class="block">Pulmonary Uptake &amp; First-Pass</h3>
+          <ul class="facts">
+            <li><span class="term">Pulmonary uptake</span> = drug transferred blood → lung (doesn't indicate if metabolized or returned to blood).</li>
+            <li><span class="term">First-pass uptake</span> = amount removed during blood's first pass through the lungs.</li>
+          </ul>
+          <table>
+            <tr><th>Drug</th><th>First-Pass Pulmonary Uptake</th></tr>
+            <tr><td class="k">Fentanyl</td><td>90%</td></tr>
+            <tr><td class="k">Lidocaine</td><td>50%</td></tr>
+            <tr><td class="k">Sufentanil</td><td>45%</td></tr>
+            <tr><td class="k">Propofol</td><td>30%</td></tr>
+            <tr><td class="k">Thiopental</td><td>15%</td></tr>
+            <tr><td class="k">Morphine / Ketamine</td><td>10%</td></tr>
+          </table>
+          <ul class="facts">
+            <li>Lungs have considerable P450 enzymes (especially in pneumocytes) → responsible for some degree of metabolism.</li>
+          </ul>
+          <h3 class="block">The Lung &amp; RAAS</h3>
+          <div class="flow">
+            <span class="step">Kidney releases renin</span><span class="arr">→</span>
+            <span class="step">Angiotensinogen → Angiotensin I</span><span class="arr">→</span>
+            <span class="step">Pulmonary ACE converts Ang I → Ang II</span>
+          </div>
+          <ul class="facts">
+            <li>Pulmonary endothelium has <strong>high concentrations of ACE</strong> — major role in RAAS.</li>
+            <li><span class="term">Bradykinin</span> (bronchoconstrictor, antithrombotic, profibrinolytic) is metabolized by ACE.</li>
+            <li>Eicosanoid (arachidonic acid derivative) production and metabolism also occur in the lungs via lipoxygenase, cyclooxygenase, or P450 monooxygenase systems.</li>
+          </ul>
+          <h3 class="block">Self-Check</h3>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Fentanyl (90%) and Morphine (10%) — opposite ends of pulmonary uptake.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Pulmonary endothelium = site of ACE → Ang I → Ang II conversion.</span></label>
+          <label class="check-row"><input type="checkbox"><span class="box"></span><span class="lbl">Bradykinin is metabolized by ACE in the lung.</span></label>
+        </div></div>
+      </div>
+    </div>
+
+  </div><!-- /roadmap -->
+
+  <footer>
+    <div class="controls"><button class="btn" id="resetChecks">Reset all self-checks</button></div>
+    <div class="src">
+      Built from "Respiratory Medications" lecture · Travis Laffoon, DNP, APRN, CRNA<br>
+      Refs: Barash (2017) · Flood, Rathmell &amp; Shafer (2015) · Hines &amp; Marschall (2018) · Katzung &amp; Todd (2021)
+    </div>
+  </footer>
+</div>
+
+<script>
+  document.querySelectorAll('.card-head').forEach(h=>{
+    h.addEventListener('click',()=>h.closest('.card').classList.toggle('open'));
+  });
+  document.getElementById('expandAll').addEventListener('click',()=>{
+    document.querySelectorAll('.card').forEach(c=>c.classList.add('open'));
+  });
+  document.getElementById('collapseAll').addEventListener('click',()=>{
+    document.querySelectorAll('.card').forEach(c=>c.classList.remove('open'));
+  });
+  document.getElementById('resetChecks').addEventListener('click',()=>{
+    document.querySelectorAll('.check-row input').forEach(b=>{b.checked=false;});
+  });
+</script>
+</body>
+</html>
