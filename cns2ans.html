@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APP: CNS & ANS (Week 3) — Study Roadmap</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #f8f9fb;
+  --surface: #ffffff;
+  --surface2: #f0f2f5;
+  --border: #dce1e8;
+  --border-bright: #c4cad4;
+  --text: #1a2332;
+  --text-dim: #556070;
+  --text-muted: #8892a0;
+  --accent: #0e7c5f;
+  --accent-dim: rgba(14,124,95,0.08);
+  --accent-glow: rgba(14,124,95,0.15);
+  --high-yield: #c56a15;
+  --high-yield-bg: #fef6ee;
+  --high-yield-border: #f0c8a0;
+  --exam-tip: #1a6fbf;
+  --exam-tip-bg: #eef4fc;
+  --exam-tip-border: #a8cce8;
+  --key-term: #7c4dbd;
+  --key-term-bg: #f5f0fa;
+  --self-check: #1a8a3e;
+  --self-check-bg: #eef8f0;
+  --danger: #c53030;
+  --danger-bg: #fdf2f2;
+  --phase1: #0e7c5f;
+  --phase2: #c56a15;
+  --phase3: #1a6fbf;
+  --phase4: #7c4dbd;
+  --phase5: #c53030;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  font-size: 17px;
+  min-height: 100vh;
+}
+
+/* ─── HEADER ─── */
+.hero {
+  position: relative;
+  padding: 3.5rem 1.5rem 2.5rem;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(14,124,95,0.05) 0%, var(--bg) 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(14,124,95,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(14,124,95,0.2);
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 0.8rem;
+}
+.hero h1 span { color: var(--accent); }
+.hero-sub {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  max-width: 640px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+.exam-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--danger-bg);
+  border: 1px solid rgba(197,48,48,0.25);
+  color: var(--danger);
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  padding: 6px 16px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* ─── CONTROLS ─── */
+.controls {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(248,249,251,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1.5rem;
+}
+.controls-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.5px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--text); }
+.filter-btn.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.expand-btns {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+.expand-btn {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  padding: 4px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.expand-btn:hover { color: var(--text); border-color: var(--border-bright); }
+
+/* ─── LEGEND ─── */
+.legend {
+  max-width: 900px;
+  margin: 1rem auto 0;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+.legend-dot.hy { background: var(--high-yield); }
+.legend-dot.et { background: var(--exam-tip); }
+.legend-dot.kt { background: var(--key-term); }
+.legend-dot.sc { background: var(--self-check); }
+
+/* ─── MAIN CONTAINER ─── */
+.roadmap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 4rem;
+}
+
+/* ─── PHASE HEADERS ─── */
+.phase-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 2.5rem 0 1.2rem;
+  padding-top: 1rem;
+}
+.phase-num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.15;
+}
+.phase-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+/* ─── CARDS ─── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 0.85rem;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.card:hover { border-color: var(--border-bright); }
+.card.open { box-shadow: 0 2px 12px rgba(14,124,95,0.08); }
+
+.card-trigger {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+  background: none;
+  border: none;
+  color: inherit;
+  text-align: left;
+  font-family: inherit;
+}
+.card-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: var(--radius); }
+
+.card-sec-num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.card-meta { flex: 1; min-width: 0; }
+.card-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.card-subtitle {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+}
+.card-toggle {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.3s;
+  margin-top: 4px;
+}
+.card.open .card-toggle { transform: rotate(45deg); }
+
+.card-body {
+  display: none;
+  padding: 0 1.25rem 1.25rem;
+  padding-left: calc(1.25rem + 44px);
+}
+.card.open .card-body { display: block; }
+
+/* ─── CONTENT TYPOGRAPHY ─── */
+.card-body h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 1.2rem 0 0.5rem;
+  letter-spacing: 0.3px;
+}
+.card-body h3:first-child { margin-top: 0.3rem; }
+.card-body p { margin-bottom: 0.6rem; color: var(--text); font-size: 1rem; }
+.card-body ul, .card-body ol {
+  margin: 0.3rem 0 0.7rem 1.2rem;
+  font-size: 0.98rem;
+}
+.card-body li { margin-bottom: 0.3rem; color: var(--text); }
+.card-body li strong { color: var(--text); }
+
+/* ─── TABLES ─── */
+.tbl-wrap { overflow-x: auto; margin: 0.6rem 0 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border); }
+.tbl-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+.tbl-wrap th {
+  background: var(--surface2);
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+.tbl-wrap td {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+.tbl-wrap tr:last-child td { border-bottom: none; }
+.tbl-wrap tr:hover td { background: rgba(0,0,0,0.02); }
+
+/* ─── CALLOUT BOXES ─── */
+.hy-box, .et-box, .kt-box, .crna-box {
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  margin: 0.8rem 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  position: relative;
+}
+.hy-box {
+  background: var(--high-yield-bg);
+  border-left: 3px solid var(--high-yield);
+  border: 1px solid var(--high-yield-border);
+  border-left: 3px solid var(--high-yield);
+}
+.et-box {
+  background: var(--exam-tip-bg);
+  border: 1px solid var(--exam-tip-border);
+  border-left: 3px solid var(--exam-tip);
+}
+.kt-box {
+  background: var(--key-term-bg);
+  border: 1px solid rgba(124,77,189,0.25);
+  border-left: 3px solid var(--key-term);
+}
+.crna-box {
+  background: var(--danger-bg);
+  border: 1px solid rgba(197,48,48,0.2);
+  border-left: 3px solid var(--danger);
+}
+.box-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+.hy-box .box-label { color: var(--high-yield); }
+.et-box .box-label { color: var(--exam-tip); }
+.kt-box .box-label { color: var(--key-term); }
+.crna-box .box-label { color: var(--danger); }
+.hy-box ul, .et-box ul, .kt-box ul, .crna-box ul { margin-left: 1rem; }
+.hy-box li, .et-box li, .kt-box li, .crna-box li { margin-bottom: 0.25rem; }
+
+/* ─── FLOW ARROWS ─── */
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0.6rem 0;
+  font-size: 0.92rem;
+}
+.flow-step {
+  background: #e8f5f0;
+  border: 1px solid #b2dfd0;
+  padding: 5px 12px;
+  border-radius: 6px;
+  color: #1a2332;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.flow-arrow { color: var(--accent); font-weight: 700; font-size: 1rem; }
+
+/* ─── SELF-CHECK ─── */
+.self-check {
+  background: var(--self-check-bg);
+  border: 1px solid rgba(26,138,62,0.2);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+}
+.self-check-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--self-check);
+  margin-bottom: 6px;
+}
+.sc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 0.95rem;
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+}
+.sc-item input[type="checkbox"] { display: none; }
+.sc-check {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--border-bright);
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-size: 13px;
+  color: transparent;
+}
+.sc-item input:checked + .sc-check {
+  background: var(--self-check);
+  border-color: var(--self-check);
+  color: #fff;
+}
+.sc-item input:checked ~ .sc-text { opacity: 0.5; text-decoration: line-through; }
+
+/* ─── CONNECTOR TEXT ─── */
+.connector {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 0.8rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--border);
+}
+
+/* ─── RESET BUTTON ─── */
+.reset-wrap { text-align: center; margin: 2rem 0; }
+.reset-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  padding: 8px 24px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.reset-btn:hover { border-color: var(--danger); color: var(--danger); }
+
+/* ─── FOOTER ─── */
+.foot {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  margin-top: 1rem;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 640px) {
+  .card-body { padding-left: 1.25rem; }
+  .controls-inner { justify-content: flex-start; }
+  .expand-btns { margin-left: 0; width: 100%; justify-content: flex-end; }
+  .tbl-wrap table { font-size: 0.85rem; }
+  .tbl-wrap th, .tbl-wrap td { padding: 5px 8px; }
+  .phase-num { font-size: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+  <div class="hero-tag">Anatomy, Physiology &amp; Pathophysiology</div>
+  <h1>CNS &amp; <span>Autonomic Nervous System</span></h1>
+  <p class="hero-sub">Week 3 — Spinal cord to brain stem, neuraxial anatomy, motor pathways, cerebral blood flow, cranial nerves, and the full autonomic nervous system. Click any card to expand.</p>
+
+</header>
+
+<!-- ═══════════ CONTROLS ═══════════ -->
+<nav class="controls" id="controls">
+  <div class="controls-inner">
+    <button class="filter-btn active" data-phase="all">All Phases</button>
+    <button class="filter-btn" data-phase="1" style="--pc:var(--phase1)">CNS Structures</button>
+    <button class="filter-btn" data-phase="2" style="--pc:var(--phase2)">SCI &amp; Motor</button>
+    <button class="filter-btn" data-phase="3" style="--pc:var(--phase3)">Brain &amp; CBF</button>
+    <button class="filter-btn" data-phase="4" style="--pc:var(--phase4)">ANS</button>
+    <button class="filter-btn" data-phase="5" style="--pc:var(--phase5)">Pathophys</button>
+    <div class="expand-btns">
+      <button class="expand-btn" onclick="toggleAll(true)">Expand all</button>
+      <button class="expand-btn" onclick="toggleAll(false)">Collapse all</button>
+    </div>
+  </div>
+  <div class="legend">
+    <span class="legend-item"><span class="legend-dot hy"></span>High-yield / must-know</span>
+    <span class="legend-item"><span class="legend-dot et"></span>Exam tip</span>
+    <span class="legend-item"><span class="legend-dot kt"></span>Key term</span>
+    <span class="legend-item"><span class="legend-dot sc"></span>Self-check</span>
+  </div>
+</nav>
+
+<!-- ═══════════ ROADMAP ═══════════ -->
+<main class="roadmap">
+
+<!-- ╔═══════════════════════════════════════════╗
+     ║  PHASE 1 — CNS Structures & Spinal Anatomy ║
+     ╚═══════════════════════════════════════════╝ -->
+<div class="phase-header" data-phase="1">
+  <div class="phase-num" style="color:var(--phase1)">1</div>
+  <h2>CNS Structures &amp; Spinal Anatomy</h2>
+</div>
+
+<!-- Section 1 -->
+<div class="card" data-phase="1">
+  <button class="card-trigger" onclick="toggleCard(this)">
+    <div class="card-sec-num">1</div>
+    <div class="card-meta">
+      <div class="card-title">Spinal Cord &amp; Brain Stem Organization</div>
+      <div class="card-subtitle">Posterior neurons, anterior neurons, interneurons, and brain stem functions</div>
+    </div>
+    <div class="card-toggle">+</div>
+  </button>
+  <div class="card-body">
+    <h3>Posterior Neurons (Dorsal)</h3>
+    <ul>
+      <li>Sensory signals enter the cord almost entirely through the <strong>dorsal (sensory) roots</strong></li>
+      <li>After entering, signal travels to 2 places:
+        <ul>
+          <li><strong>Gray matter of the cord</strong> — Elicits local segmental cord reflexes &amp; other local effects</li>
+          <li><strong>Higher levels</strong></li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Anterior Neurons</h3>
+    <ul>
+      <li>Innervate the <strong>skeletal muscle fibers</strong></li>
+      <li>2 Types of Neurons:
+        <ul>
+          <li><strong>Alpha Motor Neuron</strong> — Gives rise to Type A alpha motor nerve fibers; stimulate motor units</li>
+          <li><strong>Gamma Motor Neuron</strong> — Transmit via Type A gamma motor nerve fibers; constitute the muscle spindle (helps control basic muscle tone)</li>
+        </ul>
+      </li>
+      <li>Brain areas involved: Cerebellum, basal ganglia, cerebral cortex</li>
+    </ul>
+
+    <h3>Interneurons</h3>
+    <ul>
+      <li>Present in all areas of the cord gray matter</li>
+      <li>Small, highly excitable (capable of spontaneous activity)</li>
+      <li>These interconnections are responsible for most of the <strong>integrative functions</strong> of the spinal cord</li>
+    </ul>
+
+    <h3>Brain Stem</h3>
+    <ul>
+      <li>Consists of <strong>medulla, pons, &amp; mesencephalon (midbrain)</strong></li>
+      <li>Can be considered an extension of the spinal cord (contains motor &amp; sensory nuclei for face &amp; head)</li>
+      <li>Special functions:
+        <ul>
+          <li>Control of respiration</li>
+          <li>Control of cardiovascular system</li>
+          <li>Partial control of gastrointestinal function</li>
+          <li>Movements: Stereotyped, equilibrium, eyes</li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="self-check">
+      <div class="self-check-title">✓ Self-Check</div>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Dorsal (posterior) = sensory; Anterior = motor (alpha &amp; gamma neurons)</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Interneurons: small, excitable, responsible for integrative functions of the cord</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Brain stem = medulla + pons + midbrain; controls respiration, CV, GI, equilibrium</span></label>
+    </div>
+    <p class="connector">The layers you'll pass through with your needle →</p>
+  </div>
+</div>
+
+<!-- Section 2 -->
+<div class="card" data-phase="1">
+  <button class="card-trigger" onclick="toggleCard(this)">
+    <div class="card-sec-num">2</div>
+    <div class="card-meta">
+      <div class="card-title">Spinal Anatomy &amp; Neuraxial Procedures</div>
+      <div class="card-subtitle">Layers from skin to CSF, landmarks, and injection volumes</div>
+    </div>
+    <div class="card-toggle">+</div>
+  </button>
+  <div class="card-body">
+    <h3>Layers — Outer to Inner (Skin → CSF)</h3>
+    <ul>
+      <li><strong>Skin / SQ tissue</strong></li>
+      <li><strong>Supraspinous Ligament</strong> — Connects tips of vertebral spines</li>
+      <li><strong>Interspinous Ligament</strong> — Connects the spaces between the vertebral spines</li>
+      <li><strong>Ligamentum Flavum</strong> — Strong ligament along the posterior aspect of the vertebral canal; distinct feel to go through → enter epidural space</li>
+      <li><strong>Epidural Space</strong> — Space containing fat &amp; veins between flavum &amp; dura; LOR (Loss of Resistance); WHERE ANESTHESIA IS INJECTED; smooth, no resistance; needs large needle; <strong>NO CSF here</strong></li>
+      <li><strong>Dura Mater</strong> — Outermost layer of meninges</li>
+      <li><strong>Subdural Space</strong> — Under normal conditions not a real space — trauma can create it</li>
+      <li><strong>Arachnoid Mater</strong> — Middle layer of meninges (between dura &amp; pia)</li>
+      <li><strong>Subarachnoid Space</strong> — Filled with CSF — Spinal anesthetic goes here</li>
+      <li><strong>Pia Mater</strong> — Inner layer, closest to brain/cord</li>
+    </ul>
+
+    <h3>Vertebral Anatomy</h3>
+    <ul>
+      <li><strong>Spinous process</strong>, <strong>Transverse process</strong></li>
+      <li><strong>Lamina</strong> — Region of bone between spinous &amp; transverse process</li>
+      <li><strong>Pedicle</strong> — Segment of bone connecting transverse processes with the vertebral body</li>
+      <li>Cord extends from medulla oblongata to lumbar region (<strong>L1–L2</strong>)</li>
+      <li>Note: <strong>Conus medullaris</strong>, <strong>cauda equina</strong></li>
+      <li>Vertebral formula: <strong>7 cervical / 12 thoracic / 5 lumbar</strong></li>
+    </ul>
+
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — Spine Landmarks</span>
+      <ul>
+        <li><strong>C7</strong> — Bony knob at base of neck</li>
+        <li><strong>T6</strong> — Lowest point when patient lies flat</li>
+        <li><strong>T7–T8</strong> — Lower limits of scapulae</li>
+        <li><strong>L2</strong> — Terminal point of 12th ribs; <strong>end of spinal cord</strong></li>
+        <li><strong>L3</strong> — High point when patient lies flat</li>
+        <li><strong>L4</strong> — Line across iliac crests</li>
+        <li><strong>S2</strong> — Posterior iliac spines; lowest point when patient lies flat</li>
+        <li>Cervical &amp; lumbar curves → convex toward abdomen; Sacral &amp; thoracic → convex toward back</li>
+      </ul>
+    </div>
+
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — Injection Volumes &amp; Wet Tap</span>
+      <ul>
+        <li><strong>Spinal (Subarachnoid):</strong> ≤ 2 mL</li>
+        <li><strong>Epidural:</strong> 1–2 mL / level of coverage (e.g., 2–4 levels = 2–8 mL)</li>
+        <li><strong>Wet Tap:</strong> Accidental dural puncture → Post-Dural Puncture Headache (PDPH) → treat with <strong>epidural blood patch</strong></li>
+        <li><strong>Caudal Block:</strong> Palpate sacral horn, insert needle to interact with epidural space</li>
+      </ul>
+    </div>
+
+    <div class="et-box">
+      <span class="box-label">📝 Exam Tip</span>
+      <p>Know the anatomical terms for the vertebrae AND what you do at each step advancing the needle: supraspinous → interspinous → flavum → LOR = epidural; through dura/arachnoid = subarachnoid/spinal.</p>
+    </div>
+
+    <div class="self-check">
+      <div class="self-check-title">✓ Self-Check</div>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Needle order: Skin → Supraspinous → Interspinous → Flavum → LOR (epidural) → Dura → Arachnoid → Subarachnoid</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">L4 = iliac crests; L2 = cord ends; C7 = bony knob at base of neck</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Spinal ≤ 2 mL; Epidural 1–2 mL/level; Wet tap → PDPH → blood patch</span></label>
+    </div>
+  </div>
+</div>
+
+<!-- ╔═══════════════════════════════════════════╗
+     ║  PHASE 2 — Spinal Cord Injury & Motor       ║
+     ╚═══════════════════════════════════════════╝ -->
+<div class="phase-header" data-phase="2">
+  <div class="phase-num" style="color:var(--phase2)">2</div>
+  <h2>Spinal Cord Injury &amp; Motor Pathways</h2>
+</div>
+
+<!-- Section 3 -->
+<div class="card" data-phase="2">
+  <button class="card-trigger" onclick="toggleCard(this)">
+    <div class="card-sec-num">3</div>
+    <div class="card-meta">
+      <div class="card-title">Spinal Cord Injury</div>
+      <div class="card-subtitle">Acute &amp; chronic SCI, autonomic hyperreflexia, congenital anomalies</div>
+    </div>
+    <div class="card-toggle">+</div>
+  </button>
+  <div class="card-body">
+    <h3>Acute Spinal Cord Injury</h3>
+    <ul>
+      <li>Cervical spine vulnerable to hyperextension</li>
+      <li>If any doubt, all acute cervical spine injuries treated as <strong>unstable until proven otherwise</strong></li>
+    </ul>
+
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — Acute SCI Pearls</span>
+      <ul>
+        <li><strong>"C3, 4, &amp; 5 keep the diaphragm alive"</strong> — Injury above C5 may result in <strong>APNEA</strong></li>
+        <li><strong>Kyphosis = Thoracic; Lordosis = Lumbar</strong></li>
+        <li><strong>Spinal Shock:</strong> Flaccid muscle paralysis with loss of sensation <strong>BELOW</strong> the level of injury (neurogenic shock = autonomic manifestations from CNS injury)</li>
+      </ul>
+    </div>
+
+    <h3>Chronic SCI &amp; Autonomic Hyperreflexia</h3>
+    <ul>
+      <li>After acute injury, spinal cord reflexes gradually return → overactivity of SNS &amp; involuntary muscle spasms</li>
+      <li>Sequelae: impaired alveolar ventilation, pulmonary infections, genitourinary infections, renal dysfunction, altered thermoregulation, osteoporosis, decubitus ulcers, &amp; autonomic hyperreflexia</li>
+    </ul>
+
+    <h3>Autonomic Hyperreflexia</h3>
+    <ul>
+      <li>Associated with return of spinal cord reflexes</li>
+      <li>Stimulation below injury level → afferent impulses → ↑ sympathetic activity along splanchnic outflow (NOT inhibited from above)</li>
+      <li>Result: <strong>Vasoconstriction below injury, reflex bradycardia, cutaneous vasodilation above injury</strong></li>
+      <li>Cause: Cutaneous or visceral stimulation below the level of injury</li>
+    </ul>
+
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — Autonomic Hyperreflexia Incidence</span>
+      <ul>
+        <li><strong>85%</strong> of patients with lesions <strong>above T6</strong> will exhibit autonomic hyperreflexia</li>
+        <li>Hypotension unlikely with lesions below T10</li>
+        <li>Incidence decreases the further out from injury</li>
+        <li><strong>MORE ANESTHESIA NEEDED</strong> if patient enters autonomic hyperreflexia</li>
+      </ul>
+    </div>
+
+    <h3>Congenital Anomalies &amp; Degenerative Diseases</h3>
+    <ul>
+      <li><strong>Spina Bifida:</strong> Occulta (NO true pouch), Meningocele (WITH a pouch), Myelomeningocele (cord exposed in the pouch)</li>
+      <li><strong>Tethered Spinal Cord Syndrome</strong> — Abnormal attachments → cord stretching; conus often below L2</li>
+      <li><strong>Syringomyelia</strong> — Cystic cavitation of spinal cord</li>
+      <li><strong>Friedreich Ataxia</strong> — Autosomal recessive; degeneration of spinocerebellar &amp; pyramidal tracts; cardiomyopathy in 10–50%</li>
+    </ul>
+
+    <div class="self-check">
+      <div class="self-check-title">✓ Self-Check</div>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">C3, 4, 5 keep the diaphragm alive — above C5 = apnea risk</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Autonomic hyperreflexia: 85% with lesions above T6; need MORE anesthesia</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Spinal shock = flaccid paralysis + sensory loss BELOW injury level</span></label>
+    </div>
+  </div>
+</div>
+
+<!-- Section 4 -->
+<div class="card" data-phase="2">
+  <button class="card-trigger" onclick="toggleCard(this)">
+    <div class="card-sec-num">4</div>
+    <div class="card-meta">
+      <div class="card-title">Motor Pathways, Cerebellum &amp; Basal Ganglia</div>
+      <div class="card-subtitle">Flexor reflex, corticospinal tract, and clinical abnormalities</div>
+    </div>
+    <div class="card-toggle">+</div>
+  </button>
+  <div class="card-body">
+    <h3>Flexor Reflex</h3>
+    <ul>
+      <li>Cutaneous sensory stimulation (usually nociceptive) → flexor muscles contract → limb withdrawal</li>
+      <li>Pathway: NOT directly to anterior motor neurons → first into spinal cord interneurons → then secondarily to motor neurons</li>
+    </ul>
+
+    <h3>Corticospinal Tract (Pyramidal Tract)</h3>
+    <ul>
+      <li>Primary output pathway from motor cortex</li>
+    </ul>
+    <div class="flow">
+      <span class="flow-step">Motor cortex</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Posterior limb of internal capsule (between caudate nucleus &amp; putamen of basal ganglia)</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Brain stem (pyramids of medulla)</span><span class="flow-arrow">→</span>
+      <span class="flow-step"><strong>Cross in lower medulla</strong></span><span class="flow-arrow">→</span>
+      <span class="flow-step">Lateral corticospinal tracts</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Interneurons in the intermediate regions of cord gray matter</span>
+    </div>
+    <p style="font-size:0.95rem;color:var(--text-dim);margin-top:4px;">A few fibers pass ipsilaterally in the ventral corticospinal tracts (don't cross).</p>
+
+    <h3>Cerebellum</h3>
+    <ul>
+      <li>Functions in association with other systems of motor control (accessory motor system)</li>
+      <li>Essential during rapid muscular movement (running, typing, piano, talking)</li>
+      <li>Helps sequence &amp; monitor motor activities; makes corrective adjustments</li>
+    </ul>
+    <p><strong>Clinical Abnormalities:</strong></p>
+    <ul>
+      <li><strong>Dysmetria</strong> — Inability to control distance, speed, &amp; range of movements</li>
+      <li><strong>Ataxia</strong> — Uncoordinated movements that result from dysmetria</li>
+      <li><strong>Dysarthria</strong> — Difficulty speaking</li>
+      <li><strong>Nystagmus</strong> — Tremor of the eyeballs (usually occurs when one attempts to fixate the eyes on a scene to one side of the head)</li>
+    </ul>
+
+    <h3>Basal Ganglia</h3>
+    <ul>
+      <li>Principal role: functions with corticospinal system to control complex motor patterns (writing, cutting, hammering, ball sports, eye movement)</li>
+      <li>Consists of: caudate nucleus, putamen, globus pallidus, substantia nigra, subthalamic nucleus</li>
+    </ul>
+    <p><strong>Clinical Abnormalities &amp; Diseases:</strong></p>
+    <ul>
+      <li><strong>Athetosis</strong> — Continuous writhing movements of hand, arm, neck, or face</li>
+      <li><strong>Hemiballismus</strong> — Flailing movements of limbs</li>
+      <li><strong>Akinesia</strong> — Inability to initiate movements</li>
+      <li><strong>Parkinson's Disease</strong> — Widespread degeneration of the substantia nigra → muscle rigidity, involuntary tremor, akinesia, postural instability, dysphagia</li>
+      <li><strong>Huntington's Disease</strong> — Autosomal dominant; flicking → severe distortional movements; severe dementia; loss of cell bodies of the GABA-secreting neurons in the caudate nucleus &amp; loss of acetylcholine in many parts of the brain</li>
+      <li><strong>ALS (Lou Gehrig's)</strong> — Degenerative disease of lower motor neuron (anterior horn) &amp; upper motor neuron/corticospinal tracts</li>
+    </ul>
+
+    <div class="self-check">
+      <div class="self-check-title">✓ Self-Check</div>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Corticospinal tract crosses in the lower medulla → descends in lateral corticospinal tracts</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Parkinson's = substantia nigra degeneration → rigidity, tremor, akinesia</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Huntington's = autosomal dominant, loss of GABA neurons in caudate nucleus</span></label>
+    </div>
+  </div>
+</div>
+
+<!-- ╔═══════════════════════════════════════════╗
+     ║  PHASE 3 — Brain Activity, CBF & CNs         ║
+     ╚═══════════════════════════════════════════╝ -->
+<div class="phase-header" data-phase="3">
+  <div class="phase-num" style="color:var(--phase3)">3</div>
+  <h2>Brain Activity, Cerebral Blood Flow &amp; Cranial Nerves</h2>
+</div>
+
+<!-- Section 5 -->
+<div class="card" data-phase="3">
+  <button class="card-trigger" onclick="toggleCard(this)">
+    <div class="card-sec-num">5</div>
+    <div class="card-meta">
+      <div class="card-title">Limbic System, Sleep, EEG &amp; Equilibrium</div>
+      <div class="card-subtitle">Brain activity states, EEG waves, orexin, coma, GCS, and PONV</div>
+    </div>
+    <div class="card-toggle">+</div>
+  </button>
+  <div class="card-body">
+    <h3>Limbic System</h3>
+    <ul>
+      <li>Entire neuronal circuitry that controls emotional behavior &amp; motivational drives</li>
+      <li><strong>Hypothalamus</strong> — Central element; role in: cardiovascular regulation, temperature, osmolality, uterine contractility, milk ejection, GI/feeding regulation, endocrine hormone secretion</li>
+    </ul>
+
+    <h3>States of Brain Activity</h3>
+    <ul>
+      <li><strong>Consciousness</strong> — Continuing stream of awareness of surroundings or sequential thoughts; may or may not produce amnesia</li>
+      <li><strong>Anterograde Amnesia</strong> — Inability to form NEW memories after an event (most anesthesia meds)</li>
+      <li><strong>Retrograde Amnesia</strong> — Loss of access to events/information learned PRIOR to an event</li>
+    </ul>
+
+    <h3>Sleep</h3>
+    <ul>
+      <li>Unconsciousness from which a person CAN be aroused by sensory or other stimuli</li>
+      <li>Current theory: sleep is caused by an active inhibitory process</li>
+    </ul>
+
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — Sleep Types</span>
+      <ul>
+        <li><strong>REM Sleep:</strong> Eyes undergo rapid movements (5–30 minutes); ~25% of sleep time in young adults; episode recurs ~every 90 min; 'active' form associated with dreaming &amp; active bodily muscle movements; difficult to arouse; drugs that mimic ACH increase occurrence</li>
+        <li><strong>Slow-wave (Non-REM):</strong> Deep, restful; decreases in peripheral vascular tone; dreams can occur but usually not remembered</li>
+        <li><strong>Mnemonic:</strong> "Beta Riding Delta" = Sleep states from awake to deep</li>
+      </ul>
+    </div>
+
+    <h3>Orexin Neurons</h3>
+    <ul>
+      <li>Orexin/hypocretin — produced by hypothalamic neurons, provide excitatory input</li>
+      <li>Most active during waking; stop firing during slow wave &amp; REM sleep</li>
+      <li><strong>Narcolepsy</strong> — Daytime drowsiness &amp; sudden attacks of sleep; caused by loss of orexin signaling (defective orexin receptors or destruction of orexin-producing neurons)</li>
+    </ul>
+
+    <h3>Coma</h3>
+    <ul>
+      <li>Consciousness from which a person <strong>CANNOT</strong> be aroused</li>
+      <li>Caused by drugs, disease, or injury affecting CNS (structural lesions or diffuse disorders)</li>
+    </ul>
+
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — Glasgow Coma Scale</span>
+      <p><strong>NEED TO KNOW.</strong> 3 components: Eye Opening (4–1), Best Motor Response (6–1), Best Verbal Response (5–1). Total range 3–15.</p>
+    </div>
+
+    <h3>Electroencephalogram (EEG)</h3>
+    <div class="tbl-wrap"><table>
+      <tr><th>Wave</th><th>Hz Range</th><th>State</th><th>Amplitude</th><th>Anesthesia Note</th></tr>
+      <tr><td><strong>Alpha</strong></td><td>8–13 Hz</td><td>Resting / relaxed</td><td>Medium</td><td>—</td></tr>
+      <tr><td><strong>Beta</strong></td><td>14–30 Hz</td><td>Awake state</td><td>Low</td><td>Light anesthesia</td></tr>
+      <tr><td><strong>Theta</strong></td><td>4–7 Hz</td><td>Emotional stress; degenerative states</td><td>Low</td><td>—</td></tr>
+      <tr><td><strong>Delta</strong></td><td>&lt;3.5 Hz</td><td>Deep slow-wave sleep</td><td>Low–High</td><td>Deep anesthesia</td></tr>
+    </table></div>
+
+    <h3>Equilibrium / PONV</h3>
+    <ul>
+      <li><strong>Vestibular apparatus</strong> — Sensory organ for equilibrium; detects head orientation &amp; movement; located in petrous portion of temporal bone (semicircular canals, utricle, saccule)</li>
+    </ul>
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — PONV Risk Factors</span>
+      <p><strong>Female sex, non-smoker, opioids, motion sickness</strong></p>
+    </div>
+
+    <div class="self-check">
+      <div class="self-check-title">✓ Self-Check</div>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Beta = awake/light anesthesia; Delta = deep sleep/deep anesthesia</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">GCS: Eyes (4) + Motor (6) + Verbal (5) = 3–15</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">PONV risk factors: Female, non-smoker, opioids, motion sickness</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Narcolepsy = loss of orexin signaling</span></label>
+    </div>
+  </div>
+</div>
+
+<!-- Section 6 -->
+<div class="card" data-phase="3">
+  <button class="card-trigger" onclick="toggleCard(this)">
+    <div class="card-sec-num">6</div>
+    <div class="card-meta">
+      <div class="card-title">Cerebral Blood Flow, CSF &amp; Brain Metabolism</div>
+      <div class="card-subtitle">Circle of Willis, CBF regulation, CSF dynamics, BBB, brain edema, and metabolism</div>
+    </div>
+    <div class="card-toggle">+</div>
+  </button>
+  <div class="card-body">
+    <h3>Cerebral Blood Flow — Anatomy</h3>
+    <ul>
+      <li>4 large arteries (2 carotid &amp; 2 vertebral) merge to form the <strong>Circle of Willis</strong> — provides collateral circulation</li>
+    </ul>
+    <p><strong>Anterior Circulation:</strong></p>
+    <div class="flow">
+      <span class="flow-step">Internal carotid artery</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Anterior cerebral artery</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Middle cerebral artery</span>
+    </div>
+    <p style="font-size:0.95rem;">Supplies frontal, parietal, lateral temporal lobes, basal ganglia, &amp; internal capsule.</p>
+    <p><strong>Posterior Circulation:</strong></p>
+    <div class="flow">
+      <span class="flow-step">Vertebral arteries</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Basilar artery</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Posterior cerebral arteries</span>
+    </div>
+    <p style="font-size:0.95rem;">Supplies brainstem, occipital lobes, cerebellum, medial temporal lobes, &amp; thalamus.</p>
+
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — Circle of Willis</span>
+      <p><strong>KNOW THE CIRCLE OF WILLIS.</strong> 2 carotid + 2 vertebral arteries → collateral circulation to multiple brain areas.</p>
+    </div>
+
+    <h3>CBF Regulation</h3>
+    <div class="tbl-wrap"><table>
+      <tr><th>CBF Value</th><th>Clinical Significance</th></tr>
+      <tr><td>50–65 mL/100g/min (750–900 mL/min)</td><td>Normal; ~15% of cardiac output</td></tr>
+      <tr><td>&gt;25 mL/100g/min</td><td>Neurologic function preserved</td></tr>
+      <tr><td>&lt;6 mL/100g/min</td><td>Cellular death</td></tr>
+      <tr><td>MAP autoregulation: 60–150 mmHg</td><td>CBF maintained constant in this range</td></tr>
+    </table></div>
+
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — CBF Metabolic Regulators</span>
+      <ul>
+        <li><strong>↑ CO₂ concentration → ↑ CBF</strong> (↑ 1–2 mL/100g/min [~15 mL/min] per 1 mmHg ↑ in PaCO₂)</li>
+        <li>↑ Hydrogen ion (H⁺) concentration → ↑ CBF</li>
+        <li>↓ O₂ concentration (PaO₂ ≤ 50 mmHg) → ↑ CBF</li>
+        <li><strong>Local blood flow regulation:</strong> Astrocytes (non-neuronal cells that protect neurons &amp; provide nutrition) release substances that can drive vasodilation (nitric oxide, adenosine, etc.)</li>
+        <li><strong>CPP = MAP – ICP</strong></li>
+        <li>Autoregulation: MAP 60–150 mmHg → arterial constriction if ↑CPP; dilation if ↓CPP</li>
+        <li>Chronic HTN → <strong>right-shifts autoregulation curve</strong> → brain vulnerable to ischemia if BP drops rapidly</li>
+        <li>Autoregulation impaired in: HTN, preeclampsia, atherosclerosis</li>
+      </ul>
+    </div>
+
+    <h3>Stroke / Cerebrovascular Accident</h3>
+    <ul>
+      <li>Caused by blocked or ruptured cerebral vessels — ischemia 88% vs hemorrhage 12%</li>
+      <li>Many caused by arteriosclerotic plaques that activate clotting mechanisms in the blood leading to acute loss of brain function in a localized area</li>
+    </ul>
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — Stroke</span>
+      <ul>
+        <li><strong>Middle Cerebral Artery (MCA)</strong> — MOST COMMON STROKE SITE; left side: loss of Wernicke's (comprehension) &amp; Broca's (word formation)</li>
+        <li><strong>Posterior Cerebral Artery</strong> — Occipital pole infarction → bilateral vision loss</li>
+        <li><strong>Midbrain</strong> — Lose both sensory &amp; motor</li>
+        <li><strong>TIA</strong> — Focal neurologic deficit resolving within 24 hours</li>
+        <li>Risk factors: HTN, smoking, hyperlipidemia, DM, EtOH, ↑ homocysteine</li>
+        <li>Perioperative stroke: highest risk with cardiac, neurologic, major vascular surgery; ~0.1% risk with non-CV/neuro procedures</li>
+        <li>Hemorrhagic types: Intraparenchymal, epidural, subdural, subarachnoid</li>
+      </ul>
+    </div>
+
+    <h3>Cerebrospinal Fluid (CSF)</h3>
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — CSF Facts</span>
+      <ul>
+        <li>~<strong>150 mL</strong> present total (ventricles + cisterns + subarachnoid space)</li>
+        <li>~<strong>500 mL</strong> produced per day — must be absorbed at same rate</li>
+        <li>~2/3 originates from <strong>choroid plexuses</strong> in 4 ventricles (mainly lateral ventricles)</li>
+        <li><strong>Choroid Plexuses:</strong> Cauliflower-like growth of blood vessels covered by a layer of epithelial cells; depend mainly on active transport of Na⁺ ions</li>
+        <li><strong>Function:</strong> Cushions the brain
+          <ul>
+            <li><strong>Coup injury</strong> — Contusion (bruise) on same side as impact injury</li>
+            <li><strong>Contrecoup injury</strong> — Contusion on the opposite side as impact injury</li>
+          </ul>
+        </li>
+        <li><strong>Absorption:</strong> Extra fluid empties into the venous blood through pores of arachnoidal villi</li>
+        <li>Pressure: ~10 mmHg / 130 mm H₂O (supine)</li>
+        <li><strong>High CSF Pressure:</strong> Causes: Brain tumor, hemorrhage, infection</li>
+        <li><strong>Hydrocephalus</strong> — Excessive water in the cranial vault</li>
+        <li><strong>Low CSF Pressure:</strong> Caused by leaking of CSF (wet tap) → treated with <strong>epidural blood patch</strong></li>
+        <li><strong>CSF Measurement:</strong> Lie lateral (fluid pressure in spinal canal equal to cranial vault); spinal needle inserted into lumbar spinal canal (below cord); needle connected to tube open to air; spinal fluid will rise in the tube</li>
+      </ul>
+    </div>
+    <p><strong>CSF Flow Path:</strong></p>
+    <div class="flow">
+      <span class="flow-step">Lateral ventricles</span><span class="flow-arrow">→</span>
+      <span class="flow-step">3rd ventricle</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Aqueduct of Sylvius</span><span class="flow-arrow">→</span>
+      <span class="flow-step">4th ventricle</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Foramina of Luschka (×2) &amp; Magendie</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Cisterna magna</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Subarachnoid space</span>
+    </div>
+    <p><strong>CSF vs Plasma:</strong> Osmotic pressure ≈ plasma; Na⁺ = plasma; Cl⁻ &gt; plasma (~15%); K⁺ &lt; plasma (~40%); Glucose &lt; plasma (~30%)</p>
+    <p><strong>Hydrocephalus:</strong> Noncommunicating — block in aqueduct of Sylvius; Communicating — blockage in subarachnoid spaces or at arachnoid villi.</p>
+
+    <h3>Meningeal Layers &amp; Spaces (Outside → In)</h3>
+    <ul>
+      <li>Ligamentum Flavum → Epidural space → Dura mater → Subdural space → Arachnoid Mater → Subarachnoid space (CSF) → Pia mater</li>
+    </ul>
+
+    <h3>Blood-Brain Barrier &amp; Brain Edema</h3>
+    <ul>
+      <li>Endothelial cells joined by <strong>tight junctions</strong> (unlike other body capillaries)</li>
+      <li>Exist to ensure the concentrations of important constituents are maintained</li>
+      <li>Highly permeable: water, CO₂, O₂, lipid-soluble substances (alcohol, anesthetics)</li>
+      <li>Slightly permeable: electrolytes (Na⁺, Cl⁻, K⁺)</li>
+      <li>Impermeable: plasma proteins, non-lipid-soluble large organic molecules</li>
+      <li>Special areas with greater permeability: hypothalamus, pineal gland, area postrema</li>
+      <li><strong>Types:</strong> Blood-Cerebrospinal Fluid Barrier; Blood-Brain Barrier</li>
+    </ul>
+    <p><strong>Brain Edema:</strong> Serious complication of abnormal cerebral fluid dynamics. Causes: capillary wall damage, head trauma, aqueductal stenosis, hydrocephalus, tumors, CPP above autoregulation upper limit. Vicious cycle: edema → ↓ blood flow → brain ischemia → arteriolar dilation (↑ capillary pressure) → more edema fluid; and separately: ↓ CBF → ↓ O₂ delivery → ↑ capillary permeability → more fluid leakage → further ↓ blood flow. Treatment: osmotic diuretic, ventricular drain, steroids, hyperventilation, surgical decompression.</p>
+
+    <h3>Brain Metabolism</h3>
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — Brain Metabolism</span>
+      <ul>
+        <li>Accounts for ~<strong>15% of total body metabolism</strong></li>
+        <li>NOT capable of much anaerobic metabolism — depends on continuous O₂ delivery</li>
+        <li>Lack of O₂ → unconsciousness within <strong>5–10 seconds</strong></li>
+        <li>Other tissues compensate anaerobically for ~30 minutes; brain cannot</li>
+        <li>Almost all energy from glucose derived from blood</li>
+        <li>~2 min supply of glucose stored as glycogen in neurons</li>
+        <li>Glucose transport into neurons is <strong>NOT insulin dependent</strong></li>
+        <li>Over-treating with insulin → glucose goes to insulin-sensitive cells → deficient glucose for brain</li>
+      </ul>
+    </div>
+
+    <div class="self-check">
+      <div class="self-check-title">✓ Self-Check</div>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">CBF autoregulation: MAP 60–150 mmHg; CPP = MAP – ICP</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">CO₂ ↑ → CBF ↑; O₂ ↓ (≤50 mmHg) → CBF ↑</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">MCA = most common stroke site; CSF: 150 mL present, 500 mL/day produced</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Brain glucose transport is NOT insulin dependent; unconscious in 5–10s without O₂</span></label>
+    </div>
+  </div>
+</div>
+
+<!-- Section 7 -->
+<div class="card" data-phase="3">
+  <button class="card-trigger" onclick="toggleCard(this)">
+    <div class="card-sec-num">7</div>
+    <div class="card-meta">
+      <div class="card-title">Cranial Nerves</div>
+      <div class="card-subtitle">All 12 cranial nerves — especially airway-relevant CNs V, IX, X, XII</div>
+    </div>
+    <div class="card-toggle">+</div>
+  </button>
+  <div class="card-body">
+    <div class="tbl-wrap"><table>
+      <tr><th>CN</th><th>Name</th><th>Fiber Types</th><th>Assessment</th></tr>
+      <tr><td><strong>I</strong></td><td>Olfactory</td><td>Sensory (smell)</td><td>Identify odors each nostril</td></tr>
+      <tr><td><strong>II</strong></td><td>Optic</td><td>Sensory (vision)</td><td>Visual acuity, visual fields, pupillary light reflex (afferent)</td></tr>
+      <tr><td><strong>III</strong></td><td>Oculomotor</td><td>Motor (eye movement, lid), PS (pupil constriction)</td><td>EOM (up, down, medial), ptosis, pupil reflex (efferent)</td></tr>
+      <tr><td><strong>IV</strong></td><td>Trochlear</td><td>Motor (superior oblique)</td><td>Look down and inward</td></tr>
+      <tr style="background:rgba(26,111,191,0.08)"><td><strong>V ⬥</strong></td><td>Trigeminal</td><td>Sensory (face), Motor (mastication)</td><td>Facial sensation 3 divisions, jaw clench, corneal reflex (afferent)</td></tr>
+      <tr><td><strong>VI</strong></td><td>Abducens</td><td>Motor (lateral rectus)</td><td>Lateral gaze</td></tr>
+      <tr><td><strong>VII</strong></td><td>Facial</td><td>Motor (face), Sensory (taste ant. 2/3 tongue), PS (lacrimal/salivary glands)</td><td>Raise eyebrows, smile, puff cheeks, taste test</td></tr>
+      <tr><td><strong>VIII</strong></td><td>Vestibulocochlear</td><td>Sensory (hearing, balance)</td><td>Rinne/Weber tests, finger rub, Romberg</td></tr>
+      <tr style="background:rgba(26,111,191,0.08)"><td><strong>IX ⬥</strong></td><td>Glossopharyngeal</td><td>Sensory (taste post. 1/3, pharynx), Motor (stylopharyngeus), PS (parotid)</td><td>Gag reflex (afferent), taste posterior tongue</td></tr>
+      <tr style="background:rgba(26,111,191,0.08)"><td><strong>X ⬥</strong></td><td>Vagus</td><td>Motor (pharynx/larynx), PS (heart/gut), Sensory (viscera)</td><td>Gag reflex (efferent), voice, palate elevation, HR</td></tr>
+      <tr><td><strong>XI</strong></td><td>Accessory</td><td>Motor (SCM, trapezius)</td><td>Shrug shoulders, turn head against resistance</td></tr>
+      <tr style="background:rgba(26,111,191,0.08)"><td><strong>XII ⬥</strong></td><td>Hypoglossal</td><td>Motor (tongue)</td><td>Tongue protrusion (deviates toward lesion side)</td></tr>
+    </table></div>
+    <p style="font-size:0.88rem;color:var(--text-dim);">⬥ = Airway-relevant cranial nerve</p>
+
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — Airway-Relevant Cranial Nerves</span>
+      <ul>
+        <li><strong>V (Trigeminal)</strong> — Sensation to face/cornea; jaw movement</li>
+        <li><strong>IX (Glossopharyngeal)</strong> — Afferent gag reflex; taste posterior 1/3 tongue</li>
+        <li><strong>X (Vagus)</strong> — Efferent gag reflex; voice/larynx; cardiac, pulmonary, GI</li>
+        <li><strong>XII (Hypoglossal)</strong> — Tongue control; deviation toward LESION side</li>
+      </ul>
+    </div>
+
+    <div class="et-box">
+      <span class="box-label">📝 Exam Tip</span>
+      <p>Cranial nerves with AIRWAY significance MUST be known for exam: <strong>V, IX, X, XII</strong>. Know all 12 from the table.</p>
+    </div>
+
+    <div class="self-check">
+      <div class="self-check-title">✓ Self-Check</div>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Airway CNs: V (face/jaw), IX (gag afferent), X (gag efferent, larynx), XII (tongue → deviates to lesion)</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">CN VII: taste anterior 2/3 tongue; CN IX: taste posterior 1/3 tongue</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">CN X (Vagus) = 75% of all PNS activity</span></label>
+    </div>
+  </div>
+</div>
+
+<!-- ╔═══════════════════════════════════════════╗
+     ║  PHASE 4 — Autonomic Nervous System          ║
+     ╚═══════════════════════════════════════════╝ -->
+<div class="phase-header" data-phase="4">
+  <div class="phase-num" style="color:var(--phase4)">4</div>
+  <h2>Autonomic Nervous System</h2>
+</div>
+
+<!-- Section 8a -->
+<div class="card" data-phase="4">
+  <button class="card-trigger" onclick="toggleCard(this)">
+    <div class="card-sec-num">8a</div>
+    <div class="card-meta">
+      <div class="card-title">ANS Organization — Sympathetic &amp; Parasympathetic</div>
+      <div class="card-subtitle">General design, SNS vs PNS anatomy, stellate ganglion, segmental distribution</div>
+    </div>
+    <div class="card-toggle">+</div>
+  </button>
+  <div class="card-body">
+    <h3>General Organization</h3>
+    <ul>
+      <li>Controls most visceral functions of the body (continually active = 'tone')</li>
+      <li><strong>Visceral Reflexes</strong> — Subconscious signals from visceral organs → autonomic ganglia/brainstem/hypothalamus → reflex responses back to organs</li>
+      <li>Activated mainly by: spinal cord, brain stem, &amp; hypothalamus; portions of cerebral cortex can transmit signals</li>
+    </ul>
+
+    <h3>Sympathetic Nervous System (SNS)</h3>
+    <ul>
+      <li>Preganglionic neuron cell body: <strong>intermediolateral horn</strong> of spinal cord → ventral root → spinal nerve</li>
+      <li><strong>B Fibers</strong> (myelinated preganglionic): exit CNS at thoracolumbar sites → paravertebral ganglia via white ramus → sympathetic chain → synapse in ganglia → unmyelinated postganglionic fibers → organs</li>
+      <li><strong>Gray Rami:</strong> Some postganglionic fibers pass back into spinal nerves</li>
+      <li><strong>Paravertebral Sympathetic Chains of Ganglia include:</strong> Celiac, Superior mesenteric, Aorticorenal, Inferior mesenteric, Hypogastric</li>
+      <li><strong>Effects:</strong> Modulates activity of vascular smooth muscle, cardiac muscle, &amp; various glands</li>
+      <li>"Fight or Flight Response" — Coordinates an efferent mass action response through signal amplification</li>
+    </ul>
+
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — SNS Pearls</span>
+      <ul>
+        <li><strong>Stellate Ganglion</strong> — Postganglionic neurons innervate head, neck, &amp; ipsilateral upper extremity; preganglionic from T1–T5 + superior &amp; middle cervical ganglia; blockade used for CRPS</li>
+        <li><strong>SNS Segmental Distribution</strong> (approximate rule, with overlap): T1=Head, T2=Neck, T3–T6=Thorax, T7–T11=Abdomen, T12–L2=Legs</li>
+        <li><strong>Adrenal gland:</strong> Preganglionic fibers skip thoracic ganglia → go directly to adrenal medulla; chromaffin cells = postganglionic; secrete Epi (80%) + NE (20%)</li>
+        <li><strong>SNS BLOCKED FIRST</strong> in neuraxial anesthesia</li>
+        <li>1 preganglionic SNS fiber activates <strong>20–30 postganglionic neurons</strong> (mass action / amplification)</li>
+      </ul>
+    </div>
+
+    <h3>Parasympathetic Nervous System (PNS)</h3>
+    <ul>
+      <li><strong>Long preganglionic / Short postganglionic fibers</strong></li>
+      <li>Preganglionic exit CNS at cranio-sacral sites (most pass uninterrupted to organ)</li>
+      <li>Cranial nerves III, VII, IX, &amp; X + sacral nerves S1–S4</li>
+      <li><strong>Unmyelinated postganglionic fibers</strong> — Usually extremely short (near or inside the innervated organs)</li>
+      <li><strong>Effects:</strong> Modulates activity of vascular smooth muscle, cardiac muscle, &amp; various glands</li>
+      <li>"Rest &amp; Digest" Response — Salivation, lacrimation, urination, digestion, defecation, &amp; sexual arousal</li>
+      <li>1 preganglionic fiber → activates <strong>1–3 postganglionic neurons</strong> (discrete, not mass action)</li>
+    </ul>
+
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — PNS Cranial Nerve Distribution</span>
+      <ul>
+        <li><strong>CN X (Vagus) = 75% of all PNS</strong> — heart, lungs, esophagus, stomach, small intestine, proximal colon, liver, gallbladder, pancreas, kidneys, upper ureters</li>
+        <li>CN III — pupillary sphincter &amp; ciliary muscle of eye</li>
+        <li>CN VII — lacrimal, nasal, &amp; submandibular glands</li>
+        <li>CN IX — parotid gland</li>
+        <li>Sacral — descending colon, rectum, urinary bladder, lower ureters, external genitalia</li>
+      </ul>
+    </div>
+
+    <div class="self-check">
+      <div class="self-check-title">✓ Self-Check</div>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">SNS: thoracolumbar, mass action (1:20–30); PNS: craniosacral, discrete (1:1–3)</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">SNS blocked FIRST in neuraxial anesthesia</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">CN X = 75% of all PNS; Adrenal medulla: Epi 80%, NE 20%</span></label>
+    </div>
+  </div>
+</div>
+
+<!-- Section 8b -->
+<div class="card" data-phase="4">
+  <button class="card-trigger" onclick="toggleCard(this)">
+    <div class="card-sec-num">8b</div>
+    <div class="card-meta">
+      <div class="card-title">Neurotransmitters — ACH, NE &amp; Dopamine</div>
+      <div class="card-subtitle">Where each is released, breakdown, synthesis, and duration of action</div>
+    </div>
+    <div class="card-toggle">+</div>
+  </button>
+  <div class="card-body">
+    <h3>Acetylcholine (ACH) — Cholinergic Fibers</h3>
+    <div class="hy-box">
+      <span class="box-label">⭐ High Yield — ACH Release Sites &amp; Effects</span>
+      <ul>
+        <li>ACH released at: <strong>ALL preganglionic nerves</strong> (SNS &amp; PNS), <strong>ALL postganglionic parasympathetic nerves</strong>, <strong>SOME postganglionic sympathetic nerves</strong> (sweat glands &amp; few blood vessels), <strong>ALL somatic nerves</strong> (NMJ)</li>
+        <li>Enzymatic breakdown: <strong>Acetylcholinesterase (AChE)</strong></li>
+        <li>DOA: <strong>a few seconds</strong> (very short)</li>
+        <li><strong>CV effects:</strong> vasodilation, ↓ HR (neg chronotrope), ↓ AV conduction (neg dromotrope), ↓ contractility (neg inotrope)</li>
+        <li><strong>Respiratory:</strong> bronchoconstriction, ↑ secretions</li>
+        <li><strong>CNS:</strong> Role in cognitive function, motor control, appetite regulation, &amp; nociception</li>
+        <li><strong>At neuromuscular junction:</strong> Muscle contraction</li>
+        <li><strong>Other:</strong> ↑ GI contractions, ↑ secretions (lacrimal, nasopharyngeal, salivary, sweat), miosis</li>
+      </ul>
+    </div>
+
+    <h3>Norepinephrine (NE) — Adrenergic Fibers</h3>
+    <ul>
+      <li>Released at: <strong>Most postganglionic sympathetic nerves</strong></li>
+      <li>Breakdown: Reuptake into adrenergic endings (active transport); diffusion into blood; destruction by <strong>MAO &amp; COMT</strong></li>
+      <li>Synthesis: Begins in axoplasm of terminal endings; completed in secretory vesicles</li>
+      <li>DOA: <strong>10–30 seconds</strong></li>
+    </ul>
+    <p><strong>NE/Epi Synthesis Pathway:</strong></p>
+    <div class="flow">
+      <span class="flow-step">Tyrosine</span><span class="flow-arrow">→</span>
+      <span class="flow-step">DOPA</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Dopamine</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Norepinephrine</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Epinephrine</span>
+    </div>
+
+    <h3>Dopamine</h3>
+    <ul>
+      <li>Released at: Some postganglionic sympathetic nerves</li>
+      <li><strong>D1</strong> — Blood vessels; <strong>D2</strong> — Presynaptic sympathetic nerve terminals</li>
+    </ul>
+
+    <div class="self-check">
+      <div class="self-check-title">✓ Self-Check</div>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">ACH: ALL preganglionic (SNS &amp; PNS), ALL postganglionic PNS, sweat glands, ALL NMJ</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">NE breakdown: reuptake, diffusion, MAO + COMT</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Synthesis: Tyrosine → DOPA → Dopamine → NE → Epi</span></label>
+    </div>
+  </div>
+</div>
+
+<!-- Section 8c -->
+<div class="card" data-phase="4">
+  <button class="card-trigger" onclick="toggleCard(this)">
+    <div class="card-sec-num">8c</div>
+    <div class="card-meta">
+      <div class="card-title">Receptors — Locations &amp; Effects</div>
+      <div class="card-subtitle">Adrenergic (α, β), muscarinic, nicotinic receptor table</div>
+    </div>
+    <div class="card-toggle">+</div>
+  </button>
+  <div class="card-body">
+    <div class="et-box">
+      <span class="box-label">📝 Exam Tip</span>
+      <p><strong>NEED TO KNOW receptor locations &amp; CNS effects for exam.</strong></p>
+    </div>
+    <div class="tbl-wrap"><table>
+      <tr><th>Receptor</th><th>Agonist</th><th>Location</th><th>Key Effect</th><th>Clinical Drug</th></tr>
+      <tr><td><strong>α1</strong></td><td>NE &gt; Epi</td><td>Smooth muscle (vessels, pupil)</td><td>Vasoconstriction, mydriasis</td><td>Phenylephrine (agonist)</td></tr>
+      <tr><td><strong>α2</strong></td><td>NE &gt; Epi</td><td>Pre-synaptic adrenergic/cholinergic</td><td>↓ NE release (inhibitory); sedation</td><td>Clonidine, Precedex (dexmedetomidine)</td></tr>
+      <tr><td><strong>β1</strong></td><td>Epi = NE</td><td>Cardiac muscle, SA/AV node</td><td>↑ HR, ↑ contractility, ↑ AV conduction</td><td>—</td></tr>
+      <tr><td><strong>β2</strong></td><td>Epi &gt; NE</td><td>Smooth muscle (bronchi, uterus, bladder, vessels)</td><td>Bronchodilation, vasodilation, uterine relaxation</td><td>—</td></tr>
+      <tr><td><strong>β3</strong></td><td>—</td><td>Adipose, bladder, gallbladder</td><td>Energy metabolism</td><td>—</td></tr>
+      <tr><td><strong>M (Muscarinic)</strong></td><td>ACH</td><td>Post-ganglionic parasympathetics; sweat</td><td>See PNS effects</td><td>Atropine (antagonist)</td></tr>
+      <tr><td><strong>N1 (Nicotinic)</strong></td><td>ACH</td><td>Autonomic ganglia (SNS &amp; PNS)</td><td>Ganglionic transmission</td><td>Ganglionic blockers</td></tr>
+      <tr><td><strong>N2 (Nicotinic)</strong></td><td>ACH</td><td>Neuromuscular junction</td><td>Muscle contraction</td><td>Succinylcholine (depolarizing)</td></tr>
+    </table></div>
+
+    <div class="self-check">
+      <div class="self-check-title">✓ Self-Check</div>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">α1 = vasoconstriction (phenylephrine); α2 = ↓ NE release / sedation (clonidine, precedex)</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">β1 = heart (↑ HR, contractility); β2 = bronchi, uterus, vessels (bronchodilation, vasodilation)</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">N1 = autonomic ganglia; N2 = NMJ</span></label>
+    </div>
+  </div>
+</div>
+
+<!-- Section 8d -->
+<div class="card" data-phase="4">
+  <button class="card-trigger" onclick="toggleCard(this)">
+    <div class="card-sec-num">8d</div>
+    <div class="card-meta">
+      <div class="card-title">SNS vs PNS Organ Effects &amp; ANS Anomalies</div>
+      <div class="card-subtitle">Side-by-side effects, sweat gland &amp; adrenal anomalies, denervation, pharmacology</div>
+    </div>
+    <div class="card-toggle">+</div>
+  </button>
+  <div class="card-body">
+    <div class="et-box">
+      <span class="box-label">📝 Exam Tip</span>
+      <p><strong>KNOW THESE SNS vs PNS effects for exam.</strong></p>
+    </div>
+    <div class="tbl-wrap"><table>
+      <tr><th>Organ</th><th>Sympathetic (SNS)</th><th>Parasympathetic (PNS)</th></tr>
+      <tr><td><strong>Heart Rate</strong></td><td>↑ (positive chronotrope)</td><td>↓ (negative chronotrope)</td></tr>
+      <tr><td><strong>Contractility</strong></td><td>↑ (positive inotrope)</td><td>↓ (negative inotrope)</td></tr>
+      <tr><td><strong>AV Conduction</strong></td><td>↑ (positive dromotrope)</td><td>↓ (negative dromotrope)</td></tr>
+      <tr><td><strong>Bronchi</strong></td><td>Bronchodilation (β2)</td><td>Bronchoconstriction</td></tr>
+      <tr><td><strong>Pupils</strong></td><td>Mydriasis (dilation)</td><td>Miosis (constriction)</td></tr>
+      <tr><td><strong>GI Motility</strong></td><td>↓</td><td>↑</td></tr>
+      <tr><td><strong>Bladder wall</strong></td><td>Relaxation (β2)</td><td>Contraction</td></tr>
+      <tr><td><strong>Blood Vessels</strong></td><td>Vasoconstriction (α1)</td><td>Vasodilation (limited)</td></tr>
+      <tr><td><strong>Salivary glands</strong></td><td>Viscous secretion</td><td>Watery secretion (↑)</td></tr>
+      <tr><td><strong>Sweat Glands</strong></td><td>↑ secretion (cholinergic!)</td><td>None</td></tr>
+      <tr><td><strong>Adrenal Medulla</strong></td><td>Epi (80%) + NE (20%)</td><td>—</td></tr>
+    </table></div>
+
+    <h3>ANS Anomalies</h3>
+    <p><strong>Sweat Glands:</strong> Innervated by sympathetic nerves — would expect NE. Reality: 50% release NE &amp; 50% release ACH. Sympathetic fibers that release ACH = "cholinergic sympathetic."</p>
+    <p><strong>Adrenal Gland:</strong> Preganglionic fibers do NOT synapse in thoracic ganglia → go directly to adrenal medulla → release ACH → chromaffin cells (postganglionic equivalent). Secrete NE (20%, 0.05 mcg/kg/min resting) + Epi (80%, 0.2 mg/kg/min resting). Epi vs NE: greater cardiac stimulation (↑ CO), weaker vasoconstriction in muscles (less ↑ BP), greater metabolic effect. DOA of adrenal-released Epi &amp; NE: <strong>2–4 minutes</strong> (longer than nerve-released).</p>
+
+    <h3>Denervation</h3>
+    <ul>
+      <li>Intrinsic compensation develops almost to its normal basal level when sympathetic or parasympathetic tone is lost</li>
+      <li>Parasympathetic tone return takes longer</li>
+    </ul>
+
+    <h3>Denervation Supersensitivity</h3>
+    <ul>
+      <li>Organ sensitivity to injected NE or ACH <strong>INCREASES</strong> after denervation</li>
+      <li>Cause not fully known; increased postsynaptic membrane receptors ('upregulated') partially responsible</li>
+    </ul>
+
+    <h3>ANS Pharmacology — Drug Categories</h3>
+    <ul>
+      <li><strong>Sympathomimetic/Adrenergic</strong> — Elicits same effects as sympathetic stimulation</li>
+      <li><strong>Indirect Sympathomimetics</strong> — Cause release of NE from nerve endings (not direct receptor activation)</li>
+      <li><strong>Parasympathomimetic/Cholinergic</strong> — Elicits same effects as parasympathetic stimulation</li>
+      <li><strong>ACH Potentiators</strong> — No direct effect on effector organs; potentiate naturally secreted ACH by preventing AChE breakdown</li>
+      <li><strong>Anticholinergic/Antimuscarinic</strong> — Block ACH at muscarinic receptors on effector organs</li>
+      <li><strong>Adrenergic Blockers</strong> — Block adrenergic activity</li>
+      <li><strong>Ganglionic Blockers</strong> — Block impulse transmission from preganglionic → postganglionic neurons</li>
+    </ul>
+
+    <div class="self-check">
+      <div class="self-check-title">✓ Self-Check</div>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">SNS: ↑ HR, ↑ contractility, bronchodilation, mydriasis, vasoconstriction</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">PNS: ↓ HR, bronchoconstriction, miosis, ↑ GI motility, vasodilation</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Sweat glands: sympathetic but 50% cholinergic; Adrenal: preganglionic skips chain → medulla directly</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Denervation supersensitivity: upregulated receptors → ↑ sensitivity to NE/ACH</span></label>
+    </div>
+  </div>
+</div>
+
+<!-- ╔═══════════════════════════════════════════╗
+     ║  PHASE 5 — Pathophysiology (Exposure)         ║
+     ╚═══════════════════════════════════════════╝ -->
+<div class="phase-header" data-phase="5">
+  <div class="phase-num" style="color:var(--phase5)">5</div>
+  <h2>Pathophysiology — Exposure Only</h2>
+</div>
+
+<!-- Section 9 -->
+<div class="card" data-phase="5">
+  <button class="card-trigger" onclick="toggleCard(this)">
+    <div class="card-sec-num">9</div>
+    <div class="card-meta">
+      <div class="card-title">Intracranial Tumors, AV Malformations &amp; Congenital Anomalies</div>
+      <div class="card-subtitle">Tumor classes, AVM, and congenital brain anomalies — exposure level</div>
+    </div>
+    <div class="card-toggle">+</div>
+  </button>
+  <div class="card-body">
+    <div class="kt-box">
+      <span class="box-label">📋 Exposure Only</span>
+      <p>This section is exposure-level — not heavily tested but know the terminology.</p>
+    </div>
+
+    <h3>Intracranial Tumors</h3>
+    <ul>
+      <li>Primary tumors (gliomas) — arise from brain &amp; coverings; classified by histologic cell type</li>
+      <li><strong>Supratentorial</strong> — More common in adults; headache, seizures, new neurologic deficits</li>
+      <li><strong>Infratentorial</strong> — More common in children; obstructive hydrocephalus &amp; ataxia</li>
+      <li>Treatment: Surgical, chemotherapy, radiation, gamma knife irradiation, immunotherapy</li>
+    </ul>
+    <p><strong>Classes:</strong></p>
+    <ul>
+      <li><strong>Astrocytoma</strong> — Most prevalent glial cell in the CNS</li>
+      <li><strong>Oligodendroglioma</strong> — Arise from myelin-producing cells</li>
+      <li><strong>Ependymoma</strong> — Arise from cells lining ventricles &amp; central canal</li>
+      <li><strong>Primitive Neuroectodermal Tumor</strong> — Includes retinoblastoma, medulloblastoma, pineoblastoma, neuroblastoma</li>
+      <li><strong>Meningioma</strong> — Extra-axial, slow-growing, benign, from arachnoid cap cells</li>
+      <li><strong>Pituitary Tumor</strong> — Arise from anterior pituitary; may occur with other endocrine tumors</li>
+      <li><strong>Acoustic Neuroma</strong> — Benign schwannoma of CN VIII within internal auditory canal</li>
+      <li><strong>CNS Lymphoma</strong> — Primary or metastatic from systemic lymphoma</li>
+      <li><strong>Metastatic Tumor</strong> — From primary site elsewhere in body</li>
+    </ul>
+
+    <h3>Arteriovenous (AV) Malformation</h3>
+    <ul>
+      <li>Abnormal collections of blood vessels with direct arterial-to-venous connections without intervening capillaries</li>
+      <li>High-flow, low-resistance shunts; pressure less than systemic (believed to be congenital)</li>
+    </ul>
+
+    <h3>Congenital Anomalies of the Brain</h3>
+    <ul>
+      <li>Result from defects in development or structure of nervous system</li>
+      <li>Includes: Chiari malformation (congenital displacement of cerebellum), tuberous sclerosis, Von Hippel-Lindau disease, neurofibromatosis</li>
+    </ul>
+
+    <div class="self-check">
+      <div class="self-check-title">✓ Self-Check</div>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">Supratentorial = adults (headache, seizures); Infratentorial = children (hydrocephalus, ataxia)</span></label>
+      <label class="sc-item"><input type="checkbox"><span class="sc-check">✓</span><span class="sc-text">AVM: arterial-to-venous without capillaries; high-flow, low-resistance, congenital</span></label>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ RESET ═══════════ -->
+<div class="reset-wrap">
+  <button class="reset-btn" onclick="resetChecks()">Reset all self-checks</button>
+</div>
+
+</main>
+
+<footer class="foot">
+  Anatomy, Physiology &amp; Pathophysiology · CNS &amp; ANS · Week 3
+</footer>
+
+<script>
+function toggleCard(trigger) {
+  const card = trigger.closest('.card');
+  card.classList.toggle('open');
+}
+
+function toggleAll(open) {
+  document.querySelectorAll('.card').forEach(c => {
+    if (c.offsetParent !== null) {
+      open ? c.classList.add('open') : c.classList.remove('open');
+    }
+  });
+}
+
+function resetChecks() {
+  document.querySelectorAll('.sc-item input').forEach(cb => cb.checked = false);
+}
+
+// Phase filtering
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const phase = btn.dataset.phase;
+    document.querySelectorAll('.card, .phase-header').forEach(el => {
+      if (phase === 'all' || el.dataset.phase === phase) {
+        el.style.display = '';
+      } else {
+        el.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
