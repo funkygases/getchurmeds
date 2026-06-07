@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Blood & Hemostasis — Part 2 Study Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --cream: #FDFCF9;
+    --white: #ffffff;
+    --text-dark: #1a1a2e;
+    --text-mid: #3d3d5c;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --border-strong: #d1d5db;
+
+    --high-yield-bg: #fffbeb;
+    --high-yield-border: #D97706;
+    --high-yield-title: #92400e;
+    --high-yield-text: #78350f;
+
+    --exam-tip-bg: #eff6ff;
+    --exam-tip-border: #2563EB;
+    --exam-tip-title: #1e3a8a;
+    --exam-tip-text: #1e40af;
+
+    --instructor-bg: #f0fdf4;
+    --instructor-border: #16a34a;
+    --instructor-title: #14532d;
+    --instructor-text: #166534;
+
+    --warning-bg: #fff7ed;
+    --warning-border: #ea580c;
+    --warning-title: #7c2d12;
+    --warning-text: #9a3412;
+
+    --pt1-accent: #7c3aed;
+    --pt1-light: #ede9fe;
+    --pt2-accent: #0369a1;
+    --pt2-light: #e0f2fe;
+
+    --nav-bg: #1e1b4b;
+    --nav-text: #e0e7ff;
+    --nav-hover: #312e81;
+    --nav-active: #4f46e5;
+
+    --section-header-bg: #1e1b4b;
+    --section-header-text: #ffffff;
+
+    --tag-intrinsic-bg: #dbeafe;
+    --tag-intrinsic-text: #1e3a8a;
+    --tag-extrinsic-bg: #fce7f3;
+    --tag-extrinsic-text: #831843;
+    --tag-common-bg: #d1fae5;
+    --tag-common-text: #064e3b;
+    --tag-liver-bg: #fef3c7;
+    --tag-liver-text: #78350f;
+    --tag-vitk-bg: #f5f3ff;
+    --tag-vitk-text: #4c1d95;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  /* ── TOP HEADER ── */
+  .site-header {
+    background: var(--nav-bg);
+    color: #fff;
+    padding: 2rem 2rem 1.5rem;
+    border-bottom: 4px solid var(--nav-active);
+    text-align: center;
+  }
+  .site-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .site-header .subtitle {
+    font-size: 1rem;
+    color: #a5b4fc;
+    margin-top: 0.25rem;
+  }
+  .legend-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.25rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.07);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 13px;
+    color: #c7d2fe;
+  }
+  .legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ── STICKY NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--nav-bg);
+    border-bottom: 2px solid var(--nav-active);
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    text-align: center;
+  }
+  .sticky-nav::-webkit-scrollbar { display: none; }
+  .sticky-nav ul {
+    display: inline-flex;
+    gap: 0;
+    list-style: none;
+    padding: 0;
+  }
+  .sticky-nav a {
+    display: block;
+    padding: 0.6rem 1rem;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--nav-text);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .sticky-nav a:hover { background: var(--nav-hover); border-bottom-color: #818cf8; }
+  .sticky-nav a.pt2 { color: #7dd3fc; }
+  .sticky-nav a.pt2:hover { border-bottom-color: #38bdf8; }
+
+  /* ── PART BANNERS ── */
+  .part-banner {
+    padding: 1rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .part-banner.pt1 { background: var(--pt1-light); color: var(--pt1-accent); border-left: 5px solid var(--pt1-accent); }
+  .part-banner.pt2 { background: var(--pt2-light); color: var(--pt2-accent); border-left: 5px solid var(--pt2-accent); }
+
+  /* ── MAIN LAYOUT ── */
+  main { max-width: 960px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+  /* ── SECTION ── */
+  .section { margin: 2.5rem 0 0; }
+  .section-header {
+    background: var(--section-header-bg);
+    color: var(--section-header-text);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    user-select: none;
+  }
+  .section-header:hover { background: #2d2a5e; }
+  .section-header .sec-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .section-header .sec-num {
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: rgba(255,255,255,0.12);
+    color: #c7d2fe;
+    padding: 0.2rem 0.6rem;
+    border-radius: 99px;
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+  }
+  .section-header .chevron {
+    font-size: 18px;
+    color: #a5b4fc;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .section-header.open .chevron { transform: rotate(180deg); }
+
+  .section-body {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    padding: 1.75rem 1.75rem 1.5rem;
+    display: none;
+  }
+  .section-body.open { display: block; }
+
+  /* ── SUBSECTION ── */
+  .subsection {
+    border-left: 4px solid #e5e7eb;
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .subsection-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--pt1-accent);
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+  }
+  .subsection-title.blue { color: var(--pt2-accent); }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+  }
+  .callout-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .callout-title::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .callout.high-yield {
+    background: var(--high-yield-bg);
+    border-left-color: var(--high-yield-border);
+    border-color: #fde68a;
+  }
+  .callout.high-yield .callout-title { color: var(--high-yield-title); }
+  .callout.high-yield .callout-title::before { background: var(--high-yield-border); }
+  .callout.high-yield p, .callout.high-yield li { color: var(--high-yield-text); font-size: 17px; }
+
+  .callout.exam-tip {
+    background: var(--exam-tip-bg);
+    border-left-color: var(--exam-tip-border);
+    border-color: #bfdbfe;
+  }
+  .callout.exam-tip .callout-title { color: var(--exam-tip-title); }
+  .callout.exam-tip .callout-title::before { background: var(--exam-tip-border); }
+  .callout.exam-tip p, .callout.exam-tip li { color: var(--exam-tip-text); font-size: 17px; }
+
+  .callout.instructor {
+    background: var(--instructor-bg);
+    border-left-color: var(--instructor-border);
+    border-color: #bbf7d0;
+  }
+  .callout.instructor .callout-title { color: var(--instructor-title); }
+  .callout.instructor .callout-title::before { background: var(--instructor-border); }
+  .callout.instructor p, .callout.instructor li { color: var(--instructor-text); font-size: 17px; font-style: italic; }
+
+  .callout.warning {
+    background: var(--warning-bg);
+    border-left-color: var(--warning-border);
+    border-color: #fed7aa;
+  }
+  .callout.warning .callout-title { color: var(--warning-title); }
+  .callout.warning .callout-title::before { background: var(--warning-border); }
+  .callout.warning p, .callout.warning li { color: var(--warning-text); font-size: 17px; }
+
+  /* ── LISTS ── */
+  ul.content-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+  }
+  ul.content-list li {
+    padding: 0.3rem 0 0.3rem 1.4rem;
+    position: relative;
+    font-size: 17px;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+  ul.content-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0.3rem;
+    color: var(--text-muted);
+  }
+  ul.content-list li strong {
+    color: var(--text-dark);
+    font-weight: 600;
+  }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 1rem 0; border-radius: var(--radius-md); border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 16px; }
+  th {
+    background: #1e1b4b;
+    color: #fff;
+    padding: 0.7rem 0.9rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+  }
+  td {
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-mid);
+    vertical-align: top;
+    font-size: 16px;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #fafafa; }
+  td strong { color: var(--text-dark); font-weight: 600; }
+  td.highlight { color: #dc2626; font-weight: 600; }
+
+  /* ── TAGS ── */
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 99px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+  .tag.intrinsic { background: var(--tag-intrinsic-bg); color: var(--tag-intrinsic-text); }
+  .tag.extrinsic { background: var(--tag-extrinsic-bg); color: var(--tag-extrinsic-text); }
+  .tag.common { background: var(--tag-common-bg); color: var(--tag-common-text); }
+  .tag.liver { background: var(--tag-liver-bg); color: var(--tag-liver-text); }
+  .tag.vitk { background: var(--tag-vitk-bg); color: var(--tag-vitk-text); }
+
+  /* ── MNEMONIC BOX ── */
+  .mnemonic {
+    background: #fdf4ff;
+    border: 2px dashed #c084fc;
+    border-radius: var(--radius-md);
+    padding: 0.9rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .mnemonic-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #7e22ce;
+    margin-bottom: 0.4rem;
+  }
+  .mnemonic p { color: #581c87; font-size: 17px; font-weight: 500; }
+
+  /* ── FORMULA BOX ── */
+  .formula-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-family: 'Merriweather', serif;
+    font-size: 17px;
+    color: #0f172a;
+  }
+  .formula-box .formula-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+  .formula-example {
+    margin-top: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: var(--text-mid);
+  }
+
+  /* ── PATHWAY DIAGRAM ── */
+  .pathway-diagram {
+    background: #f8f9ff;
+    border: 2px solid #c7d2fe;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin: 1.25rem 0;
+    overflow-x: auto;
+  }
+  .pathway-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #4338ca;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  /* flow SVG styles */
+  .flow-svg { display: block; margin: 0 auto; max-width: 100%; }
+
+  /* ── SELF-CHECK ── */
+  .self-check {
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin: 1.5rem 0 0;
+  }
+  .self-check-toggle {
+    background: #f3f4f6;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    user-select: none;
+  }
+  .self-check-toggle:hover { background: #e5e7eb; }
+  .self-check-body {
+    display: none;
+    padding: 1rem 1.25rem;
+    background: var(--white);
+  }
+  .self-check-body.open { display: block; }
+  .self-check-body ul { padding-left: 0; list-style: none; }
+  .self-check-body li {
+    font-size: 16px;
+    color: var(--text-mid);
+    margin: 0.45rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    line-height: 1.5;
+  }
+  .self-check-body li input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    border: 2px solid #9ca3af;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    margin-top: 2px;
+    position: relative;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .self-check-body li input[type="checkbox"]:checked {
+    background: #6b7280;
+    border-color: #6b7280;
+  }
+  .self-check-body li input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 0px;
+    width: 6px;
+    height: 10px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+  }
+  .self-check-body li label { cursor: pointer; flex: 1; }
+  .self-check-body li input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+    color: #9ca3af;
+  }
+
+  /* ── EXPAND ALL ── */
+  .controls-bar {
+    display: flex;
+    gap: 0.75rem;
+    margin: 1.5rem 0 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .ctrl-btn {
+    padding: 0.45rem 1rem;
+    border-radius: 99px;
+    border: 1px solid var(--border-strong);
+    background: var(--white);
+    color: var(--text-mid);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .ctrl-btn:hover { background: #f3f4f6; }
+  .ctrl-btn.primary { background: var(--nav-bg); color: #fff; border-color: var(--nav-bg); }
+  .ctrl-btn.primary:hover { background: #2d2a5e; }
+
+  /* ── EXAM QUICK REF (section 16) ── */
+  .quick-ref-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+    margin: 1rem 0;
+  }
+  @media (max-width: 640px) { .quick-ref-grid { grid-template-columns: 1fr; } }
+  .qr-card {
+    background: #f8f9ff;
+    border: 1px solid #c7d2fe;
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1rem;
+  }
+  .qr-card h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #3730a3;
+    margin-bottom: 0.5rem;
+  }
+  .qr-card p, .qr-card li { font-size: 15px; color: var(--text-mid); line-height: 1.55; }
+  .qr-card ul { padding-left: 1.1rem; }
+  .qr-card ul li { margin: 0.2rem 0; }
+
+  /* ── DRUG TABLE COLORS ── */
+  .drug-heparin { background: #fffbeb; }
+  .drug-warfarin { background: #fdf4ff; }
+  .drug-doac { background: #eff6ff; }
+  .drug-antiplatelet { background: #fff7ed; }
+  .drug-reversal { background: #f0fdf4; }
+
+  /* ── COMPATIBILITY TABLE ── */
+  .compat-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+  .compat-cell {
+    text-align: center;
+    padding: 0.5rem 0.25rem;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .compat-header { background: #1e1b4b; color: #fff; }
+  .compat-yes { background: #dcfce7; color: #166534; }
+  .compat-no { background: #fee2e2; color: #991b1b; }
+
+  /* step boxes */
+  .steps-row {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+  }
+  .step-box {
+    flex: 1;
+    min-width: 140px;
+    padding: 0.9rem 1rem;
+    text-align: center;
+    position: relative;
+  }
+  .step-box:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -0.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    z-index: 1;
+  }
+  .step-box .step-num {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .step-box .step-name { font-size: 0.9rem; font-weight: 700; }
+  .step-box .step-detail { font-size: 13px; margin-top: 0.3rem; line-height: 1.4; }
+  .step-adhesion { background: #ede9fe; border-radius: var(--radius-md); }
+  .step-adhesion .step-num { color: #6d28d9; }
+  .step-adhesion .step-name { color: #4c1d95; }
+  .step-adhesion .step-detail { color: #5b21b6; }
+  .step-activation { background: #fce7f3; border-radius: var(--radius-md); }
+  .step-activation .step-num { color: #be185d; }
+  .step-activation .step-name { color: #831843; }
+  .step-activation .step-detail { color: #9d174d; }
+  .step-aggregation { background: #dcfce7; border-radius: var(--radius-md); }
+  .step-aggregation .step-num { color: #15803d; }
+  .step-aggregation .step-name { color: #14532d; }
+  .step-aggregation .step-detail { color: #166534; }
+  .step-result { background: #fff7ed; border-radius: var(--radius-md); }
+  .step-result .step-num { color: #c2410c; }
+  .step-result .step-name { color: #7c2d12; }
+  .step-result .step-detail { color: #9a3412; }
+
+  /* ── HIGHLIGHT SPANS ── */
+  .hl-yellow { background: #fef08a; color: #713f12; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .hl-red { background: #fee2e2; color: #991b1b; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .hl-green { background: #dcfce7; color: #14532d; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .hl-blue { background: #dbeafe; color: #1e3a8a; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .hl-purple { background: #ede9fe; color: #4c1d95; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .underline-key { text-decoration: underline; text-decoration-color: #d97706; text-decoration-thickness: 2px; font-weight: 600; }
+
+  /* back to top */
+  .back-top {
+    display: inline-block;
+    margin: 1rem 0 0;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.75rem;
+    border-radius: 99px;
+  }
+  .back-top:hover { background: #f3f4f6; }
+
+  p { font-size: 17px; color: var(--text-mid); margin: 0.5rem 0; line-height: 1.7; }
+  h3 { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin: 1.25rem 0 0.5rem; }
+  h4 { font-size: 0.9rem; font-weight: 700; color: var(--text-dark); margin: 0.75rem 0 0.35rem; }
+
+  /* toc */
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  @media (max-width: 640px) { .toc-grid { grid-template-columns: 1fr; } }
+  .toc-grid li a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    color: var(--text-mid);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    background: var(--white);
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .toc-grid li a:hover { border-color: #818cf8; background: #f5f3ff; }
+  .toc-grid li a .toc-num {
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .toc-grid li.pt1 a .toc-num { background: var(--pt1-light); color: var(--pt1-accent); }
+  .toc-grid li.pt2 a .toc-num { background: var(--pt2-light); color: var(--pt2-accent); }
+  .toc-grid li a span.toc-label { flex: 1; }
+
+  /* drug-label */
+  .drug-label {
+    display: inline-block;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius-sm);
+    padding: 2px 7px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+    font-family: 'Merriweather', serif;
+  }
+
+  /* taco-trali comparison */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-card {
+    border-radius: var(--radius-md);
+    padding: 1rem 1.1rem;
+    border: 2px solid;
+  }
+  .compare-card h4 { font-size: 0.95rem; font-weight: 700; margin: 0 0 0.6rem; }
+  .compare-card ul { padding-left: 1.1rem; }
+  .compare-card li { font-size: 16px; margin: 0.25rem 0; }
+  .compare-trali { border-color: #f97316; background: #fff7ed; }
+  .compare-trali h4 { color: #9a3412; }
+  .compare-trali li { color: #7c2d12; }
+  .compare-taco { border-color: #2563eb; background: #eff6ff; }
+  .compare-taco h4 { color: #1e3a8a; }
+  .compare-taco li { color: #1e40af; }
+</style>
+</head>
+<body>
+<a id="top"></a>
+
+<!-- SITE HEADER -->
+<header class="site-header">
+  <h1>Blood &amp; Hemostasis</h1>
+  <div class="subtitle">Part 2 — Complete Interactive Study Roadmap</div>
+  <div class="legend-bar">
+    <div class="legend-item"><div class="legend-swatch" style="background:#D97706"></div> High Yield — likely exam content</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#2563EB"></div> Exam Tip</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#16a34a"></div> Instructor Note (from audio)</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#ea580c"></div> Clinical Warning</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#c084fc; border: 2px dashed #c084fc;"></div> Mnemonic</div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav" aria-label="Section navigation">
+  <ul>
+    <li><a href="#s6">1. RBCs &amp; O₂ Content</a></li>
+    <li><a href="#s7">2. Blood Loss &amp; Transfusion</a></li>
+    <li><a href="#s8">3. Autologous Transfusion</a></li>
+    <li><a href="#s9">4. Compatibility</a></li>
+    <li><a href="#s10">5. Transfusion Risks</a></li>
+    <li><a href="#s11">6. Blood Components</a></li>
+    <li><a href="#s12">7. Coag Tests</a></li>
+    <li><a href="#s13">8. Coag Disorders</a></li>
+    <li><a href="#s14">9. Anticoagulants</a></li>
+    <li><a href="#s15">10. Procoagulants</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- Controls -->
+  <div class="controls-bar">
+    <button class="ctrl-btn primary" onclick="expandAll()">Expand All</button>
+    <button class="ctrl-btn" onclick="collapseAll()">Collapse All</button>
+  </div>
+  <div style="text-align:center;margin-bottom:0.5rem;">
+    <span style="font-size:13px;color:var(--text-muted);">Click any section header to expand/collapse</span>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="section">
+    <div class="section-header open" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">TOC</span>
+        <span class="sec-title">Contents — Part 2 Sections</span>
+      </div>
+      <span class="chevron open">▾</span>
+    </div>
+    <div class="section-body open">
+      <ul class="toc-grid">
+        <li class="pt2"><a href="#s6"><span class="toc-num">1</span><span class="toc-label">Erythrocytes, Blood O₂ Content &amp; CO₂ Content</span></a></li>
+        <li class="pt2"><a href="#s7"><span class="toc-num">2</span><span class="toc-label">Allowable Blood Loss &amp; Transfusion Decisions</span></a></li>
+        <li class="pt2"><a href="#s8"><span class="toc-num">3</span><span class="toc-label">Autologous Transfusion — 3 Categories</span></a></li>
+        <li class="pt2"><a href="#s9"><span class="toc-num">4</span><span class="toc-label">Transfusion Compatibility (ABO &amp; Rh)</span></a></li>
+        <li class="pt2"><a href="#s10"><span class="toc-num">5</span><span class="toc-label">Transfusion Risks (TRALI, TACO, Hemolytic, Metabolic)</span></a></li>
+        <li class="pt2"><a href="#s11"><span class="toc-num">6</span><span class="toc-label">Blood Components (PRBC, FFP, Platelets, Cryo)</span></a></li>
+        <li class="pt2"><a href="#s12"><span class="toc-num">7</span><span class="toc-label">Coagulation Tests &amp; Normal Values</span></a></li>
+        <li class="pt2"><a href="#s13"><span class="toc-num">8</span><span class="toc-label">Coagulation Disorders (vWD, Hemophilia, Liver, DIC)</span></a></li>
+        <li class="pt2"><a href="#s14"><span class="toc-num">9</span><span class="toc-label">Anticoagulants (Heparin, LMWH, Warfarin, DOACs)</span></a></li>
+        <li class="pt2"><a href="#s15"><span class="toc-num">10</span><span class="toc-label">Procoagulants &amp; Reversal Agents</span></a></li>
+        <li class="pt2"><a href="#s16"><span class="toc-num">11</span><span class="toc-label">Exam Quick Reference</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PART 2 BANNER -->
+  <div class="part-banner pt2" style="margin-top:2rem;">PART 2 — Blood &amp; Hemostasis</div>
+
+  <!-- ═══ SECTION 6 ═══ -->
+  <div class="section" id="s6">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.2 · 1</span>
+        <span class="sec-title">Erythrocytes, Blood O₂ Content &amp; CO₂ Content</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="subsection-title blue">Erythrocytes</div>
+        <ul class="content-list">
+          <li>Biconcave discs, diameter ~7.8 μm — easily change shape to squeeze through small capillaries</li>
+          <li>Circulate ~<strong>120 days</strong>; primarily removed by spleen</li>
+          <li>Produced in bone marrow from pluripotent hematopoietic stem cells</li>
+          <li><strong>Erythropoietin</strong> stimulates production — 90% from kidneys, 10% from liver</li>
+          <li><span class="hl-red">Renal failure → anemia</span> (failed erythropoietin production)</li>
+          <li>Requirements for RBC production: Vitamin B12, folic acid, and iron</li>
+          <li>Contain <strong>carbonic anhydrase</strong> — catalyzes CO₂ + H₂O → carbonic acid</li>
+        </ul>
+      </div>
+
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Blood O₂ Calculations (EXAM)</div>
+        <div class="formula-box">
+          <div class="formula-label">Bound O₂ (mL/dL)</div>
+          Hgb × 1.34 × O₂ sat = mL O₂/dL
+          <div class="formula-example">Example: Hgb 12, sat 98% → 12 × 1.34 × 0.98 = <strong>15.76 mL/dL</strong><br>Practice: Hgb 14.0, sat 95% → 14 × 1.34 × 0.95 = <strong>17.83 mL/dL</strong></div>
+        </div>
+        <div class="formula-box">
+          <div class="formula-label">Dissolved O₂ (mL/dL)</div>
+          PaO₂ × 0.003 = mL O₂/dL
+          <div class="formula-example">Example: PaO₂ 88 → 88 × 0.003 = <strong>0.26 mL/dL</strong></div>
+        </div>
+        <div class="formula-box">
+          <div class="formula-label">Total O₂ Content</div>
+          Bound O₂ + Dissolved O₂
+        </div>
+        <div class="mnemonic" style="margin:0.75rem 0 0;">
+          <div class="mnemonic-label">🧠 40-50-60 / 70-80-90 Rule</div>
+          <p>O₂ sat <strong>70%</strong> → PaO₂ ~40 | sat <strong>80%</strong> → PaO₂ ~50 | sat <strong>90%</strong> → PaO₂ ~60</p>
+        </div>
+      </div>
+
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — CO₂ Calculations</div>
+        <p>CO₂ is <span class="hl-yellow">&gt;20× more soluble</span> in blood than O₂.</p>
+        <div class="formula-box">
+          <div class="formula-label">Dissolved CO₂ (mL/dL)</div>
+          PaCO₂ × 0.067 = mL CO₂/dL
+          <div class="formula-example">Example: PaCO₂ 40 → 40 × 0.067 = <strong>2.68 mL/dL</strong></div>
+        </div>
+        <div class="formula-box">
+          <div class="formula-label">ETCO₂ → PaCO₂ Relationship</div>
+          ETCO₂ ≈ PaCO₂ − 5 (normal healthy patient)<br>
+          <span style="font-size:15px;color:var(--text-muted);">In severe respiratory dysfunction, gradient may be 10 or greater</span>
+        </div>
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-22"><label for="sc-22">Bound O₂ = Hgb × 1.34 × O₂ sat. Dissolved O₂ = PaO₂ × 0.003.</label></li>
+            <li><input type="checkbox" id="sc-23"><label for="sc-23">Dissolved CO₂ = PaCO₂ × 0.067. ETCO₂ ≈ PaCO₂ − 5.</label></li>
+            <li><input type="checkbox" id="sc-24"><label for="sc-24">Renal failure → ↓ erythropoietin → anemia.</label></li>
+            <li><input type="checkbox" id="sc-25"><label for="sc-25">40-50-60 / 70-80-90 rule for quick sat-to-PaO₂ conversion.</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 7 ═══ -->
+  <div class="section" id="s7">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.2 · 2</span>
+        <span class="sec-title">Allowable Blood Loss &amp; Transfusion Decisions</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Allowable Blood Loss Formula</div>
+        <div class="formula-box">
+          <div class="formula-label">ABL Formula</div>
+          ABL = EBV × (Starting Hct − Acceptable Hct) / Starting Hct
+          <div class="formula-example">Example: 50 kg male → EBV = 75 mL/kg × 50 = 3750 mL; Starting Hct 33, Acceptable 27<br>→ ABL = 3750 × (33−27)/33 = <strong>682 mL</strong></div>
+        </div>
+        <ul class="content-list" style="margin-top:0.75rem;">
+          <li>Acceptable Hct: typically <strong>25–30%</strong> — lower for healthy young patients, higher for cardiac disease</li>
+          <li><strong>Hct ≈ Hgb × 3</strong> (e.g., Hgb 10 = Hct ~30%)</li>
+          <li>Average EBV: Premature infant 95 | Neonate 85 | Infant 80 | Adult male 75 | Adult female 65 mL/kg — Use IBW if obese</li>
+          <li>Blood loss estimation: 4×4 gauze saturated ~10 mL | Lap sponge ~75–150 mL</li>
+        </ul>
+      </div>
+
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Transfusion Triggers</div>
+        <div class="table-wrap" style="margin:0.5rem 0;">
+          <table>
+            <thead><tr><th>Hgb Level</th><th>Decision</th></tr></thead>
+            <tbody>
+              <tr><td><span class="hl-green">&gt;10 g/dL</span></td><td>Transfusion <strong>rarely</strong> needed</td></tr>
+              <tr><td><span class="hl-yellow">6–10 g/dL</span></td><td>Clinical judgment — hemodynamics, CV status, O₂ sat, estimated blood loss. Generally transfuse when Hgb &lt;7 (healthy); higher threshold with CAD/prior MI</td></tr>
+              <tr><td><span class="hl-red">&lt;6 g/dL</span></td><td>Transfusion <strong>almost always</strong> indicated</td></tr>
+              <tr><td><span class="hl-red">&lt;5 g/dL</span></td><td>Increased <strong>mortality</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout exam-tip" style="margin-top:0.75rem;">
+          <div class="callout-title">Exam Tip</div>
+          <p>If asked: the <strong>MAIN REASON</strong> to transfuse blood products = <span class="hl-yellow">OXYGEN CARRYING CAPACITY</span>. No single lab value indicates transfusion — always look at multiple factors.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title blue">Coagulopathy &amp; Massive Transfusion</div>
+        <ul class="content-list">
+          <li>PRBCs + crystalloids alone do <span class="hl-red">NOT</span> replace coagulation factors — dilutional coagulopathy</li>
+          <li>Severe bleeding requires replacement of <strong>coagulation factors &amp; platelets</strong> (crystalloids/PRBCs exacerbate coagulopathy)</li>
+          <li>Hypothermia &amp; acidosis common with massive transfusion — also complicate bleeding</li>
+          <li>Microvascular bleeding with plt &lt;50,000 usually requires replacement; &gt;100,000 rarely does</li>
+          <li><strong>FFP</strong> for: urgent warfarin reversal, factor deficiencies when specific concentrates unavailable, PT/PTT &gt;1.5× normal + bleeding</li>
+          <li><strong>Cryoprecipitate</strong> for: vWD unresponsive to DDAVP or current bleeding, fibrinogen &lt;100 mg/dL</li>
+          <li>Monitor coagulopathy: PTT, PT/INR, platelet count, fibrinogen, TEG</li>
+        </ul>
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-26"><label for="sc-26">ABL = EBV × (start Hct − acceptable Hct) / start Hct. Acceptable Hct ~25–30%.</label></li>
+            <li><input type="checkbox" id="sc-27"><label for="sc-27">Hgb &lt;6 = almost always transfuse. Hgb &gt;10 = rarely. Main reason = O₂ carrying capacity.</label></li>
+            <li><input type="checkbox" id="sc-28"><label for="sc-28">PRBCs + crystalloids → dilutional coagulopathy (no coagulation factors).</label></li>
+            <li><input type="checkbox" id="sc-29"><label for="sc-29">Adult male EBV = 75 mL/kg; female = 65 mL/kg.</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 8 ═══ -->
+  <div class="section" id="s8">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.2 · 3</span>
+        <span class="sec-title">Autologous Transfusion — 3 Categories</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="subsection">
+        <div class="subsection-title blue">1. Preoperative Autologous Donation</div>
+        <ul class="content-list">
+          <li>Collection and storage of patient's own blood over several weeks prior to surgery</li>
+          <li>Up to <strong>3 units</strong>; stored ≤35 days as long as Hgb remains &gt;11</li>
+          <li>Last unit donated at least <strong>72 hours</strong> prior to surgery</li>
+          <li>Diminishes risk of bacteremia, hemolytic/allergenic/antigenic reactions</li>
+          <li>Indicated for expected blood loss ≥10% in patients healthy enough to tolerate slight anemia</li>
+          <li><span class="hl-red">Do not transfuse just to prevent waste</span></li>
+        </ul>
+      </div>
+      <div class="subsection">
+        <div class="subsection-title blue">2. Acute Normovolemic Hemodilution (ANH)</div>
+        <ul class="content-list">
+          <li>Extract several units of blood <strong>prior to incision</strong> (before or after induction)</li>
+          <li>Replace volume with appropriate colloid or crystalloid</li>
+          <li>This blood has <span class="hl-green">NORMAL hematocrit and NORMAL clotting factors</span></li>
+          <li>Blood lost during surgery has <strong>LOWER</strong> hematocrit (diluted by crystalloid/colloid)</li>
+          <li>Blood re-transfused at end of procedure</li>
+        </ul>
+      </div>
+      <div class="subsection">
+        <div class="subsection-title blue">3. Intraoperative Blood Salvage (Cell Saver)</div>
+        <ul class="content-list">
+          <li>Collection of shed surgical blood — filtered, washed, re-infused at end of procedure</li>
+          <li>Blood suctioned + anticoagulant (heparin or citrate) → filtered → removes anticoagulant, debris, platelets, WBCs</li>
+          <li>Risks: hemolysis, contamination, <span class="hl-red">dilutional coagulopathy</span> (does NOT contain clotting factors or platelets)</li>
+          <li>Consider for expected blood loss &gt;1,000 mL</li>
+        </ul>
+        <div class="callout warning">
+          <div class="callout-title">Contraindications — Cell Saver (High Yield)</div>
+          <ul class="content-list">
+            <li>Contamination by bacteria or sepsis</li>
+            <li>Contamination with bowel contents or urine</li>
+            <li>Contamination with amniotic fluid</li>
+            <li>Contamination with <strong>malignant cells (cancer)</strong></li>
+            <li>Return of large cell saver volumes → coagulopathy risk (no clotting factors or platelets)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-30"><label for="sc-30">ANH blood = normal Hct + normal clotting factors. Cell saver blood = NO platelets, NO clotting factors.</label></li>
+            <li><input type="checkbox" id="sc-31"><label for="sc-31">Cell saver contraindications: bacteria, bowel, amniotic fluid, malignancy.</label></li>
+            <li><input type="checkbox" id="sc-32"><label for="sc-32">Preoperative donation: last unit ≥72 hrs before surgery; do not transfuse just to prevent waste.</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 9 ═══ -->
+  <div class="section" id="s9">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.2 · 4</span>
+        <span class="sec-title">Transfusion Compatibility (ABO &amp; Rh)</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — ABO System</div>
+        <div class="table-wrap" style="margin:0.5rem 0;">
+          <table>
+            <thead><tr><th>Blood Type</th><th>Antigens on RBC</th><th>Antibodies in Serum</th><th>Can Donate To</th><th>Can Receive From</th><th>Prevalence</th></tr></thead>
+            <tbody>
+              <tr><td><strong>A</strong></td><td>A</td><td>Anti-B</td><td>A, AB</td><td>A, O</td><td>~41%</td></tr>
+              <tr><td><strong>B</strong></td><td>B</td><td>Anti-A</td><td>B, AB</td><td>B, O</td><td>~9%</td></tr>
+              <tr><td><strong style="color:#059669;">AB</strong></td><td>A and B</td><td><span class="hl-green">None</span></td><td>AB</td><td><span class="hl-green">A, B, AB, O</span></td><td>~3%</td></tr>
+              <tr><td><strong style="color:#dc2626;">O</strong></td><td><span class="hl-green">None</span></td><td>Anti-A and Anti-B</td><td><span class="hl-green">A, B, AB, O</span></td><td>O</td><td><span class="hl-yellow">~47%</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="content-list" style="margin-top:0.75rem;">
+          <li><strong>AB</strong> = Universal Recipient (no antibodies to attack any donor blood)</li>
+          <li><strong>O negative</strong> = Universal Donor for emergency situations (no antigens)</li>
+          <li>Type &amp; screen: predicts compatibility <strong>99.94%</strong> of time</li>
+          <li>Type &amp; crossmatch: predicts compatibility <strong>99.95%</strong> of time</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title blue">Rh System</div>
+        <ul class="content-list">
+          <li>~85% of white individuals are Rh+; ~95% of Black Americans; ~100% of African individuals</li>
+          <li>Rh+ blood given to Rh– individual: anti-Rh agglutinins develop SLOWLY — first exposure may cause no immediate reaction</li>
+          <li>Second exposure: enough agglutinins already present → <span class="hl-red">severe immediate reaction</span></li>
+          <li>Rh+ baby + Rh– mother → risk of <strong>erythroblastosis fetalis</strong> (hemolytic disease of newborn)</li>
+          <li>Hemolysis → bilirubin → jaundice, anemia, <strong>kernicterus</strong> (bilirubin on neurons → mental/motor defects)</li>
+          <li>Administration of <strong>RhoGAM</strong> to mother at ~30 weeks gestation helps prevent sensitization</li>
+        </ul>
+        <div class="mnemonic">
+          <div class="mnemonic-label">Instructor Mnemonic</div>
+          <p>"<strong>Positive people</strong> can be around anyone and stay positive" — Rh+ can receive Rh+ or Rh–.<br>"<strong>Negative people</strong> only want to be around other negative people" — Rh– can ONLY receive Rh–.</p>
+        </div>
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-33"><label for="sc-33">AB = Universal Recipient (no antibodies). O– = Universal Donor (no antigens).</label></li>
+            <li><input type="checkbox" id="sc-34"><label for="sc-34">O most common (~47%). AB rarest (~3%).</label></li>
+            <li><input type="checkbox" id="sc-35"><label for="sc-35">Rh–: first exposure to Rh+ → builds antibodies slowly. Second exposure → severe reaction.</label></li>
+            <li><input type="checkbox" id="sc-36"><label for="sc-36">RhoGAM at ~30 weeks → prevents Rh sensitization in Rh– mothers.</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 10 ═══ -->
+  <div class="section" id="s10">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.2 · 5</span>
+        <span class="sec-title">Transfusion Risks (TRALI, TACO, Hemolytic, Metabolic)</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Transfusion Reactions Summary</div>
+        <div class="table-wrap" style="margin:0.5rem 0;">
+          <table>
+            <thead><tr><th>Reaction</th><th>Onset/Incidence</th><th>Features</th><th>Treatment</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Non-hemolytic (febrile)</strong></td><td>~4 hrs; ~1% of transfusions; ~1°C increase</td><td>Mild fever ± pruritus/rash. Most common.</td><td>Anti-inflammatory/antipyretic; self-limited</td></tr>
+              <tr><td><strong>Minor allergic</strong></td><td>1–3% of transfusions</td><td>Hives, pruritus</td><td>Antihistamine + slow transfusion</td></tr>
+              <tr><td><strong>Major allergic</strong></td><td>~1 in 50,000</td><td>Hemodynamic instability, bronchospasm, angioedema</td><td>Epinephrine, supportive</td></tr>
+              <tr><td><strong>Acute hemolytic</strong></td><td>During transfusion; ~23% of transfusion mortality</td><td>Mismatched blood → agglutination. Fever, hypotension, bronchospasm. Mortality ~10%.</td><td>Stop transfusion; fluids to prevent renal failure; supportive</td></tr>
+              <tr><td><strong>Delayed hemolytic</strong></td><td>3–10 days post</td><td>Mild, self-limiting symptoms</td><td>Supportive</td></tr>
+              <tr><td><strong>Infectious</strong></td><td>Variable</td><td>HIV, Hep B/C, CMV (most common ~1–3%), bacterial contamination</td><td>Specific treatment per pathogen</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:0.75rem;"><strong>Diagnosis of hemolytic reaction:</strong> free hemoglobin, <span class="hl-yellow">low haptoglobin</span> (binds Hgb), elevated bilirubin, <strong>positive Coombs test</strong>, hematuria. Give fluids to prevent renal tubule obstruction.</p>
+      </div>
+
+      <h3>TRALI vs. TACO — Know the Difference</h3>
+      <div class="compare-grid">
+        <div class="compare-card compare-trali">
+          <h4>TRALI — Transfusion-Related Acute Lung Injury</h4>
+          <ul>
+            <li><strong>Leading cause</strong> of transfusion mortality (43%)</li>
+            <li>Incidence: 1 in 5,000; Mortality: 10–20%</li>
+            <li>Criteria: Acute hypoxemia within <strong>6 hrs</strong> of transfusion (PaO₂/FiO₂ ≤300 OR O₂ sat ≤90% on room air)</li>
+            <li>No evidence of left atrial hypertension (<strong>PAOP ≤18</strong>)</li>
+            <li>Mechanism: immune-mediated neutrophil activation → pulmonary endothelial injury → capillary leakage → bilateral infiltrates</li>
+            <li>2-phase: Phase 1 = inflammatory response (neutrophil sequestration); Phase 2 = transfusion activates those neutrophils</li>
+            <li>Products implicated: <strong>FFP 49%</strong>, RBCs 29%, platelets 13%</li>
+            <li>Tx: optimizing oxygenation, maximal PEEP, low tidal volumes, avoid volume overload</li>
+          </ul>
+        </div>
+        <div class="compare-card compare-taco">
+          <h4>TACO — Transfusion-Associated Cardiovascular Overload</h4>
+          <ul>
+            <li>Incidence: 5–10%</li>
+            <li>Criteria: Respiratory distress within <strong>6 hrs</strong> of transfusion WITH evidence of left atrial hypertension</li>
+            <li><strong>PAOP elevated</strong> (contrast with TRALI where PAOP ≤18)</li>
+            <li>Features: hypertension, tachypnea, tachycardia</li>
+            <li>Mechanism: simple <strong>volume overload</strong> — NOT immune mediated</li>
+            <li>NOT associated with increased capillary permeability</li>
+            <li>Tx: <strong>diuretic therapy</strong> and afterload reduction — responds well</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Metabolic Derangements with Blood Storage</div>
+        <ul class="content-list">
+          <li>As storage time increases: cellular components leak <strong>K⁺</strong> and metabolize glucose → lactate</li>
+          <li>PRBCs contain <span class="hl-red">&gt;7 mEq/dL of K⁺</span> → ventricular arrhythmia or cardiac arrest. Greatest risk: <strong>renal insufficiency and neonates</strong></li>
+          <li>RBCs undergo shape changes → impair microcirculatory flow</li>
+          <li>PRBCs have LOWER levels of <strong>2,3-DPG and ATP</strong> → reduced O₂ carrying capacity</li>
+          <li>Citrate accumulation → chelates calcium → <span class="hl-red">HYPOCALCEMIA</span> (muscle weakness, tetany, arrhythmias, Trousseau's, Chvostek's, coagulopathy)</li>
+          <li>Acidosis usually cleared quickly by physiologic buffers — consider other causes if acidosis continues</li>
+          <li>Massive transfusion → metabolic <strong>ALKALOSIS</strong> from citrate metabolism to bicarbonate</li>
+          <li>Coagulation factor activity decreases <span class="hl-yellow">10% for every 1°C decrease in temperature</span> — <strong>USE FLUID WARMER</strong> for rapid transfusion</li>
+          <li>Increased morbidity/mortality with blood stored &gt;14 days</li>
+        </ul>
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-37"><label for="sc-37">TRALI: leading transfusion mortality. PAOP ≤18. Immune-mediated. Tx: PEEP + low TV.</label></li>
+            <li><input type="checkbox" id="sc-38"><label for="sc-38">TACO: volume overload. PAOP elevated. Tx: diuretics.</label></li>
+            <li><input type="checkbox" id="sc-39"><label for="sc-39">Both: within 6 hrs of transfusion.</label></li>
+            <li><input type="checkbox" id="sc-40"><label for="sc-40">Stored blood: high K⁺, low Ca²⁺ (citrate), ↓ 2,3-DPG. Coag factors ↓10%/°C — use fluid warmer.</label></li>
+            <li><input type="checkbox" id="sc-41"><label for="sc-41">Hemolytic diagnosis: low haptoglobin + positive Coombs + hematuria.</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 11 ═══ -->
+  <div class="section" id="s11">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.2 · 6</span>
+        <span class="sec-title">Blood Components (PRBC, FFP, Platelets, Cryo)</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Blood Components Table (MANY EXAM QUESTIONS FROM THIS SECTION)</div>
+        <div class="table-wrap" style="margin:0.5rem 0;">
+          <table>
+            <thead><tr><th>Product</th><th>Contents</th><th>Indications</th><th>Dose / Volume</th><th>Effect per Unit</th></tr></thead>
+            <tbody>
+              <tr class="drug-heparin"><td><strong>PRBC</strong></td><td>RBCs; Hct <strong>60–80%</strong></td><td>Bleeding; ↑O₂ carrying capacity</td><td>~200 mL/unit</td><td><span class="hl-yellow">↑Hgb ~1 g/dL; ↑Hct 2–3%</span></td></tr>
+              <tr class="drug-warfarin"><td><strong>FFP</strong></td><td>All clotting factors + inhibitors + <strong>AT-III</strong></td><td>PT/PTT &gt;1.5×normal + bleeding; warfarin reversal; massive transfusion; vWD; AT-III deficiency</td><td>10–15 mL/kg (5–8 mL/kg for warfarin); ~200 mL</td><td>↑coagulation factors <strong>20–30%</strong></td></tr>
+              <tr class="drug-doac"><td><strong>Platelets</strong></td><td>Platelet concentrates (multiple donors)</td><td>Massive transfusion; active bleeding; platelet dysfunction</td><td>1 unit/10 kg BW; ~50 mL/unit</td><td><span class="hl-yellow">↑plt 5,000–10,000/unit (give 6 units = ↑30–60k)</span></td></tr>
+              <tr class="drug-reversal"><td><strong>Cryoprecipitate</strong></td><td>Factors I, vWF, VIII, XIII</td><td>vWD unresponsive to DDAVP; fibrinogen &lt;100 mg/dL; microvascular bleeding</td><td>1 unit/5 kg; 10–20 mL/unit</td><td><span class="hl-yellow">↑fibrinogen ~100 mg/dL per unit/5 kg</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Key Numbers</div>
+        <ul class="content-list">
+          <li>PRBC shelf life: ~<strong>40 days</strong></li>
+          <li>FFP: stored up to <strong>1 year</strong>. Discouraged if INR &lt;2 without signs of bleeding</li>
+          <li>Coagulation not possible when factor levels &lt;<strong>25%</strong> of normal</li>
+          <li>Platelets: stored at <strong>room temperature</strong> only <strong>4–5 day shelf life</strong> — greatest bacterial contamination risk</li>
+          <li>Platelets: prophylactic when count &lt;<strong>10,000</strong>; give when &lt;<strong>50,000</strong> with evidence of bleeding</li>
+          <li>Minimal fibrinogen ≥100 (normal ≥200 mg/dL); low fibrinogen strongly correlated with perioperative bleeding</li>
+          <li><span class="hl-red">Platelet dysfunction = MOST COMMON cause of post-op bleeding</span></li>
+        </ul>
+      </div>
+      <div class="callout instructor">
+        <div class="callout-title">Instructor Note</div>
+        <p>This slide has a LOT of valuable information — almost <strong>GUARANTEE</strong> several test questions directly from it. Monitor for blood loss everywhere: surgical sites, sponges, canisters, OR floor and drapes. FFP = plasma portion of blood; contains ALL clotting factors + inhibitors + AT-III. Platelets preferably ABO compatible even as concentrates from multiple donors.</p>
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-42"><label for="sc-42">1 unit PRBC → ↑Hgb 1 g/dL, ↑Hct 2-3%. Hct of unit = 60-80%.</label></li>
+            <li><input type="checkbox" id="sc-43"><label for="sc-43">FFP: all factors + inhibitors + AT-III. Dose 10-15 mL/kg. ↑coag factors 20-30%.</label></li>
+            <li><input type="checkbox" id="sc-44"><label for="sc-44">Platelets: room temp, 4-5 days, 1 unit/10 kg. Prophylactic &lt;10k; give &lt;50k if bleeding.</label></li>
+            <li><input type="checkbox" id="sc-45"><label for="sc-45">Cryo: I, vWF, VIII, XIII. 1 unit/5 kg → ↑fibrinogen ~100 mg/dL.</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 12 ═══ -->
+  <div class="section" id="s12">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.2 · 7</span>
+        <span class="sec-title">Coagulation Tests &amp; Normal Values</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Coagulation Tests Reference (Tie to Drug Mechanism!)</div>
+        <div class="table-wrap" style="margin:0.5rem 0;">
+          <table>
+            <thead><tr><th>Test</th><th>Normal Value</th><th>Pathway Monitored</th><th>Factors Checked</th><th>Monitors</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Platelet Count</strong></td><td>150,000–300,000/mm³</td><td>N/A</td><td>Platelets</td><td>Thrombocytopenia</td></tr>
+              <tr><td><strong>Bleeding Time</strong></td><td>3–7 min</td><td>Primary hemostasis</td><td>Platelet function</td><td>Platelet function (poor predictor)</td></tr>
+              <tr><td><strong class="hl-red">PT</strong></td><td>10–12 sec</td><td>Extrinsic + Common</td><td>III, VII, X, V, II, I</td><td><span class="hl-purple">WARFARIN; liver disease</span></td></tr>
+              <tr><td><strong>INR</strong></td><td>0.9–1.3 (therapeutic 2–3)</td><td>Extrinsic + Common</td><td>Same as PT</td><td>Warfarin</td></tr>
+              <tr><td><strong class="hl-blue">PTT/aPTT</strong></td><td>25–35 sec</td><td>Intrinsic + Common</td><td>XII, XI, IX, VIII, X, V, II, I, XIII</td><td><span class="hl-blue">HEPARIN therapy</span></td></tr>
+              <tr><td><strong>ACT</strong></td><td>90–150 sec</td><td>Intrinsic + Common</td><td>Same as PTT</td><td>High-dose heparin (OR/bypass)</td></tr>
+              <tr><td><strong>Fibrinogen</strong></td><td>200–400 mg/dL</td><td>Common</td><td>Factor I</td><td>DIC, massive transfusion</td></tr>
+              <tr><td><strong>Thrombin Time</strong></td><td>9–35 sec</td><td>Common</td><td>Fibrinogen→Fibrin</td><td>Fibrinogen dysfunction</td></tr>
+              <tr><td><strong>D-Dimer</strong></td><td>&lt;500 ng/mL</td><td>Fibrinolysis</td><td>FDPs</td><td>DVT/PE, DIC</td></tr>
+              <tr><td><strong>TEG/ROTEM</strong></td><td>Viscoelastic</td><td>All</td><td>Global hemostasis</td><td>Overall clotting picture (esp. liver disease)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="callout exam-tip">
+        <div class="callout-title">Exam Tip — Connect Drug to Test</div>
+        <ul class="content-list">
+          <li><span class="hl-purple">PT monitors WARFARIN</span> (extrinsic + common) — checks Factors III, VII, X, V, II, I</li>
+          <li><span class="hl-blue">PTT monitors HEPARIN</span> (intrinsic + common) — checks XII, XI, IX, VIII, X, V, II, I, XIII</li>
+          <li><strong>PTT cannot detect</strong> abnormalities in Factors <span class="hl-red">3 and 7</span> (extrinsic pathway)</li>
+          <li><strong>ACT</strong> = high-dose heparin monitoring in OR/bypass — normal 90–150 seconds</li>
+          <li>Thrombocytopenia: &lt;100,000. Prolonged surgical bleeding: &lt;50,000. Spontaneous bleeding: &lt;20,000</li>
+          <li>Normal platelet count does NOT ensure normal function</li>
+          <li>Prolonged bleeding time alone is <span class="hl-red">NOT</span> a reason to cancel surgery</li>
+        </ul>
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-46"><label for="sc-46">PT = warfarin monitor (extrinsic+common). PTT = heparin monitor (intrinsic+common). ACT = high-dose heparin in OR.</label></li>
+            <li><input type="checkbox" id="sc-47"><label for="sc-47">PTT cannot detect abnormalities in Factors 3 and 7.</label></li>
+            <li><input type="checkbox" id="sc-48"><label for="sc-48">TEG/ROTEM = viscoelastic, all pathways, best for liver disease.</label></li>
+            <li><input type="checkbox" id="sc-49"><label for="sc-49">Platelet levels: &lt;10k = prophylactic tx; &lt;50k with bleeding = tx; &lt;20k = spontaneous bleed risk.</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 13 ═══ -->
+  <div class="section" id="s13">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.2 · 8</span>
+        <span class="sec-title">Coagulation Disorders (vWD, Hemophilia, Liver Disease, DIC)</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Von Willebrand Disease</div>
+        <p><span class="hl-yellow">MOST COMMON inherited coagulation disorder</span> (~1% of population affected; only ~0.01% symptomatic)</p>
+        <ul class="content-list">
+          <li>vWF functions: (1) facilitate platelet adhesion — attaches to GP1B receptors; (2) plasma carrier for Factor VIII</li>
+          <li>Synthesized in endothelial cells and megakaryocytes</li>
+          <li>Normal platelet count + bleeding → suspect vWF issue (adhesion problem)</li>
+          <li>Exhibit: prolonged bleeding time, qualitative deficiency and/or decrease in vWF and Factor VIII</li>
+          <li><strong>Type 1 &amp; 2 (mild/moderate):</strong> bleeding not likely unless surgery/trauma</li>
+          <li><strong>Type 3 (severe):</strong> spontaneous bleeding (epistaxis, oral, GI bleeding)</li>
+        </ul>
+        <div class="table-wrap" style="margin:0.75rem 0 0;">
+          <table>
+            <thead><tr><th>Treatment</th><th>When Used</th><th>Mechanism</th></tr></thead>
+            <tbody>
+              <tr><td><strong>DDAVP</strong> (0.3 mcg/kg IV over 10–20 min)</td><td>First-line for Type 1 (mild forms)</td><td>Stimulates release of vWF &amp; Factor VIII from endothelial cells; augments platelet aggregation</td></tr>
+              <tr><td><strong>Cryoprecipitate</strong></td><td>Severe/unresponsive to DDAVP or current bleeding</td><td>Contains vWF, Factor VIII, Factor I, XIII</td></tr>
+              <tr><td><strong>Recombinant Factor VIII-vWF concentrate</strong></td><td>Moderate-severe disease</td><td>Replaces vWF directly</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Hemophilia (X-Linked)</div>
+        <div class="table-wrap" style="margin:0.5rem 0;">
+          <table>
+            <thead><tr><th>Type</th><th>Deficient Factor</th><th>Prevalence</th><th>Treatment</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Hemophilia A</strong></td><td>Factor VIII</td><td>~1 in 5,000 males; 40% severe</td><td>DDAVP or Factor VIII concentrate; FFP or cryo</td></tr>
+              <tr><td><strong>Hemophilia B</strong></td><td>Factor IX (Christmas)</td><td>~1 in 25,000</td><td>Factor IX concentrate</td></tr>
+              <tr><td><strong>Hemophilia C</strong></td><td>Factor XI</td><td>~1 in 100,000</td><td>FFP or Factor XI concentrate</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="content-list" style="margin-top:0.5rem;">
+          <li>Symptoms: spontaneous bleeding, muscle hematomas, pain at joint sites → decreased ROM → orthopedic intervention</li>
+          <li>Labs: <span class="hl-yellow">prolonged aPTT; NORMAL PT and bleeding times</span></li>
+          <li>Ensure: type and screen even for low-risk procedures</li>
+          <li>Acquired hemophilia: connective tissue disorders, pregnancy, or malignancy → antibody production against Factor VIII</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title blue">Liver Disease</div>
+        <ul class="content-list">
+          <li>Results in: thrombocytopenia, ↓ clotting factors made in liver, ↓ Protein C, S, and AT-III</li>
+          <li>Often have <strong>increased</strong> levels of Factor VIII and vWF (upregulation to maintain hemostasis)</li>
+          <li>Hemostatic equilibrium maintained but can easily tip toward <strong>bleeding OR coagulation</strong></li>
+          <li>Conventional tests (aPTT, PT) do <span class="hl-red">NOT</span> reflect hematological tendencies — use <strong>TEG/ROTEM</strong></li>
+          <li>Should NOT prophylactically transfuse without signs of bleeding</li>
+          <li>Still at risk for thrombosis — should receive prophylactic anticoagulation as indicated</li>
+        </ul>
+      </div>
+
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — DIC (Disseminated Intravascular Coagulation)</div>
+        <ul class="content-list">
+          <li>Systemic coagulation disorder: systemic inflammation + coagulation activated by underlying pathology</li>
+          <li>Underlying causes: <span class="hl-yellow">sepsis (most common)</span>, OB complications, ARDS, fat embolism, hypovolemia, massive transfusion, transplant rejection</li>
+          <li>Lots of tissue factor is released</li>
+          <li>Clinical presentation: Thrombosis AND/OR hemorrhage → multi-organ failure from widespread microvascular clotting depleting coagulation factors</li>
+          <li>Diagnosis: platelet count, fibrin degradation products, D-dimer, PT, fibrinogen</li>
+          <li>Treatment: <strong>Plasma is mainstay</strong> + platelets, FFP, cryo as indicated</li>
+          <li>Anticoagulation: important especially <strong>EARLY in DIC</strong> (in absence of major bleeding) — organ dysfunction often from CLOTTING</li>
+        </ul>
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-50"><label for="sc-50">vWD = most common inherited coag disorder. Prolonged bleeding time. Type 1 → DDAVP. Type 3 → cryo or vWF concentrate.</label></li>
+            <li><input type="checkbox" id="sc-51"><label for="sc-51">Hemophilia: A=VIII, B=IX, C=XI. All: ↑aPTT, normal PT. A first line: DDAVP or Factor VIII.</label></li>
+            <li><input type="checkbox" id="sc-52"><label for="sc-52">Liver disease: ↑FVIII &amp; vWF, ↓ others. Use TEG not conventional tests. Don't prophylactically transfuse.</label></li>
+            <li><input type="checkbox" id="sc-53"><label for="sc-53">DIC: sepsis #1 cause. Thrombosis AND hemorrhage. Plasma = mainstay. Early anticoagulation important.</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 14 ═══ -->
+  <div class="section" id="s14">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.2 · 9</span>
+        <span class="sec-title">Anticoagulants (Heparin, LMWH, Warfarin, DOACs)</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="callout exam-tip">
+        <div class="callout-title">Exam Tip — How to Study This Section</div>
+        <p>Use the coagulation cascade diagram to trace where each drug works. Know: drug mechanism → monitoring test → pathway → factors involved → stop time before surgery → reversal.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Drug</th><th>Mechanism</th><th>Monitor</th><th>Stop Before Sx</th><th>Key Notes</th></tr></thead>
+          <tbody>
+            <tr class="drug-heparin"><td><strong>UFH</strong></td><td>Binds AT-III → inhibits II, IX, X, XI, XII (1000× effect)</td><td>PTT (1.5–2.5×); ACT in OR</td><td>12–24 hrs</td><td>Reverse with <strong>protamine</strong> (only agent); safe in renal failure</td></tr>
+            <tr class="drug-heparin"><td><strong>LMWH</strong> (enoxaparin)</td><td>Same as UFH, less protein binding → better bioavailability</td><td>Anti-Xa (no routine)</td><td>12–24 hrs</td><td><span class="hl-red">Avoid in renal failure</span> (prolonged effect); protamine has limited reversal</td></tr>
+            <tr class="drug-heparin"><td><strong>Fondaparinux</strong></td><td>AT-III → inhibits Xa only. t½ 15 hrs</td><td>Anti-Xa</td><td>4 days</td><td>Use in HIT; renal elimination — avoid in renal failure; once daily</td></tr>
+            <tr class="drug-heparin"><td><strong>Bivalirudin</strong></td><td>Direct thrombin inhibitor (DTI)</td><td>ACT</td><td>4–6 hrs</td><td>t½ 25 min; 20% renal elimination; use in HIT</td></tr>
+            <tr class="drug-heparin"><td><strong>Argatroban</strong></td><td>Direct thrombin inhibitor</td><td>PTT</td><td>4–6 hrs</td><td>t½ 45 min; <span class="hl-green">hepatic elimination</span> → safe in renal failure; use in HIT</td></tr>
+            <tr class="drug-heparin"><td><strong>Dabigatran</strong></td><td>Oral DTI; rapid onset</td><td>TT or PTT</td><td>2–4 days</td><td>First dose 2 hrs after epidural cath removal; adjust in renal disease</td></tr>
+            <tr class="drug-warfarin"><td><strong>Warfarin</strong></td><td>Inhibits Vit K epoxide reductase → prevents activation of II, VII, IX, X</td><td>PT/INR (goal 2–3)</td><td>3–5 days (INR &lt;1.5)</td><td>Delayed onset 8–12 hrs; peak 36–72 hrs; reversal: Vit K, FFP, PCC</td></tr>
+            <tr class="drug-doac"><td><strong>Rivaroxaban / Apixaban</strong></td><td>Oral direct Xa inhibitors; no AT-III required</td><td>None routine</td><td>1–2 days</td><td>Adjust in renal disease; epidural: remove cath ≥18 hrs after last dose OR 6 hrs before next</td></tr>
+            <tr class="drug-antiplatelet"><td><strong>Aspirin</strong></td><td>Irreversibly acetylates COX → ↓ TXA₂ &amp; prostaglandins</td><td>Bleeding time</td><td>7–10 days</td><td>Restart 24 hrs postop; effects last life of platelet</td></tr>
+            <tr class="drug-antiplatelet"><td><strong>Clopidogrel / Prasugrel / Ticagrelor</strong></td><td>Irreversibly bind P2Y12 → block ADP-mediated platelet activation</td><td>Bleeding time</td><td>7 days</td><td>Clopidogrel resistance 20–30% of patients; avoid regional until effects dissipated</td></tr>
+            <tr class="drug-antiplatelet"><td><strong>IIb/IIIa inhibitors</strong> (abciximab, tirofiban, eptifibatide)</td><td>Competitively inhibit IIb/IIIa binding sites of fibrinogen</td><td>Bleeding time</td><td>Abciximab: 72 hrs; Others: 24 hrs</td><td>All can produce thrombocytopenia; <span class="hl-red">antidote: DIALYSIS only</span></td></tr>
+            <tr class="drug-antiplatelet"><td><strong>Fibrinolytics</strong> (TPA, streptokinase, urokinase)</td><td>Activate plasminogen → plasmin → degrades fibrin + V, VIII</td><td>—</td><td>1–3 hrs</td><td>↑ICH risk 1–8%; <span class="hl-red">antidote: DIALYSIS only</span>; localized catheter delivery preferred</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warning">
+        <div class="callout-title">HIT Type I vs Type II — High Yield</div>
+        <p><strong>Most important immunologic complication of heparin therapy → CONTRAINDICATION to further heparin use</strong></p>
+        <div class="table-wrap" style="margin:0.5rem 0;">
+          <table>
+            <thead><tr><th>Feature</th><th>HIT Type I</th><th>HIT Type II</th></tr></thead>
+            <tbody>
+              <tr><td>Mechanism</td><td>Platelet aggregation-related</td><td>Heparin-dependent IgG antibodies against <strong>platelet factor 4</strong></td></tr>
+              <tr><td>Onset</td><td>1–4 days</td><td>4–14 days (or sooner if prior exposure)</td></tr>
+              <tr><td>Dose required</td><td>High dose</td><td><span class="hl-red">ANY dose</span></td></tr>
+              <tr><td>Platelet count</td><td>Mild decrease</td><td><span class="hl-red">50% drop or &lt;100,000</span></td></tr>
+              <tr><td>Clinical consequences</td><td>Not serious; often self-resolves</td><td>Thrombosis, skin necrosis, ecchymosis, hematoma. <span class="hl-red">~30% mortality</span></td></tr>
+              <tr><td>Coagulation state</td><td>Normal</td><td><span class="hl-red">HYPERCOAGULABLE</span> (despite thrombocytopenia!)</td></tr>
+              <tr><td>Treatment</td><td>May not need to stop heparin</td><td>STOP ALL heparin (including in arterial lines). Give direct thrombin inhibitors (<strong>argatroban</strong>). Consult hematology.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-54"><label for="sc-54">UFH → PTT (therapeutic); ACT (high-dose OR). Reversed by protamine. Safe in renal failure.</label></li>
+            <li><input type="checkbox" id="sc-55"><label for="sc-55">LMWH → avoid in renal failure. Warfarin → PT/INR, stop 3–5 days, reverse with Vit K/FFP/PCC.</label></li>
+            <li><input type="checkbox" id="sc-56"><label for="sc-56">HIT Type II: IgG vs platelet factor 4, any heparin dose, HYPERCOAGULABLE, ~30% mortality. Treat: stop heparin + argatroban.</label></li>
+            <li><input type="checkbox" id="sc-57"><label for="sc-57">Aspirin: stop 7–10 days. Clopidogrel: stop 7 days. IIb/IIIa + fibrinolytics: antidote = dialysis only.</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 15 ═══ -->
+  <div class="section" id="s15">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.2 · 10</span>
+        <span class="sec-title">Procoagulants &amp; Reversal Agents</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Antifibrinolytics (EACA, TXA, Aprotinin)</div>
+        <p><strong>Mechanism:</strong> Competitively inhibit activation of plasminogen to plasmin — bind to plasminogen → block action of TPA and urokinase</p>
+        <div class="table-wrap" style="margin:0.5rem 0;">
+          <table>
+            <thead><tr><th>Drug</th><th>Evidence</th><th>Key Risks</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><strong>EACA</strong> (aminocaproic acid)</td><td>Decreased bleeding; evidence less convincing than TXA</td><td>N/V, headache, rare thrombosis</td><td>Available</td></tr>
+              <tr><td><strong>TXA</strong> (tranexamic acid)</td><td>Strongest evidence for decreased bleeding; also inhibits thrombin at high doses</td><td><span class="hl-red">Seizures 1–4%</span> (possibly GABA receptor blockade in frontal cortex); N/V, headache, rare thrombosis, vision changes</td><td>Available; <span class="hl-red">avoid in seizure disorder</span></td></tr>
+              <tr><td><strong>Aprotinin</strong></td><td>Previously used</td><td>Increased death + kidney damage vs EACA/TXA</td><td><span class="hl-red">Removed from US market</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Most commonly used in major orthopedic procedures (total knee, total hip). Especially useful for <strong>mucosal bleeding</strong> (nose, oropharynx, GU tract — high fibrinolytic enzyme content).</p>
+      </div>
+
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Protamine (Heparin Reversal)</div>
+        <ul class="content-list">
+          <li>Forms ionic bond with and <strong>NEUTRALIZES unfractionated heparin</strong> — <span class="hl-yellow">ONLY agent available to do so</span></li>
+          <li>Does <span class="hl-red">NOT</span> reverse low molecular weight heparins</li>
+          <li>Protamine (protein base) + heparin (acid) = <strong>Chemical Antagonism</strong> (acid-base interaction)</li>
+          <li>Dose: <span class="hl-yellow">1 mg per 100 units of heparin given</span></li>
+          <li>Own anticoagulant effects: excess administration → inhibits platelets and serine proteases → avoid excess dosing</li>
+          <li>Heparin rebound: possible 2–3 hours after protamine (protamine t½ ~20 min; heparin t½ ~1 hr). Small dose 5–15 mg effective.</li>
+        </ul>
+        <div class="callout warning" style="margin-top:0.75rem;">
+          <div class="callout-title">Clinical Warning — Protamine Side Effects</div>
+          <ul class="content-list">
+            <li>Pulmonary vasoconstriction, right ventricular failure, <strong>HYPOTENSION</strong>, anaphylaxis</li>
+            <li>Histamine release from mast cells → <span class="hl-red">ADMINISTER SLOWLY</span></li>
+            <li>Anaphylaxis risk factors: fish allergy, NPH insulin use, prior protamine exposure, vasectomy (theoretical — made from salmon sperm; poor correlation in literature)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Desmopressin / DDAVP</div>
+        <ul class="content-list">
+          <li>V2 analog of arginine vasopressin → stimulates release of <strong>vWF from endothelial cells</strong></li>
+          <li>3 Vasopressin Receptors: <strong>V1</strong> = vascular smooth muscle constriction; <strong>V2</strong> = stimulates ADH + vWF release + vasodilation; <strong>V3</strong> = stimulates ACTH release</li>
+          <li>Shortens bleeding time in <strong>Hemophilia A</strong> (best for mild forms) and <strong>vWD</strong> (best for mild type 1)</li>
+          <li>Dose: <span class="hl-yellow">0.3 mcg/kg IV over 15–30 minutes</span> to avoid hypotension (main concerning side effect)</li>
+          <li>Not useful in critically ill patients already receiving vasopressin (V2 receptors at max)</li>
+          <li>Side effects: MI, facial flushing, headache, water retention, <strong>hyponatremia</strong></li>
+        </ul>
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-58"><label for="sc-58">TXA/EACA → inhibit plasminogen→plasmin. TXA: seizures 1–4%. Aprotinin: removed from US market.</label></li>
+            <li><input type="checkbox" id="sc-59"><label for="sc-59">Protamine: 1 mg/100 units heparin. ONLY reverses UFH (not LMWH). Administer SLOWLY (histamine). Risk: pulmonary vasoconstriction, RV failure, hypotension, anaphylaxis.</label></li>
+            <li><input type="checkbox" id="sc-60"><label for="sc-60">DDAVP: 0.3 mcg/kg IV over 15–30 min. Releases vWF from endothelium. Best for mild vWD type 1 and mild Hemophilia A.</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 16 ═══ -->
+  <div class="section" id="s16">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.2 · 11</span>
+        <span class="sec-title">Exam Quick Reference — All High Yield Points</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <p style="color:var(--text-muted);font-size:15px;margin-bottom:1rem;">All high-yield points from the study guide, organized by topic for last-minute review.</p>
+      <div class="quick-ref-grid">
+        <div class="qr-card">
+          <h4>Vessel &amp; Platelet</h4>
+          <ul>
+            <li>Intima → Media (THROMBOGENIC) → Adventitia. Capillaries = intima only.</li>
+            <li>Adhesion (vWF+GP1B) → Activation (PLC+Ca²⁺) → Aggregation (GP2B/3A+fibrin)</li>
+            <li>White clot (primary) → Red clot (secondary, fibrin-strengthened)</li>
+            <li>~7,100 platelets used daily for microvascular patching</li>
+          </ul>
+        </div>
+        <div class="qr-card">
+          <h4>Clotting Factors</h4>
+          <ul>
+            <li>Vit K: II, VII, IX, X ("1972")</li>
+            <li>NOT liver: III (tissue cells), IV (plasma)</li>
+            <li>No Factor VI. All active forms = factor + "a"</li>
+            <li>Factor IV (Ca²⁺) needed in ALL coagulation events</li>
+          </ul>
+        </div>
+        <div class="qr-card">
+          <h4>Coagulation Cascade</h4>
+          <ul>
+            <li>Extrinsic: III+VII+Ca → Xa. Fast (~30 sec).</li>
+            <li>Intrinsic: XII→XI→IX→VIII+Ca+phospholipids → Xa. Slow (min).</li>
+            <li>Common: Xa+Va+Ca → prothrombin activator (rate-limiting) → II→IIa (thrombin) → I→Ia (fibrin) + XIII → stable clot</li>
+          </ul>
+        </div>
+        <div class="qr-card">
+          <h4>Thrombin &amp; Fibrinolysis</h4>
+          <ul>
+            <li>Thrombin activates: I, V, VIII, IX, X, XI, XII, XIII</li>
+            <li>85–90% bound in fibrin. Thrombomodulin → Protein C → inactivates V &amp; VIII</li>
+            <li>Major fibrinolysis: TPA + urokinase → plasminogen → plasmin → fibrin degradation</li>
+            <li>Heparin + AT-III → 1000× anticoagulant effect</li>
+          </ul>
+        </div>
+        <div class="qr-card">
+          <h4>O₂ &amp; CO₂ Formulas</h4>
+          <ul>
+            <li>Bound O₂ = Hgb × 1.34 × O₂ sat</li>
+            <li>Dissolved O₂ = PaO₂ × 0.003</li>
+            <li>Dissolved CO₂ = PaCO₂ × 0.067</li>
+            <li>ETCO₂ ≈ PaCO₂ − 5 (normal)</li>
+            <li>40-50-60/70-80-90 rule</li>
+          </ul>
+        </div>
+        <div class="qr-card">
+          <h4>Transfusion Triggers</h4>
+          <ul>
+            <li>Hgb &lt;6 = almost always. &gt;10 = rarely. 6–10 = clinical judgment.</li>
+            <li>Main reason = O₂ carrying capacity</li>
+            <li>ABL = EBV × (start Hct − accept Hct) / start Hct</li>
+            <li>Acceptable Hct ~25–30%. Hct ≈ Hgb × 3</li>
+          </ul>
+        </div>
+        <div class="qr-card">
+          <h4>Blood Components</h4>
+          <ul>
+            <li>PRBC: ↑Hgb 1, ↑Hct 2–3%. Hct 60–80%.</li>
+            <li>FFP: all factors + AT-III. 10–15 mL/kg. ↑coag 20–30%.</li>
+            <li>Plt: 1 unit/10 kg = ↑5–10k. Room temp. 4–5 day shelf life.</li>
+            <li>Cryo: I, vWF, VIII, XIII. 1 unit/5 kg = ↑fibrinogen ~100.</li>
+          </ul>
+        </div>
+        <div class="qr-card">
+          <h4>TRALI vs TACO</h4>
+          <ul>
+            <li>Both: within 6 hrs of transfusion</li>
+            <li>TRALI: PAOP ≤18; immune-mediated neutrophil activation; FFP #1 cause (49%); leading transfusion mortality; tx: PEEP + low TV</li>
+            <li>TACO: PAOP elevated; volume overload; tx: diuretics</li>
+          </ul>
+        </div>
+        <div class="qr-card">
+          <h4>Coagulation Tests</h4>
+          <ul>
+            <li>PT = warfarin (extrinsic+common; III,VII,X,V,II,I)</li>
+            <li>PTT = heparin (intrinsic+common; XII,XI,IX,VIII,X,V,II,I,XIII)</li>
+            <li>ACT = high-dose heparin in OR</li>
+            <li>PTT cannot detect factors 3 or 7</li>
+          </ul>
+        </div>
+        <div class="qr-card">
+          <h4>HIT Type II</h4>
+          <ul>
+            <li>IgG vs platelet factor 4. ANY heparin dose.</li>
+            <li>50% drop or &lt;100k platelets. HYPERCOAGULABLE.</li>
+            <li>~30% mortality.</li>
+            <li>Tx: stop ALL heparin → argatroban.</li>
+          </ul>
+        </div>
+        <div class="qr-card">
+          <h4>Disorders</h4>
+          <ul>
+            <li>vWD = most common inherited coag disorder. DDAVP first-line (type 1).</li>
+            <li>Hemophilia: A=VIII, B=IX, C=XI. ↑aPTT, normal PT.</li>
+            <li>DIC: sepsis #1. Thrombosis AND hemorrhage. Plasma = mainstay.</li>
+          </ul>
+        </div>
+        <div class="qr-card">
+          <h4>Reversal Agents</h4>
+          <ul>
+            <li>Protamine: 1 mg/100 units UFH. Administer SLOWLY. Only reverses UFH.</li>
+            <li>Warfarin: Vit K (delayed), FFP (immediate), PCC</li>
+            <li>IIb/IIIa + fibrinolytics: DIALYSIS only</li>
+            <li>DDAVP: 0.3 mcg/kg IV over 15–30 min. Releases vWF. Best mild vWD/Hemo A.</li>
+          </ul>
+        </div>
+      </div>
+
+      <a href="#top" class="back-top">↑ Back to top</a>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  function toggleSection(header) {
+    const body = header.nextElementSibling;
+    const chevron = header.querySelector('.chevron');
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    header.classList.toggle('open', !isOpen);
+    chevron.classList.toggle('open', !isOpen);
+  }
+
+  function expandAll() {
+    document.querySelectorAll('.section-body').forEach(b => b.classList.add('open'));
+    document.querySelectorAll('.section-header').forEach(h => h.classList.add('open'));
+    document.querySelectorAll('.chevron').forEach(c => c.classList.add('open'));
+  }
+
+  function collapseAll() {
+    document.querySelectorAll('.section-body').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.section-header').forEach(h => h.classList.remove('open'));
+    document.querySelectorAll('.chevron').forEach(c => c.classList.remove('open'));
+  }
+
+  function toggleSelfCheck(toggle) {
+    const body = toggle.nextElementSibling;
+    const arrow = toggle.querySelector('span');
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    arrow.textContent = isOpen ? '▾' : '▴';
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 60;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+        // Auto-open the section being navigated to
+        const sectionBody = target.querySelector('.section-body');
+        const sectionHeader = target.querySelector('.section-header');
+        if (sectionBody && !sectionBody.classList.contains('open')) {
+          sectionBody.classList.add('open');
+          sectionHeader.classList.add('open');
+          sectionHeader.querySelector('.chevron').classList.add('open');
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
