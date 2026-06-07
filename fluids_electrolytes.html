@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluid & Electrolyte Therapy — Study Roadmap</title>
+<style>
+/* ── RESET ── */
+*{box-sizing:border-box;margin:0;padding:0}
+
+/* ── TOKENS ── */
+:root{
+  --navy:#1b2d45;
+  --teal:#0a7c7c;
+  --teal-light:#e4f4f4;
+  --teal-mid:#1aa3a3;
+  --gold:#b87a0a;
+  --gold-bg:#fdf6e3;
+  --coral:#c0392b;
+  --coral-bg:#fdf0ee;
+  --green:#1a7a3a;
+  --green-bg:#eaf6ed;
+  --purple:#5b47a8;
+  --purple-bg:#f0eefb;
+  --gray:#4a5568;
+  --border:#d1dde8;
+  --bg:#f2f6fa;
+  --card-bg:#ffffff;
+  --self-check-bg:#f7f9fc;
+}
+
+/* ── BODY ── */
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;font-size:17px;
+  background:var(--bg);color:var(--navy);line-height:1.7}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#2b4570 100%);
+  color:#fff;
+  padding:36px 20px 30px;
+  text-align:center;
+}
+.hero .eyebrow{
+  font-size:11px;letter-spacing:3.5px;text-transform:uppercase;
+  color:var(--teal-mid);font-weight:700;margin-bottom:8px;
+}
+.hero h1{font-size:26px;font-weight:800;letter-spacing:.4px;margin-bottom:6px}
+.hero .tagline{font-size:14px;color:#9fc4d8;margin-top:4px}
+
+/* ── NAV ── */
+.nav{
+  background:var(--navy);
+  padding:10px 20px;
+  display:flex;flex-wrap:wrap;gap:6px;
+  justify-content:center;align-items:center;
+  border-bottom:2px solid var(--teal);
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 2px 10px rgba(0,0,0,.3);
+}
+.nav .pill{
+  background:transparent;color:#9fc4d8;
+  border:1px solid #3a5570;border-radius:20px;
+  padding:5px 15px;font-size:12px;cursor:pointer;
+  transition:all .2s;white-space:nowrap;
+}
+.nav .pill:hover,.nav .pill.active{background:var(--teal);color:#fff;border-color:var(--teal)}
+.nav .divider{width:1px;height:20px;background:#3a5570;margin:0 4px}
+.nav .ctrl{
+  background:#253d5a;color:#9fc4d8;border:1px solid #3a5570;
+  border-radius:6px;padding:5px 13px;font-size:12px;cursor:pointer;transition:all .2s;
+}
+.nav .ctrl:hover{background:var(--teal);color:#fff}
+
+/* ── LEGEND ── */
+.legend{
+  display:flex;flex-wrap:wrap;gap:14px;
+  padding:9px 20px;justify-content:center;
+  background:#e6eef5;border-bottom:1px solid var(--border);
+  font-size:12px;color:var(--navy);align-items:center;
+}
+.legend-item{display:flex;align-items:center;gap:6px}
+.legend-dot{width:13px;height:13px;border-radius:3px;flex-shrink:0}
+
+/* ── MAIN ── */
+.content{max-width:860px;margin:0 auto;padding:32px 20px 70px}
+
+/* ── PHASE ── */
+.phase-block{margin-bottom:44px}
+.phase-hdr{
+  display:flex;align-items:center;gap:14px;
+  padding:13px 20px;background:var(--navy);border-radius:10px;
+  margin-bottom:16px;color:#fff;
+}
+.phase-badge{
+  background:var(--teal);color:#fff;font-size:11px;
+  font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 13px;border-radius:20px;white-space:nowrap;
+}
+.phase-hdr h2{font-size:15px;font-weight:700;letter-spacing:.2px}
+
+/* ── CARD ── */
+.card{
+  background:var(--card-bg);border-radius:10px;
+  border:1px solid var(--border);margin-bottom:12px;
+  overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);
+  transition:box-shadow .2s;
+}
+.card:hover{box-shadow:0 3px 10px rgba(0,0,0,.09)}
+
+.card-hdr{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 20px;cursor:pointer;user-select:none;
+  background:var(--card-bg);
+}
+.card-hdr:hover{background:#f8fafc}
+
+.sec-num{
+  width:30px;height:30px;border-radius:50%;
+  background:var(--teal-light);color:var(--teal);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;flex-shrink:0;
+}
+.sec-meta{flex:1}
+.sec-title{font-size:16px;font-weight:700;color:var(--navy)}
+.sec-sub{font-size:13px;color:var(--gray);margin-top:1px}
+.chevron{color:var(--teal);font-size:18px;transition:transform .3s;flex-shrink:0}
+.card.open .chevron{transform:rotate(180deg)}
+
+.card-body{display:none;padding:20px 24px 24px;border-top:1px solid #e8f0f7}
+.card.open .card-body{display:block}
+
+/* ── TYPOGRAPHY ── */
+.card-body h3{
+  font-size:17px;font-weight:700;color:var(--teal);
+  margin:18px 0 8px;border-bottom:2px solid var(--teal-light);padding-bottom:4px;
+}
+.card-body h3:first-child{margin-top:0}
+.card-body h4{font-size:16px;font-weight:700;color:var(--navy);margin:14px 0 6px}
+.card-body p{font-size:17px;margin-bottom:10px;line-height:1.7}
+.card-body ul,.card-body ol{padding-left:22px;margin-bottom:12px}
+.card-body li{font-size:17px;margin-bottom:5px;line-height:1.65}
+.card-body strong{font-weight:700}
+
+/* ── TABLE ── */
+.card-body table{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px}
+.card-body th{background:var(--teal);color:#fff;padding:9px 12px;text-align:left;font-weight:600;font-size:14px}
+.card-body td{padding:8px 12px;border-bottom:1px solid #e0e8f0;vertical-align:top;font-size:15px}
+.card-body tr:nth-child(even) td{background:#f5f9fc}
+.card-body tr:hover td{background:var(--teal-light)}
+
+/* ── CALLOUT BOXES ── */
+.box{border-radius:8px;padding:13px 17px;margin:14px 0;font-size:16px}
+.box-title{font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px}
+
+.hy{background:var(--gold-bg);border:1.5px solid #e0b050;border-left:5px solid var(--gold)}
+.hy .box-title{color:var(--gold)}
+
+.warn{background:var(--coral-bg);border:1.5px solid #e07060;border-left:5px solid var(--coral)}
+.warn .box-title{color:var(--coral)}
+
+.tip{background:var(--green-bg);border:1.5px solid #80c898;border-left:5px solid var(--green)}
+.tip .box-title{color:var(--green)}
+
+.note{background:var(--purple-bg);border:1.5px solid #b0a0d8;border-left:5px solid var(--purple)}
+
+/* ── PATHWAY ── */
+.pathway{display:flex;flex-direction:column;align-items:center;margin:16px 0;gap:0}
+.p-box{
+  background:var(--teal-light);border:2px solid var(--teal);
+  border-radius:8px;padding:10px 20px;text-align:center;
+  width:100%;max-width:500px;font-size:16px;font-weight:600;color:var(--navy);
+}
+.p-box.gold{background:var(--gold-bg);border-color:var(--gold)}
+.p-box.end{background:var(--green-bg);border-color:var(--green)}
+.p-arrow{font-size:22px;color:var(--teal);margin:1px 0;line-height:1}
+
+/* ── 2-COL ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+.tcol{background:#f7f9fc;border:1px solid var(--border);border-radius:8px;padding:13px 15px}
+.tcol h4{margin-top:0;color:var(--teal)}
+
+/* ── INLINE MARKS ── */
+mark.y{background:#fff176;padding:1px 3px;border-radius:2px}
+mark.g{background:#b9f6c0;padding:1px 3px;border-radius:2px}
+mark.r{background:#ffcdd2;padding:1px 3px;border-radius:2px}
+.u{text-decoration:underline;text-underline-offset:3px}
+.red{color:var(--coral);font-weight:700}
+.bold{font-weight:700}
+
+/* ── SELF-CHECK ── */
+.self-check{
+  background:var(--self-check-bg);border:1px solid var(--border);
+  border-radius:8px;padding:14px 18px;margin-top:20px;
+}
+.sc-hdr{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:700;color:var(--gray);
+  letter-spacing:.8px;text-transform:uppercase;
+  margin-bottom:10px;cursor:pointer;user-select:none;
+}
+.sc-hdr .sc-icon{font-size:15px}
+.sc-items{display:flex;flex-direction:column;gap:6px}
+.sc-item{
+  display:flex;align-items:center;gap:10px;
+  font-size:16px;cursor:pointer;padding:4px 0;
+  user-select:none;border-radius:4px;
+  transition:background .15s;
+}
+.sc-item:hover{background:#edf2f7;padding-left:4px}
+.sc-item .sc-check{
+  width:20px;height:20px;border-radius:4px;
+  border:2px solid var(--border);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;transition:all .2s;
+}
+.sc-item.checked .sc-check{background:var(--teal);border-color:var(--teal);color:#fff}
+.sc-item.checked .sc-text{text-decoration:line-through;color:#8a9bb0}
+.sc-item .sc-text{font-size:16px;line-height:1.5}
+.sc-reset{
+  margin-top:10px;font-size:12px;color:var(--gray);
+  cursor:pointer;text-decoration:underline;display:inline-block;
+}
+.sc-reset:hover{color:var(--coral)}
+
+/* ── TRANSITION TEXT ── */
+.transition-text{
+  font-size:13px;color:#7a8fa8;font-style:italic;
+  margin-top:14px;padding-top:10px;border-top:1px dashed #d1dde8;
+}
+
+@media(max-width:640px){
+  .hero h1{font-size:20px}
+  .two-col{grid-template-columns:1fr}
+  .content{padding:20px 14px 50px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="eyebrow">Fluid &amp; Electrolyte Therapy</div>
+  <h1>Interactive Study Roadmap</h1>
+  <p class="tagline">Click any card to expand it.</p>
+</header>
+
+<!-- NAV -->
+<nav class="nav">
+  <button class="pill active" onclick="filterPhase('all',this)">All Phases</button>
+  <button class="pill" onclick="filterPhase('1',this)">Body Fluid Basics</button>
+  <button class="pill" onclick="filterPhase('2',this)">Fluid Types</button>
+  <button class="pill" onclick="filterPhase('3',this)">Surgical Context</button>
+  <button class="pill" onclick="filterPhase('4',this)">Goal-Directed Therapy</button>
+  <button class="pill" onclick="filterPhase('5',this)">Electrolytes</button>
+  <div class="divider"></div>
+  <button class="ctrl" onclick="toggleAll(true)">Expand all</button>
+  <button class="ctrl" onclick="toggleAll(false)">Collapse all</button>
+</nav>
+
+<!-- LEGEND -->
+<div class="legend">
+  <span class="bold" style="font-size:12px">Key:</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--gold-bg);border:1.5px solid var(--gold)"></span>High-yield</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--coral-bg);border:1.5px solid var(--coral)"></span>Warning</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--green-bg);border:1.5px solid var(--green)"></span>Clinical tip</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--purple-bg);border:1.5px solid var(--purple)"></span>Concept</span>
+  <span class="legend-item"><mark class="y">&thinsp;term&thinsp;</mark> Key term</span>
+  <span class="legend-item">☑ Self-check</span>
+</div>
+
+<main class="content">
+
+<!-- ═══════════════ PHASE 1 ═══════════════ -->
+<div class="phase-block" data-phase="1">
+<div class="phase-hdr">
+  <span class="phase-badge">Phase 1</span>
+  <h2>Normal Body Fluid Composition &amp; Regulatory Mechanisms</h2>
+</div>
+
+<!-- S1 -->
+<div class="card" id="s1">
+<div class="card-hdr" onclick="toggle('s1')">
+  <div class="sec-num">1</div>
+  <div class="sec-meta">
+    <div class="sec-title">Section 1 · Body Fluid Compartments</div>
+    <div class="sec-sub">TBW, ICV, ECV — volumes, ions, and osmolality</div>
+  </div>
+  <span class="chevron">▾</span>
+</div>
+<div class="card-body">
+
+  <div class="hy box">
+    <div class="box-title">⭐ High-Yield Numbers</div>
+    <ul>
+      <li><mark class="y">TBW ≈ 60% of lean body mass</mark></li>
+      <li><mark class="y">ICV = 2/3 TBW</mark> &nbsp;|&nbsp; <mark class="y">ECV = 1/3 TBW</mark></li>
+      <li>Cell membrane is permeable to water → <mark class="y">osmotic equilibrium maintained</mark> between ECV and ICV</li>
+    </ul>
+  </div>
+
+  <h3>Compartment Contents</h3>
+  <div class="two-col">
+    <div class="tcol">
+      <h4>Intracellular Fluid (ICV)</h4>
+      <ul>
+        <li><mark class="y">K⁺</mark> — primary cation</li>
+        <li>Mg²⁺, Ca²⁺</li>
+        <li><mark class="y">Phosphate</mark> — primary anion</li>
+      </ul>
+    </div>
+    <div class="tcol">
+      <h4>Extracellular Fluid (ECF)</h4>
+      <ul>
+        <li><mark class="y">Na⁺</mark> — primary cation</li>
+        <li><mark class="y">Cl⁻</mark> — primary anion</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note box">
+    <ul>
+      <li>Small ions move freely among ECF; proteins (albumin, globulins) <strong>cannot freely cross</strong> from vascular to interstitial space</li>
+      <li>Interstitial fluid returns to circulation as <mark class="y">lymph</mark></li>
+      <li>Cell membrane permeable to water → osmotic equilibrium maintained</li>
+      <li>Resting membrane gradient maintained by <mark class="y">Na⁺/K⁺-ATPase pump</mark></li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="sc-hdr"><span class="sc-icon">✓</span> Self-Check</div>
+    <div class="sc-items">
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">TBW = 60% lean body mass; ICV = 2/3 TBW; ECV = 1/3 TBW</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">ICF primary cation: K⁺ — ECF primary cation: Na⁺</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Cell membrane permeable to water → osmotic equilibrium maintained between ECV and ICV</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Na⁺/K⁺-ATPase pump maintains resting membrane gradient</span></div>
+    </div>
+    <span class="sc-reset" onclick="resetChecks(this)">Reset self-checks</span>
+  </div>
+</div>
+</div>
+
+<!-- S2 -->
+<div class="card" id="s2">
+<div class="card-hdr" onclick="toggle('s2')">
+  <div class="sec-num">2</div>
+  <div class="sec-meta">
+    <div class="sec-title">Section 2 · Starling Forces &amp; Fluid Exchange</div>
+    <div class="sec-sub">Four transcapillary pressures governing fluid movement</div>
+  </div>
+  <span class="chevron">▾</span>
+</div>
+<div class="card-body">
+
+  <h3>Four Transcapillary (Starling) Pressures</h3>
+  <p>Fluid exchange between ECF compartments is mostly dependent on four transcapillary pressures:</p>
+
+  <div class="two-col">
+    <div class="tcol" style="border-color:var(--teal)">
+      <h4 style="color:var(--teal)">↑ Absorption / Retention</h4>
+      <ul>
+        <li><mark class="y">Plasma oncotic pressure (Πp)</mark> — osmotic force of proteins within vascular space</li>
+        <li><mark class="y">Interstitial fluid pressure (Pif)</mark> — hydrostatic pressure of interstitial fluid</li>
+      </ul>
+    </div>
+    <div class="tcol" style="border-color:var(--gold)">
+      <h4 style="color:var(--gold)">↑ Filtration into interstitium</h4>
+      <ul>
+        <li><mark class="y">Capillary hydrostatic pressure (Pc)</mark> — intravascular blood pressure driven by CO and vascular tone</li>
+        <li><mark class="y">Interstitial oncotic pressure (Πif)</mark> — osmotic force of proteins within interstitial space</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Endothelial Glycocalyx Layer (EGL)</h3>
+  <ul>
+    <li>Coats the <mark class="y">luminal surface of vascular endothelium</mark> — essential for normal fluid homeostasis</li>
+    <li>Highly fragile layer — can be damaged by pathophysiological conditions and interventions</li>
+    <li><mark class="g">Crystalloids</mark> freely pass through the glycocalyx</li>
+    <li><mark class="r">Colloids</mark> are held back in the vasculature by this structure</li>
+  </ul>
+  <div class="warn box">
+    <div class="box-title">⚠ Clinical Relevance</div>
+    <p>The glycocalyx can be damaged by a number of <span class="red">pathophysiological conditions and interventions</span>. Damage disrupts normal fluid homeostasis and the barrier function that retains colloids in the vasculature.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="sc-hdr"><span class="sc-icon">✓</span> Self-Check</div>
+    <div class="sc-items">
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Πp and Pif favor absorption; Pc and Πif favor filtration</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Crystalloids pass through glycocalyx; colloids are held back</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">EGL damage → interstitial edema, impaired wound healing</span></div>
+    </div>
+    <span class="sc-reset" onclick="resetChecks(this)">Reset self-checks</span>
+  </div>
+  <div class="transition-text">Next — the hormonal systems that regulate volume and sodium…</div>
+</div>
+</div>
+
+<!-- S3 -->
+<div class="card" id="s3">
+<div class="card-hdr" onclick="toggle('s3')">
+  <div class="sec-num">3</div>
+  <div class="sec-meta">
+    <div class="sec-title">Section 3 · RAAS, ADH &amp; ANP</div>
+    <div class="sec-sub">Hormonal regulation of sodium, water, and volume</div>
+  </div>
+  <span class="chevron">▾</span>
+</div>
+<div class="card-body">
+
+  <h3>RAAS — Renin-Angiotensin-Aldosterone System</h3>
+  <p><mark class="y">Sodium concentration</mark> is one of the primary determinants of serum osmolality and water transport. RAAS is its primary regulator.</p>
+
+  <div class="pathway">
+    <div class="p-box gold">Trigger: Hypotension (baroreceptors) + SNS stimulation</div>
+    <div class="p-arrow">▼</div>
+    <div class="p-box">Juxtaglomerular cells → <strong>Renin</strong></div>
+    <div class="p-arrow">▼</div>
+    <div class="p-box">Renin + Angiotensinogen → <strong>Angiotensin I</strong></div>
+    <div class="p-arrow">▼</div>
+    <div class="p-box">ACE (lungs) → <strong>Angiotensin II</strong></div>
+    <div class="p-arrow">▼</div>
+    <div class="p-box end"><strong>Angiotensin II:</strong> potent vasoconstrictor · ↑ renal Na⁺/H₂O reabsorption · stimulates aldosterone (adrenal cortex) · stimulates ADH (posterior pituitary)</div>
+  </div>
+
+  <h3>ADH — Antidiuretic Hormone</h3>
+  <ul>
+    <li>Primarily regulates <mark class="y">water balance</mark></li>
+    <li>Released from posterior pituitary in response to ↑ serum osmolality (detected by hypothalamic osmoreceptors)</li>
+    <li>Acts on <mark class="y">aquaporin channels</mark> in kidney → reabsorbs water → ↑ circulating volume</li>
+    <li>Also acts as a <strong>potent arterial vasoconstrictor</strong> when released in response to ↓ blood volume (baroreceptors)</li>
+    <li>Hypothalamus also stimulates <strong>thirst</strong> in response to ↑ serum osmolality</li>
+  </ul>
+
+  <h3>ANP — Atrial Natriuretic Peptide</h3>
+  <ul>
+    <li>Stretch receptors in <mark class="y">atrial walls</mark> stimulate ANP release from myocytes in response to ↑ preload / hypervolemic states</li>
+    <li>ANP → ↑ renal removal of Na⁺ and water; ↑ GFR; inhibits renin and ADH release</li>
+    <li>When preload is low → atrial receptors <strong>inhibit</strong> ANP release</li>
+  </ul>
+
+  <div class="tip box">
+    <div class="box-title">💡 Clinical Pearl</div>
+    <p>Laparoscopic pneumoperitoneum: mechanical blood shunting into thorax → ↑ CVP → stimulates ANP release. Also activates RAAS via ↓ renal perfusion.</p>
+  </div>
+
+  <div class="self-check">
+    <div class="sc-hdr"><span class="sc-icon">✓</span> Self-Check</div>
+    <div class="sc-items">
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">RAAS pathway: hypotension → renin → Ang I → ACE → Ang II → aldosterone + ADH</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">ADH: osmoreceptors detect ↑ osmolality → aquaporins → H₂O reabsorption</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">ANP: released with ↑ atrial stretch (hypervolemia) → promotes Na⁺/H₂O excretion</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">ANP inhibits both renin and ADH release</span></div>
+    </div>
+    <span class="sc-reset" onclick="resetChecks(this)">Reset self-checks</span>
+  </div>
+</div>
+</div>
+</div><!-- end phase 1 -->
+
+<!-- ═══════════════ PHASE 2 ═══════════════ -->
+<div class="phase-block" data-phase="2">
+<div class="phase-hdr">
+  <span class="phase-badge">Phase 2</span>
+  <h2>Fluid Types — Crystalloids &amp; Colloids</h2>
+</div>
+
+<!-- S4 -->
+<div class="card" id="s4">
+<div class="card-hdr" onclick="toggle('s4')">
+  <div class="sec-num">4</div>
+  <div class="sec-meta">
+    <div class="sec-title">Section 4 · Crystalloids — Overview &amp; Comparison</div>
+    <div class="sec-sub">NS, LR, Plasmalyte — properties, indications, and pitfalls</div>
+  </div>
+  <span class="chevron">▾</span>
+</div>
+<div class="card-body">
+
+  <div class="note box">
+    <p>Crystalloids contain <mark class="y">ion salts and other low-molecular weight substances</mark>. Preferred for dehydration / plasma hypertonicity — contribute to hydration of the entire ECV. Due to low molecular weight, ~<mark class="r">80% distributes into the interstitial space</mark> rather than staying intravascular.</p>
+  </div>
+
+  <h3>Normal Saline (0.9% NaCl)</h3>
+  <ul>
+    <li>Roughly equal concentrations of Na⁺ and Cl⁻</li>
+    <li><span class="red">Hyperchloremic metabolic acidosis</span> and marked base excess alterations from chloride load</li>
+    <li>May exacerbate volume overload if using negative base excess as a trigger for infusion therapy</li>
+    <li><span class="red">Hyperchloremia</span> → ↓ GFR and impairs renal bicarbonate handling</li>
+    <li>Increased Na⁺ load → water retention, hemodilution, interstitial edema, negative bowel motility effects</li>
+  </ul>
+  <div class="warn box">
+    <div class="box-title">⚠ Bottom Line</div>
+    <p>Of all isotonic solutions, <span class="bold">NS is the least physiologic</span> but most commonly administered.</p>
+  </div>
+
+  <h3>Lactated Ringer's (LR)</h3>
+  <ul>
+    <li>Contains <mark class="y">sodium lactate</mark> as a bicarbonate substrate / buffering agent</li>
+    <li>More effective than NS at preserving intravascular volume</li>
+    <li><span class="red">Not recommended for large-volume administration in diabetics</span> — lactate metabolites are gluconeogenic</li>
+    <li><span class="red">Contraindicated in TBI and neurovascular insults</span> — slight hypotonicity may promote cerebral edema / hypo-osmolality</li>
+    <li>Contains <strong>calcium</strong> → <span class="red">contraindicated for co-administration with citrated blood products</span> (risk of coagulation)</li>
+  </ul>
+
+  <h3>Plasmalyte / Normosol-R / Isolyte-S</h3>
+  <div class="tip box">
+    <div class="box-title">💡 Most Physiologic Crystalloid</div>
+    <ul>
+      <li>Most isotonic of the balanced salt solutions; most favorable acid-base profile</li>
+      <li>Uses <mark class="y">sodium gluconate + sodium acetate</mark> as alkalinizing buffers (not lactate)</li>
+      <li><mark class="g">No calcium</mark> → compatible with blood products</li>
+      <li>Better renal function and perfusion preservation than NS</li>
+      <li>Patients receiving these have <strong>less acid-base alteration</strong> and require fewer blood product transfusions vs. nonbuffered solutions</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="sc-hdr"><span class="sc-icon">✓</span> Self-Check</div>
+    <div class="sc-items">
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">~80% of crystalloid distributes to the interstitial space</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">NS → hyperchloremic metabolic acidosis; least physiologic of the isotonics</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">LR: contraindicated in TBI (hypo-osmolality) and with citrated blood products (calcium)</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Plasmalyte: no calcium, most physiologic balanced salt solution — compatible with blood products</span></div>
+    </div>
+    <span class="sc-reset" onclick="resetChecks(this)">Reset self-checks</span>
+  </div>
+  <div class="transition-text">Next — macromolecular solutions that stay in the vascular space…</div>
+</div>
+</div>
+
+<!-- S5 -->
+<div class="card" id="s5">
+<div class="card-hdr" onclick="toggle('s5')">
+  <div class="sec-num">5</div>
+  <div class="sec-meta">
+    <div class="sec-title">Section 5 · Colloids — HES &amp; Albumin</div>
+    <div class="sec-sub">Macromolecules that expand plasma oncotic pressure</div>
+  </div>
+  <span class="chevron">▾</span>
+</div>
+<div class="card-body">
+
+  <div class="note box">
+    <p>Colloids contain <mark class="y">macromolecules suspended in electrolyte solutions</mark> that promote volume expansion by directly increasing plasma oncotic pressure (Πp). Held back by the intact glycocalyx.</p>
+  </div>
+
+  <h3>Hydroxyethyl Starches (HES)</h3>
+  <ul>
+    <li>Derived from starchy plants — have <mark class="r">allergenic potential</mark></li>
+    <li>Dose-dependent coagulopathy from: hemodilution, binding of clotting factors, interference with platelet adhesion, alterations in plasma viscosity</li>
+    <li>Can form <mark class="r">interstitial colloid deposits</mark> → severe non-histamine–related pruritus and nephrotoxicity</li>
+  </ul>
+  <div class="warn box">
+    <div class="box-title">⚠ Black Box Warning</div>
+    <p>HES associated with <span class="red">renal injury and increased mortality</span>. Best avoided in: pre-existing renal injury · sepsis · neurologic injury · organ donors · CABG with CPB (excess bleeding).</p>
+  </div>
+
+  <h3>Albumin</h3>
+  <ul>
+    <li>Produced from human blood, heat-treated to remove pathogens, suspended in saline</li>
+    <li>0.011% risk of anaphylactoid reactions</li>
+    <li>Used as a <mark class="y">volume expander in active blood loss not requiring transfusion</mark></li>
+    <li>Carrier for protein-bound drugs, metabolites, electrolytes, enzymes, hormones</li>
+    <li>Administration advised in hypoalbuminemia</li>
+    <li>May be the preferred solution for intravascular replacement in patients with an <mark class="y">intact glycocalyx during acute volume loss</mark></li>
+  </ul>
+
+  <div class="self-check">
+    <div class="sc-hdr"><span class="sc-icon">✓</span> Self-Check</div>
+    <div class="sc-items">
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Colloids expand plasma volume by increasing oncotic pressure (Πp)</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">HES: Black Box Warning — renal injury, ↑ mortality; avoid in sepsis, renal failure, CPB</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Albumin: 0.011% anaphylactoid risk; preferred in intact-glycocalyx acute volume loss</span></div>
+    </div>
+    <span class="sc-reset" onclick="resetChecks(this)">Reset self-checks</span>
+  </div>
+</div>
+</div>
+</div><!-- end phase 2 -->
+
+<!-- ═══════════════ PHASE 3 ═══════════════ -->
+<div class="phase-block" data-phase="3">
+<div class="phase-hdr">
+  <span class="phase-badge">Phase 3</span>
+  <h2>Surgical Context — Traditional Methods &amp; Their Limitations</h2>
+</div>
+
+<!-- S6 -->
+<div class="card" id="s6">
+<div class="card-hdr" onclick="toggle('s6')">
+  <div class="sec-num">6</div>
+  <div class="sec-meta">
+    <div class="sec-title">Section 6 · Surgical Stress Response on Fluid Balance</div>
+    <div class="sec-sub">HPA axis, catecholamines, and laparoscopic considerations</div>
+  </div>
+  <span class="chevron">▾</span>
+</div>
+<div class="card-body">
+
+  <h3>HPA Axis Activation</h3>
+  <p>Somatic and autonomic nerve stimulation at the surgical incision activates the hypothalamic-pituitary-adrenal axis:</p>
+  <div class="pathway">
+    <div class="p-box gold">Surgical incision → nerve stimulation</div>
+    <div class="p-arrow">▼</div>
+    <div class="p-box">Hypothalamus releases <strong>CRH</strong></div>
+    <div class="p-arrow">▼</div>
+    <div class="p-box">Anterior pituitary secretes <strong>ACTH</strong></div>
+    <div class="p-arrow">▼</div>
+    <div class="p-box end"><strong>Adrenal cortex releases Cortisol:</strong> protein catabolism · hepatic gluconeogenesis &amp; glycogenolysis · ↑ plasma proteins<br><span class="red">Unchecked hyperglycemia → disrupts glycocalyx + impairs wound healing</span></div>
+  </div>
+
+  <h3>SNS / Catecholamine Response</h3>
+  <ul>
+    <li>Catecholamines released from adrenal medulla: ↑ HR, vasoconstriction, ↑ metabolic rate, ↑ O₂ demand</li>
+    <li>↑ ADH release, K⁺ excretion, water reabsorption</li>
+    <li>Surgical trauma / tissue injury → endothelial release of <mark class="y">inflammatory mediators</mark> → hyperthermia, ↑ O₂ demand, altered microcirculatory flow</li>
+  </ul>
+
+  <h3>Laparoscopic / Pneumoperitoneum Effects</h3>
+  <ul>
+    <li>↓ Tissue damage cytokine release (benefit vs. open surgery)</li>
+    <li><mark class="r">Mechanical suppression of splanchnic blood flow</mark> → ischemia → predisposes to reperfusion injury</li>
+    <li>↑ CVP from blood shunting into thorax → stimulates ANP release</li>
+    <li>↑ Afterload, ↑ MAP, ↓ EF; ↓ renal perfusion → activates RAAS</li>
+    <li><mark class="r">Hypercarbia from CO₂ absorption</mark> → acidosis → myocardial depression; mitigate with ↑ minute ventilation</li>
+  </ul>
+
+  <div class="self-check">
+    <div class="sc-hdr"><span class="sc-icon">✓</span> Self-Check</div>
+    <div class="sc-items">
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">HPA pathway: incision → CRH → ACTH → cortisol → gluconeogenesis + ↑ plasma proteins</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Hyperglycemia from unchecked cortisol → disrupts glycocalyx + impairs wound healing</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Pneumoperitoneum: ↓ splanchnic flow, ↑ CVP (ANP), ↑ afterload, activates RAAS, hypercarbia</span></div>
+    </div>
+    <span class="sc-reset" onclick="resetChecks(this)">Reset self-checks</span>
+  </div>
+  <div class="transition-text">Next — the traditional calculations used for perioperative fluid management, and why they fall short…</div>
+</div>
+</div>
+
+<!-- S7 -->
+<div class="card" id="s7">
+<div class="card-hdr" onclick="toggle('s7')">
+  <div class="sec-num">7</div>
+  <div class="sec-meta">
+    <div class="sec-title">Section 7 · Traditional Fluid Methods &amp; Why They Fail</div>
+    <div class="sec-sub">4-2-1 rule, surgical guidelines, and the evidence against them</div>
+  </div>
+  <span class="chevron">▾</span>
+</div>
+<div class="card-body">
+
+  <h3>4-2-1 Maintenance Rule</h3>
+  <table>
+    <tr><th>Weight</th><th>Hourly Rate</th></tr>
+    <tr><td>0–10 kg</td><td>4 mL/kg/hr</td></tr>
+    <tr><td>11–20 kg</td><td>4 mL/kg/hr (first 10 kg) + 2 mL/kg/hr (every kg &gt;10)</td></tr>
+    <tr><td>&gt;20 kg</td><td>4 mL/kg/hr (first 10) + 2 mL/kg/hr (next 10) + 1 mL/kg/hr (every kg &gt;20)</td></tr>
+  </table>
+  <p><strong>Estimated Deficit</strong> = Maintenance requirement × Fasting hours<br>
+  Replacement: <mark class="y">½ in 1st hour · ¼ in 2nd hr · ¼ in 3rd hr</mark></p>
+
+  <h3>Traditional Surgical Replacement Guidelines</h3>
+  <table>
+    <tr><th>Type</th><th>Rate</th></tr>
+    <tr><td>Superficial trauma</td><td>1–2 mL/kg/hr</td></tr>
+    <tr><td>Minimal trauma</td><td>2–4 mL/kg/hr</td></tr>
+    <tr><td>Moderate trauma</td><td>4–6 mL/kg/hr</td></tr>
+    <tr><td>Blood loss replacement — Crystalloid</td><td>3 mL for every 1 mL EBL</td></tr>
+    <tr><td>Blood loss replacement — Colloid</td><td>1 mL for every 1 mL EBL</td></tr>
+  </table>
+
+  <h3>Problems with Traditional Methods</h3>
+  <div class="warn box">
+    <div class="box-title">⚠ Why Traditional Methods Are Insufficient</div>
+    <ul>
+      <li>Studies show relatively healthy fasted patients <strong>maintain normal intravascular volumes</strong> — prophylactic volume administration → glycocalyx disruption + fluid overload</li>
+      <li>Preoperative deficits can still exist (especially with bowel preps)</li>
+      <li>Evaporative losses are <mark class="r">likely overestimated</mark> — animal studies show exteriorized bowel losses plateau at 1 mL/kg/hr</li>
+      <li>The "third space" concept is questionable — studies support some uncounted ECV loss but cannot identify the actual location</li>
+      <li>Traditional methods rely on <mark class="r">nonspecific indicators</mark>: MAP, CVP, urine output</li>
+      <li>CVP altered by many states — only ~50% of patients with low CVP are fluid responsive</li>
+      <li>Urine output unreliable — affected by neuroendocrine response, ADH levels</li>
+      <li>Patients with high ADH levels can retain administered fluid → expansion of interstitial space</li>
+      <li>Gross variability in defining "liberal" vs. "restrictive" therapy → no conclusive best-practice results</li>
+    </ul>
+  </div>
+
+  <h3>Complications of Inappropriate Fluid Therapy</h3>
+  <div class="two-col">
+    <div class="tcol" style="border-color:var(--coral)">
+      <h4 style="color:var(--coral)">Under-Resuscitation</h4>
+      <ul>
+        <li>Hypovolemia</li>
+        <li>↓ Perfusion / O₂ delivery</li>
+        <li>PONV</li>
+        <li>Renal dysfunction</li>
+        <li>Myocardial ischemia</li>
+        <li>Hemoconcentration / thrombosis</li>
+      </ul>
+    </div>
+    <div class="tcol" style="border-color:var(--gold)">
+      <h4 style="color:var(--gold)">Over-Resuscitation</h4>
+      <ul>
+        <li>Vascular overload</li>
+        <li>Microvascular congestion / ↓ O₂ delivery</li>
+        <li>Glycocalyx damage</li>
+        <li>Hypo-coagulation</li>
+        <li>Anemia, thrombocytopenia</li>
+        <li>Poor wound healing</li>
+        <li>↓ Organ perfusion &amp; congestion</li>
+        <li>↑ EVLWI · Compartment syndrome</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="self-check">
+    <div class="sc-hdr"><span class="sc-icon">✓</span> Self-Check</div>
+    <div class="sc-items">
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">4-2-1 rule: 4 mL/kg/hr (0–10 kg) + 2 mL/kg/hr (11–20 kg) + 1 mL/kg/hr (&gt;20 kg)</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Estimated deficit = maintenance rate × fasting hours; give ½ in 1st hr, ¼ + ¼ after</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">CVP unreliable: only ~50% of patients with low CVP are fluid responsive</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Urine output unreliable — affected by ADH and neuroendocrine response to surgery</span></div>
+    </div>
+    <span class="sc-reset" onclick="resetChecks(this)">Reset self-checks</span>
+  </div>
+</div>
+</div>
+</div><!-- end phase 3 -->
+
+<!-- ═══════════════ PHASE 4 ═══════════════ -->
+<div class="phase-block" data-phase="4">
+<div class="phase-hdr">
+  <span class="phase-badge">Phase 4</span>
+  <h2>Goal-Directed Fluid Therapy (GDFT)</h2>
+</div>
+
+<!-- S8 -->
+<div class="card" id="s8">
+<div class="card-hdr" onclick="toggle('s8')">
+  <div class="sec-num">8</div>
+  <div class="sec-meta">
+    <div class="sec-title">Section 8 · GDFT — Principles, Outcomes &amp; Frank-Starling</div>
+    <div class="sec-sub">Individualized hemodynamic endpoints and the physiologic foundation</div>
+  </div>
+  <span class="chevron">▾</span>
+</div>
+<div class="card-body">
+
+  <div class="hy box">
+    <div class="box-title">⭐ Definition</div>
+    <p>GDFT utilizes <mark class="y">individualized hemodynamic end-points</mark> monitored by hemodynamic modalities to support oxygen transport balance, minimize O₂ demand, optimize CO, tissue oxygenation, capillary and microvascular flow, and end-organ perfusion.</p>
+  </div>
+
+  <h3>Outcomes with GDFT</h3>
+  <ul>
+    <li>↓ Infection</li>
+    <li>↓ Duration of mechanical ventilation &amp; ICU stay</li>
+    <li>↓ PONV, coagulopathy, hypotension, anemia</li>
+    <li>↓ Respiratory and cardiovascular complications</li>
+    <li>↓ 30-day mortality</li>
+    <li>↓ Renal impairment</li>
+  </ul>
+
+  <h3>Frank-Starling Mechanism — The Physiologic Foundation</h3>
+  <p>Describes the relationship between <mark class="y">LVEDV</mark> and myocardial contractility (stroke volume):</p>
+  <ul>
+    <li><strong>Ascending portion</strong> of the curve = preload dependence — fluid challenges will ↑ SV</li>
+    <li><strong>Plateau portion</strong> = preload independence — further fluid will NOT ↑ SV and may harm</li>
+    <li>This is why GDFT is vital: it focuses interventions to <mark class="y">individual cardiovascular status</mark></li>
+    <li>Patients on a <strong>normal curve</strong> → respond to ↑ fluid volume with ↑ contractility</li>
+    <li>Patients on a <strong>pathophysiologic curve</strong> → can only respond to small volumes without compromise</li>
+  </ul>
+
+  <div class="self-check">
+    <div class="sc-hdr"><span class="sc-icon">✓</span> Self-Check</div>
+    <div class="sc-items">
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">GDFT: individualized hemodynamic endpoints to optimize O₂ delivery and end-organ perfusion</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Frank-Starling: ascending = preload dependent; plateau = preload independent</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">On pathophysiologic curve: only small volumes tolerated before compromise</span></div>
+    </div>
+    <span class="sc-reset" onclick="resetChecks(this)">Reset self-checks</span>
+  </div>
+  <div class="transition-text">Next — the monitoring techniques that enable GDFT in practice…</div>
+</div>
+</div>
+
+<!-- S9 -->
+<div class="card" id="s9">
+<div class="card-hdr" onclick="toggle('s9')">
+  <div class="sec-num">9</div>
+  <div class="sec-meta">
+    <div class="sec-title">Section 9 · GDFT Monitoring Techniques</div>
+    <div class="sec-sub">Dilution, pulse contour, Doppler, TEE, tissue oxygenation</div>
+  </div>
+  <span class="chevron">▾</span>
+</div>
+<div class="card-body">
+
+  <h3>Dilution Techniques</h3>
+  <p>Administer a fixed volume of injectate into the vascular system; measure CO based on the area under a time-temperature or concentration-time curve.</p>
+
+  <h3>Pulse Contour Analysis</h3>
+  <ul>
+    <li>Measures preload responsiveness by quantifying changes in arterial, capnography, or pulse oximetry waveforms</li>
+    <li>Patient considered <mark class="y">fluid responsive if calculated value &gt;13–15%</mark></li>
+  </ul>
+
+  <h3>Esophageal Doppler &amp; Echocardiography</h3>
+  <ul>
+    <li>Esophageal Doppler: ultrasound technology to monitor LV function and aortic compliance</li>
+    <li><mark class="y">TEE = gold standard</mark> for direct cardiac function and volume status monitoring</li>
+  </ul>
+
+  <h3>Measures of Tissue Oxygenation</h3>
+  <p>Measure global tissue oxygen balance by comparing blood gases with oxygen consumption and delivery.</p>
+
+  <div class="self-check">
+    <div class="sc-hdr"><span class="sc-icon">✓</span> Self-Check</div>
+    <div class="sc-items">
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Pulse contour: fluid responsive if calculated value &gt;13–15%</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">TEE = gold standard for direct cardiac function + volume status monitoring</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Tissue oxygenation: compares blood gases with O₂ consumption and delivery</span></div>
+    </div>
+    <span class="sc-reset" onclick="resetChecks(this)">Reset self-checks</span>
+  </div>
+</div>
+</div>
+</div><!-- end phase 4 -->
+
+<!-- ═══════════════ PHASE 5 ═══════════════ -->
+<div class="phase-block" data-phase="5">
+<div class="phase-hdr">
+  <span class="phase-badge">Phase 5</span>
+  <h2>Electrolyte Imbalances — Na, K, Ca, Phosphate, Mg</h2>
+</div>
+
+<!-- S10 -->
+<div class="card" id="s10">
+<div class="card-hdr" onclick="toggle('s10')">
+  <div class="sec-num">10</div>
+  <div class="sec-meta">
+    <div class="sec-title">Section 10 · Sodium Imbalance</div>
+    <div class="sec-sub">Hypo- and hypernatremia — classification, symptoms, correction rates</div>
+  </div>
+  <span class="chevron">▾</span>
+</div>
+<div class="card-body">
+
+  <div class="hy box">
+    <div class="box-title">⭐ Key Physiology</div>
+    <ul>
+      <li><mark class="y">Na⁺ is responsible for the majority of osmotic activity in the ECF</mark></li>
+      <li>Water moves from lower → higher solute concentration to maintain equilibrium</li>
+      <li>Na⁺ imbalances reflect an impaired concentration between water and sodium</li>
+      <li>Treatment: restrict or expand water AND supplement or eliminate sodium</li>
+    </ul>
+  </div>
+
+  <h3>Hyponatremia</h3>
+  <p>ECV is <mark class="y">hypo-osmolar</mark> compared to ICV → water moves <strong>into</strong> ICV. Most significant effect is <span class="red">cerebral edema</span> (brain confined within fixed cranium).</p>
+
+  <h4>Symptoms by Plasma Na⁺ Level</h4>
+  <table>
+    <tr><th>Plasma Na⁺ (mEq/L)</th><th>Signs / Symptoms</th></tr>
+    <tr><td>135–130</td><td>Little to no symptoms; may see mild neurologic signs</td></tr>
+    <tr><td>129–125</td><td>Nausea, malaise</td></tr>
+    <tr><td>124–115</td><td>Headache, lethargy, altered LOC</td></tr>
+    <tr><td class="red bold">&lt;115 and/or rapid onset</td><td class="red bold">Seizures, coma, respiratory arrest, cerebral herniation</td></tr>
+  </table>
+
+  <h4>Classification</h4>
+  <table>
+    <tr><th>Type</th><th>Serum Osm</th><th>Causes</th></tr>
+    <tr><td><strong>Isotonic (Pseudo)</strong></td><td>270–300</td><td>Hyperlipidemia, hyperproteinemia, multiple myeloma, excess isotonic nonelectrolyte solutions</td></tr>
+    <tr><td><strong>Hypertonic</strong></td><td>&gt;300</td><td>Hyperglycemia, mannitol, excess glycerol therapy</td></tr>
+    <tr><td><strong>Hypotonic — Hypovolemic</strong></td><td>&lt;270</td><td>Diuretics, ketonuria, Addison's, vomiting/diarrhea, third spacing, sweating, salt-loss nephropathy</td></tr>
+    <tr><td><strong>Hypotonic — Isovolemic</strong></td><td>&lt;270</td><td><mark class="y">SIADH</mark>, renal failure, hypothyroidism, drugs, water intoxication, porphyria, pain, stress, PPV</td></tr>
+    <tr><td><strong>Hypotonic — Hypervolemic</strong></td><td>&lt;270</td><td>Nephrotic syndrome, cirrhosis, CHF, renal failure</td></tr>
+  </table>
+
+  <h4>Treatment</h4>
+  <div class="warn box">
+    <div class="box-title">⚠ Correction Rate — Critical</div>
+    <ul>
+      <li>Initial: fluid restriction, diuresis, ± vasopressin receptor antagonists (<mark class="y">tolvaptan, conivaptan</mark>)</li>
+      <li>Treat with <mark class="y">3% saline at 1–2 mL/kg/hr</mark></li>
+      <li>Correct <span class="red">no more than 1–2 mEq/L/hr</span></li>
+      <li>Raise <span class="red">no more than 10–15 mmol/L in 24 hours</span></li>
+      <li>Rapid correction → <span class="red">Central Pontine Myelinolysis (osmotic demyelination)</span></li>
+    </ul>
+  </div>
+
+  <h3>Hypernatremia</h3>
+  <p>Usually the result of <mark class="y">impaired water intake</mark>. Rapidly occurring hypernatremia → rapid <span class="red">brain shrinkage</span> → traction on intracranial veins → <span class="red">intracranial hemorrhage</span>. Rapid treatment with free water → risk of cerebral edema.</p>
+
+  <p><strong>Free Water Deficit:</strong> <mark class="y">[(Na/140) – 1] × TBW</mark></p>
+
+  <h4>Symptoms by Osmolality</h4>
+  <table>
+    <tr><th>Osmolality (mOsm/kg)</th><th>Signs / Symptoms</th></tr>
+    <tr><td>350–375</td><td>Confusion, restlessness, agitation, headache</td></tr>
+    <tr><td>376–400</td><td>Ataxia, tremors, weakness</td></tr>
+    <tr><td>401–430</td><td>Hyperreflexia, muscle twitching/spasm</td></tr>
+    <tr><td class="red bold">&gt;430</td><td class="red bold">Coma, seizures, death</td></tr>
+  </table>
+
+  <div class="tip box">
+    <div class="box-title">💡 Correction Rate</div>
+    <p><strong>Acute</strong> (&lt;24 hrs): can correct rapidly with hypotonic solutions.<br>
+    <strong>Chronic</strong> (&gt;24 hrs): reduce at <mark class="y">1–2 mEq/hr</mark></p>
+  </div>
+
+  <div class="self-check">
+    <div class="sc-hdr"><span class="sc-icon">✓</span> Self-Check</div>
+    <div class="sc-items">
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Hyponatremia: ECV hypo-osmolar → water moves INTO ICV → cerebral edema</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">SIADH causes isovolemic hypotonic hyponatremia</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Correct hyponatremia ≤1–2 mEq/L/hr; ≤10–15 mmol/L/24hr — risk: central pontine myelinolysis</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Hypernatremia: free water deficit = [(Na/140)–1] × TBW; chronic: correct at 1–2 mEq/hr</span></div>
+    </div>
+    <span class="sc-reset" onclick="resetChecks(this)">Reset self-checks</span>
+  </div>
+  <div class="transition-text">Next — the electrolyte with the most critical cardiac implications…</div>
+</div>
+</div>
+
+<!-- S11 -->
+<div class="card" id="s11">
+<div class="card-hdr" onclick="toggle('s11')">
+  <div class="sec-num">11</div>
+  <div class="sec-meta">
+    <div class="sec-title">Section 11 · Potassium Imbalance</div>
+    <div class="sec-sub">Hypo- and hyperkalemia — ECG changes, causes, and treatment</div>
+  </div>
+  <span class="chevron">▾</span>
+</div>
+<div class="card-body">
+
+  <div class="hy box">
+    <div class="box-title">⭐ Key Numbers</div>
+    <ul>
+      <li>Principle intracellular electrolyte — <mark class="y">98% of body's K⁺ storage</mark></li>
+      <li>ICF: 150–160 mEq/L &nbsp;|&nbsp; ECF: <mark class="y">3.5–5 mEq/L</mark></li>
+      <li>Aldosterone stimulates K⁺ excretion</li>
+      <li><span class="red">K⁺ &gt;5.5 or &lt;4 mEq/L</span> undergoing noncardiac surgery → ↑ risk of <strong>MACE</strong></li>
+    </ul>
+  </div>
+
+  <h3>Hypokalemia — Serum &lt;3.5 mEq/L</h3>
+  <h4>Symptoms</h4>
+  <ul>
+    <li>Mild: palpitations, skeletal muscle weakness &amp; pain</li>
+    <li>Serum &lt;2.5: paresthesias, depressed DTR, fasciculations, weakness, altered LOC</li>
+    <li>Arrhythmias: <mark class="r">1st &amp; 2nd degree block, atrial or V-fib, asystole</mark></li>
+  </ul>
+  <h4>Causes</h4>
+  <table>
+    <tr><th>Category</th><th>Examples</th></tr>
+    <tr><td>Renal losses</td><td>Diuretics, steroids, metabolic acidosis, hyperaldosteronism, DKA, alcohol</td></tr>
+    <tr><td>Non-renal losses</td><td>Sweating, diarrhea, vomiting, laxatives</td></tr>
+    <tr><td>↓ Intake</td><td>Ethanol, malnutrition</td></tr>
+    <tr><td>Intracellular shift</td><td>Hyperventilation, metabolic alkalosis, beta-agonists, theophylline</td></tr>
+    <tr><td>Endocrinopathy</td><td>Cushing disease, Bartter syndrome, insulin therapy</td></tr>
+  </table>
+  <div class="tip box">
+    <div class="box-title">💡 Treatment</div>
+    <ul>
+      <li><mark class="y">10–20 mEq/hr KCl IV (dextrose-free)</mark>; oral therapy once stabilized</li>
+      <li>Hypochloremia makes it difficult for the kidney to conserve K⁺</li>
+      <li>Insulin → facilitates K⁺ redistribution into intracellular space</li>
+    </ul>
+  </div>
+
+  <h3>Hyperkalemia — Serum &gt;5 mEq/L</h3>
+  <div class="warn box">
+    <div class="box-title">⚠ ECG Warning</div>
+    <p>When K⁺ &gt;8 mEq/L → <span class="red">QRS widening → Sine waves → V-fib → Cardiac arrest</span><br>
+    Always rule out <mark class="y">pseudohyperkalemia</mark> (hemolysis, leukocytosis, thrombosis, prolonged fist clenching during draw)</p>
+  </div>
+
+  <h4>Causes</h4>
+  <table>
+    <tr><th>Category</th><th>Examples</th></tr>
+    <tr><td>↑ K⁺ intake</td><td>K⁺ supplements, salt substitutes, stored blood, K⁺-containing medications</td></tr>
+    <tr><td>Impaired renal excretion</td><td>Renal failure, K⁺-sparing diuretics, hypoaldosteronism, SLE, Addison's</td></tr>
+    <tr><td>Transcellular shift</td><td>Acidosis, hypertonicity, insulin deficiency, beta-blockers, digitalis, <mark class="r">succinylcholine</mark>, exercise</td></tr>
+    <tr><td>Cellular injury</td><td>Rhabdomyolysis, severe hemolysis, tumor lysis syndrome, burns &amp; crush injuries</td></tr>
+  </table>
+
+  <h4>Treatment Guidelines</h4>
+  <table>
+    <tr><th>Clinical Feature</th><th>Therapy</th><th>Onset</th><th>Duration</th><th>MOA</th></tr>
+    <tr><td rowspan="3"><strong>ECG: impending arrest</strong> (↓ P wave, QRS widening)</td><td>IV Calcium chloride 10 mL of 10% over 10 min</td><td>1–3 min</td><td>30–60 min</td><td>Membrane stabilization</td></tr>
+    <tr><td>IV Calcium gluconate 10 mL of 10% over 3–5 min</td><td>1–3 min</td><td>30–60 min</td><td>Membrane stabilization</td></tr>
+    <tr><td>IV NaHCO₃ 50–100 mEq over 10–20 min</td><td>5–10 min</td><td>1–2 hr</td><td>Shifts K⁺ intracellular</td></tr>
+    <tr><td><strong>ECG: peaked T waves</strong> (prompt therapy)</td><td>D50W 50 mL + 10 units regular insulin; <strong>Immediate hemodialysis</strong></td><td>30 min</td><td>4–6 hr</td><td>Shifts K⁺ intracellularly</td></tr>
+    <tr><td rowspan="2"><strong>Biochemical only</strong> (no ECG changes)</td><td>K⁺-binding resins in GI tract</td><td>1–2 hr</td><td>4–6 hr</td><td>GI excretion</td></tr>
+    <tr><td>Furosemide 40 mg IV</td><td>15–30 min</td><td>2–3 hr</td><td>Renal excretion</td></tr>
+  </table>
+
+  <div class="self-check">
+    <div class="sc-hdr"><span class="sc-icon">✓</span> Self-Check</div>
+    <div class="sc-items">
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">K⁺ &gt;5.5 or &lt;4 mEq/L → ↑ MACE risk for noncardiac surgery</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Hypokalemia treatment: 10–20 mEq/hr KCl IV dextrose-free</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">K⁺ &gt;8: Sine waves → V-fib → arrest. First tx: IV calcium (membrane stabilization)</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Succinylcholine can cause transcellular K⁺ shift → dangerous in hyperkalemia</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Peaked T waves → glucose + insulin infusion (shifts K⁺ intracellular)</span></div>
+    </div>
+    <span class="sc-reset" onclick="resetChecks(this)">Reset self-checks</span>
+  </div>
+  <div class="transition-text">Next — the electrolyte with the most complex forms and the closest tie to PTH…</div>
+</div>
+</div>
+
+<!-- S12 -->
+<div class="card" id="s12">
+<div class="card-hdr" onclick="toggle('s12')">
+  <div class="sec-num">12</div>
+  <div class="sec-meta">
+    <div class="sec-title">Section 12 · Calcium Imbalance</div>
+    <div class="sec-sub">Hypo- and hypercalcemia — causes, symptoms, and treatment</div>
+  </div>
+  <span class="chevron">▾</span>
+</div>
+<div class="card-body">
+
+  <div class="hy box">
+    <div class="box-title">⭐ Key Numbers</div>
+    <ul>
+      <li>99% in bones as <mark class="y">hydroxyapatite</mark>; 1% in plasma and cells</li>
+      <li>Total serum calcium: <mark class="y">8.5–10.5 mg/dL</mark></li>
+      <li>Normal ionized values: <mark class="y">2–2.5 mEq/L</mark></li>
+      <li>Forms: ionized + physiologically active (50%) · bound to anions (10%) · bound to proteins (40%)</li>
+      <li>Primarily maintained by <mark class="y">PTH (parathyroid hormone)</mark></li>
+      <li><span class="u">Measure ionized calcium</span> — preferred, especially in critical illness or hypoalbuminemia</li>
+      <li><mark class="r">Acidemia</mark> → ↓ protein-bound → ↑ ionized portion (and vice versa)</li>
+      <li>Second messenger in muscle contraction, neurotransmitter/hormone release, coagulation, myocardial contractility</li>
+    </ul>
+  </div>
+
+  <h3>Hypocalcemia</h3>
+  <div class="warn box">
+    <div class="box-title">⚠ Most Likely Intraoperative Causes</div>
+    <p><mark class="y">Hyperventilation</mark> and <mark class="y">rapid massive transfusion</mark> (citrate binding)</p>
+  </div>
+
+  <h4>Causes</h4>
+  <ul>
+    <li>PTH insufficiency: primary (congenital syndromes); secondary (neck surgery, metastatic carcinoma, hypo/hypermagnesemia, sepsis, pancreatitis, burns, ethanol, cimetidine)</li>
+    <li>Vitamin D insufficiency: rickets, malnutrition, malabsorption, liver/renal disease, hypomagnesemia, anticonvulsants (phenytoin, primidone)</li>
+    <li>PTH resistance / Calcium chelation: hyperphosphatemia, citrate, free fatty acids, alkalosis, fluoride poisoning</li>
+  </ul>
+
+  <h4>Symptoms</h4>
+  <table>
+    <tr><th>System</th><th>Symptoms</th></tr>
+    <tr><td>Neuromuscular</td><td>Paresthesia, weakness, spasm, tetany, <mark class="y">Chvostek's sign</mark> (facial/eye twitching), <mark class="y">Trousseau's sign</mark> (carpopedal spasm), hyperreflexia, seizures</td></tr>
+    <tr><td>Cardiovascular</td><td>Bradycardia, angina, hypotension, CHF, cardiac arrest, digitalis insensitivity, <mark class="y">QT prolongation</mark></td></tr>
+    <tr><td>Pulmonary</td><td>Bronchospasm, laryngospasm</td></tr>
+    <tr><td>Psychiatric</td><td>Anxiety, depression, irritability, confusion, psychosis, dementia</td></tr>
+  </table>
+
+  <div class="tip box">
+    <div class="box-title">💡 Treatment</div>
+    <ul>
+      <li>Guide by <mark class="y">ionized calcium levels</mark></li>
+      <li><mark class="y">10 mL Calcium gluconate</mark> = 93 mg elemental calcium (peripheral-friendly)</li>
+      <li><mark class="y">Calcium chloride</mark> = 272 mg elemental calcium — most rapid, but <span class="red">tissue necrosis and venous irritation risk</span></li>
+    </ul>
+  </div>
+
+  <h3>Hypercalcemia</h3>
+  <h4>Causes</h4>
+  <ul>
+    <li>Primary hyperparathyroidism</li>
+    <li>Malignant disease: PTHrP, ectopic 1,25-dihydroxyvitamin D, osteolytic metastasis</li>
+    <li>Medications: thiazide diuretics, lithium, estrogens, vitamin D/A toxicity, calcium ingestion</li>
+    <li>Granulomatous disorders: sarcoidosis, tuberculosis, coccidioidomycosis, berylliosis, <strong>histoplasmosis, leprosy</strong></li>
+    <li><strong>Nonparathyroid endocrine disorders:</strong> hyperparathyroidism, adrenal insufficiency, pheochromocytoma, acromegaly, vasoactive intestinal polypeptide-producing tumor</li>
+    <li>Miscellaneous: milk-alkali syndrome, immobilization</li>
+  </ul>
+  <h4>Symptoms</h4>
+  <table>
+    <tr><th>System</th><th>Symptoms</th></tr>
+    <tr><td>Neurologic</td><td>Fatigue, weakness, confusion, lethargy, seizures, coma, hypotonia, ↓ DTR</td></tr>
+    <tr><td>Cardiovascular</td><td>Hypertension, ST elevation, sinus brady/arrest, AV block, <mark class="y">short QT</mark>, BBB, ventricular dysrhythmias, potentiation of digoxin toxicity</td></tr>
+    <tr><td>Renal</td><td>Polyuria, polydipsia, dehydration, electrolyte loss, prerenal azotemia, nephrolithiasis, <strong>nephrocalcinosis</strong></td></tr>
+    <tr><td>GI</td><td>Nausea/vomiting, anorexia, peptic ulcers, pancreatitis, constipation/ileus</td></tr>
+  </table>
+  <div class="tip box">
+    <div class="box-title">💡 Treatment</div>
+    <ul>
+      <li><mark class="y">NS infusion</mark> → increases Ca²⁺ excretion</li>
+      <li>Add loop diuretic to further enhance excretion</li>
+      <li>Also: bisphosphonates, <strong>mithramycin</strong>, calcitonin, glucocorticoids, phosphate salts</li>
+      <li><strong>Hemodialysis</strong> for acute life-threatening hypercalcemia</li>
+    </ul>
+  </div>
+
+  <div class="self-check">
+    <div class="sc-hdr"><span class="sc-icon">✓</span> Self-Check</div>
+    <div class="sc-items">
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Most likely intraop hypocalcemia causes: hyperventilation + rapid massive transfusion</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Chvostek's = facial twitching; Trousseau's = carpopedal spasm — both hypocalcemia signs</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Hypocalcemia: QT prolongation; Hypercalcemia: short QT + digoxin potentiation</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Acidemia → ↑ ionized Ca²⁺ (↓ protein binding); alkalosis → ↓ ionized Ca²⁺</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Calcium chloride &gt; calcium gluconate in elemental Ca²⁺; but risky peripherally</span></div>
+    </div>
+    <span class="sc-reset" onclick="resetChecks(this)">Reset self-checks</span>
+  </div>
+</div>
+</div>
+
+<!-- S13 -->
+<div class="card" id="s13">
+<div class="card-hdr" onclick="toggle('s13')">
+  <div class="sec-num">13</div>
+  <div class="sec-meta">
+    <div class="sec-title">Section 13 · Phosphate &amp; Magnesium Imbalances</div>
+    <div class="sec-sub">Hypo/hyperphosphatemia and hypo/hypermagnesemia — clinical uses of Mg</div>
+  </div>
+  <span class="chevron">▾</span>
+</div>
+<div class="card-body">
+
+  <h3>Phosphate</h3>
+  <div class="note box">
+    <ul>
+      <li>85% in bone; plasma forms: phospholipids, phosphate esters, inorganic phosphate (ionized)</li>
+      <li>Intracellular roles: component of <mark class="y">ATP</mark> and <mark class="y">2,3-DPG</mark></li>
+      <li>Acts as a <strong>buffer in acid-base balance</strong></li>
+      <li>Concentration <mark class="y">inversely proportional to calcium</mark>; regulated by same mechanisms (PTH, vitamin D, calcitonin)</li>
+    </ul>
+  </div>
+
+  <table>
+    <tr><th>Condition</th><th>Causes</th><th>Manifestations</th></tr>
+    <tr><td><strong>Hypophosphatemia</strong> (&lt;2 mg/dL)</td><td>Intestinal malabsorption (Vit D deficiency, Mg/Al antacids, chronic alcohol), respiratory alkalosis, hyperparathyroidism</td><td>↓ O₂ transport &amp; ATP creation, platelet dysfunction, <strong>bone reabsorption</strong>, altered nerve/muscle function, confusion, coma, seizures, muscle weakness, <span class="red">respiratory failure, cardiomyopathy</span></td></tr>
+    <tr><td><strong>Hyperphosphatemia</strong> (&gt;4.7 mg/dL)</td><td>Acute/chronic renal failure, metastatic tumor treatment, phosphate-containing laxatives/enemas, hypoparathyroidism</td><td>Symptoms related to hypocalcemia; chronic calcification of soft tissues (joints, lungs, kidneys)</td></tr>
+  </table>
+  <div class="tip box">
+    <div class="box-title">💡 Treatment</div>
+    <p>Hypophosphatemia: oral or IV supplementation &nbsp;|&nbsp; Hyperphosphatemia: <mark class="y">aluminum hydroxide</mark> — binds phosphate in GI tract</p>
+  </div>
+
+  <h3>Magnesium — Normal Range: 1.5–3 mEq/L</h3>
+  <p>Regulated in intestines and kidneys. Functions in enzymatic processes, Na⁺/K⁺-ATPase pump, protein synthesis, neuromuscular excitability. Common in hospitalized patients, critical illness, and excessive alcohol use.</p>
+
+  <h4>Hypomagnesemia</h4>
+  <p><strong>Symptoms:</strong> Inhibits Na⁺/K⁺-ATPase → ↓ ICV K⁺; N/V, tetany, <mark class="y">flat T-waves, U-waves, prolonged QT, wide QRS, arrhythmias</mark></p>
+  <table>
+    <tr><th>Category</th><th>Causes</th></tr>
+    <tr><td>Renal loss</td><td>Renal failure, postobstructive diuresis, tubular necrosis, transplant</td></tr>
+    <tr><td>GI loss</td><td>Chronic diarrhea, NG suction, short-bowel syndrome, TPN, pancreatitis</td></tr>
+    <tr><td>Endocrine</td><td>DM, hyperaldosteronism, hyperthyroidism, hyperparathyroidism</td></tr>
+    <tr><td>Medications</td><td>Aminoglycosides, amphotericin, beta-agonists, cisplatin, cyclosporine, <mark class="y">diuretics</mark>, foscarnet, PPIs, theophylline</td></tr>
+    <tr><td>Miscellaneous</td><td>Pregnancy, excessive alcohol, citrate binding with blood administration</td></tr>
+  </table>
+  <div class="tip box">
+    <div class="box-title">💡 Treatment</div>
+    <p><mark class="y">1–2 g IV magnesium sulfate over 5 min</mark>, followed by 1–2 g/hr. Also relieves severe bronchospasm, arrhythmias, and ↓ postoperative pain.</p>
+  </div>
+
+  <h4>Hypermagnesemia — Causes &amp; Manifestations by Level</h4>
+  <p><strong>Causes:</strong> Overadministration during treatment of preeclampsia, preterm labor, ischemic heart disease, and dysrhythmias; renal failure, excessive intake, adrenal insufficiency</p>
+  <div class="warn box">
+    <div class="box-title">⚠ Clinical Warning</div>
+    <p><span class="red">Potentiates action of nondepolarizing NMB agents</span></p>
+    <table style="margin-top:8px">
+      <tr><th>Serum Level (mEq/L)</th><th>Manifestations</th></tr>
+      <tr><td>4–5</td><td>↓ DTR</td></tr>
+      <tr><td>5–7</td><td>Hypotension</td></tr>
+      <tr><td>10</td><td>Respiratory paralysis, coma</td></tr>
+      <tr><td class="red bold">10–20</td><td class="red bold">Heart block &amp; cardiac arrest</td></tr>
+    </table>
+    <p style="margin-top:8px">Treatment: Stop infusion. Urgent: <mark class="y">Calcium gluconate 10–15 mg/kg IV</mark> as antagonist.</p>
+  </div>
+
+  <h4>Magnesium Clinical Uses Summary</h4>
+  <table>
+    <tr><th>Indication</th><th>Mechanism &amp; Dose</th></tr>
+    <tr><td><strong>Preeclampsia</strong></td><td>Systemic/vertebral/uterine vasodilation via direct effects + ↑ endogenous vasodilators. <mark class="y">4 g IV over 15 min → 1 g/hr × 24 hr.</mark> Crosses placenta → neonatal lethargy/hypotension/respiratory depression.</td></tr>
+    <tr><td><strong>Dysrhythmias</strong></td><td>Blocks Ca²⁺ influx → ↓ SA node activity, prolongs AV conduction. <mark class="y">Recommended for torsades de pointes.</mark></td></tr>
+    <tr><td><strong>Analgesia</strong></td><td>Calcium and NMDA antagonism</td></tr>
+    <tr><td><strong>Asthma</strong></td><td>Bronchodilation via calcium inhibition in smooth muscle</td></tr>
+    <tr><td><strong>Pheochromocytoma</strong></td><td>Reduces catecholamine release and dilates vasculature</td></tr>
+  </table>
+
+  <div class="self-check">
+    <div class="sc-hdr"><span class="sc-icon">✓</span> Self-Check</div>
+    <div class="sc-items">
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Phosphate inversely proportional to calcium; regulated by PTH, vitamin D, calcitonin</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Hypophosphatemia → ↓ ATP + ↓ 2,3-DPG → ↓ O₂ delivery; treat with PO or IV phosphate</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Hypomagnesemia: flat T-waves, U-waves, prolonged QT, wide QRS — treat 1–2 g IV MgSO₄</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Hypermagnesemia: potentiates nondepolarizing NMB; Mg 10–20 mEq/L → heart block + arrest</span></div>
+      <div class="sc-item" onclick="checkItem(this)"><div class="sc-check"></div><span class="sc-text">Mg uses: preeclampsia (4 g load → 1 g/hr) · torsades · asthma · analgesia · pheochromocytoma</span></div>
+    </div>
+    <span class="sc-reset" onclick="resetChecks(this)">Reset self-checks</span>
+  </div>
+</div>
+</div>
+
+</div><!-- end phase 5 -->
+
+</main>
+
+<script>
+function toggle(id){
+  document.getElementById(id).classList.toggle('open');
+}
+function toggleAll(open){
+  document.querySelectorAll('.card').forEach(c=>{
+    open ? c.classList.add('open') : c.classList.remove('open');
+  });
+}
+function filterPhase(phase, btn){
+  document.querySelectorAll('.nav .pill').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.phase-block').forEach(b=>{
+    b.style.display = (phase==='all' || b.dataset.phase===phase) ? '' : 'none';
+  });
+}
+function checkItem(el){
+  el.classList.toggle('checked');
+}
+function resetChecks(btn){
+  btn.closest('.self-check').querySelectorAll('.sc-item').forEach(i=>i.classList.remove('checked'));
+}
+</script>
+</body>
+</html>
