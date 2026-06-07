@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Blood & Hemostasis — Part 1 Study Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --cream: #FDFCF9;
+    --white: #ffffff;
+    --text-dark: #1a1a2e;
+    --text-mid: #3d3d5c;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --border-strong: #d1d5db;
+
+    --high-yield-bg: #fffbeb;
+    --high-yield-border: #D97706;
+    --high-yield-title: #92400e;
+    --high-yield-text: #78350f;
+
+    --exam-tip-bg: #eff6ff;
+    --exam-tip-border: #2563EB;
+    --exam-tip-title: #1e3a8a;
+    --exam-tip-text: #1e40af;
+
+    --instructor-bg: #f0fdf4;
+    --instructor-border: #16a34a;
+    --instructor-title: #14532d;
+    --instructor-text: #166534;
+
+    --warning-bg: #fff7ed;
+    --warning-border: #ea580c;
+    --warning-title: #7c2d12;
+    --warning-text: #9a3412;
+
+    --pt1-accent: #7c3aed;
+    --pt1-light: #ede9fe;
+    --pt2-accent: #0369a1;
+    --pt2-light: #e0f2fe;
+
+    --nav-bg: #1e1b4b;
+    --nav-text: #e0e7ff;
+    --nav-hover: #312e81;
+    --nav-active: #4f46e5;
+
+    --section-header-bg: #1e1b4b;
+    --section-header-text: #ffffff;
+
+    --tag-intrinsic-bg: #dbeafe;
+    --tag-intrinsic-text: #1e3a8a;
+    --tag-extrinsic-bg: #fce7f3;
+    --tag-extrinsic-text: #831843;
+    --tag-common-bg: #d1fae5;
+    --tag-common-text: #064e3b;
+    --tag-liver-bg: #fef3c7;
+    --tag-liver-text: #78350f;
+    --tag-vitk-bg: #f5f3ff;
+    --tag-vitk-text: #4c1d95;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  /* ── TOP HEADER ── */
+  .site-header {
+    background: var(--nav-bg);
+    color: #fff;
+    padding: 2rem 2rem 1.5rem;
+    border-bottom: 4px solid var(--nav-active);
+    text-align: center;
+  }
+  .site-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .site-header .subtitle {
+    font-size: 1rem;
+    color: #a5b4fc;
+    margin-top: 0.25rem;
+  }
+  .legend-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.25rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.07);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 13px;
+    color: #c7d2fe;
+  }
+  .legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ── STICKY NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--nav-bg);
+    border-bottom: 2px solid var(--nav-active);
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    text-align: center;
+  }
+  .sticky-nav::-webkit-scrollbar { display: none; }
+  .sticky-nav ul {
+    display: inline-flex;
+    gap: 0;
+    list-style: none;
+    padding: 0;
+  }
+  .sticky-nav a {
+    display: block;
+    padding: 0.6rem 1rem;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--nav-text);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .sticky-nav a:hover { background: var(--nav-hover); border-bottom-color: #818cf8; }
+  .sticky-nav a.pt2 { color: #7dd3fc; }
+  .sticky-nav a.pt2:hover { border-bottom-color: #38bdf8; }
+
+  /* ── PART BANNERS ── */
+  .part-banner {
+    padding: 1rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .part-banner.pt1 { background: var(--pt1-light); color: var(--pt1-accent); border-left: 5px solid var(--pt1-accent); }
+  .part-banner.pt2 { background: var(--pt2-light); color: var(--pt2-accent); border-left: 5px solid var(--pt2-accent); }
+
+  /* ── MAIN LAYOUT ── */
+  main { max-width: 960px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+  /* ── SECTION ── */
+  .section { margin: 2.5rem 0 0; }
+  .section-header {
+    background: var(--section-header-bg);
+    color: var(--section-header-text);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    user-select: none;
+  }
+  .section-header:hover { background: #2d2a5e; }
+  .section-header .sec-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .section-header .sec-num {
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: rgba(255,255,255,0.12);
+    color: #c7d2fe;
+    padding: 0.2rem 0.6rem;
+    border-radius: 99px;
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+  }
+  .section-header .chevron {
+    font-size: 18px;
+    color: #a5b4fc;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .section-header.open .chevron { transform: rotate(180deg); }
+
+  .section-body {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    padding: 1.75rem 1.75rem 1.5rem;
+    display: none;
+  }
+  .section-body.open { display: block; }
+
+  /* ── SUBSECTION ── */
+  .subsection {
+    border-left: 4px solid #e5e7eb;
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .subsection-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--pt1-accent);
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+  }
+  .subsection-title.blue { color: var(--pt2-accent); }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+  }
+  .callout-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .callout-title::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .callout.high-yield {
+    background: var(--high-yield-bg);
+    border-left-color: var(--high-yield-border);
+    border-color: #fde68a;
+  }
+  .callout.high-yield .callout-title { color: var(--high-yield-title); }
+  .callout.high-yield .callout-title::before { background: var(--high-yield-border); }
+  .callout.high-yield p, .callout.high-yield li { color: var(--high-yield-text); font-size: 17px; }
+
+  .callout.exam-tip {
+    background: var(--exam-tip-bg);
+    border-left-color: var(--exam-tip-border);
+    border-color: #bfdbfe;
+  }
+  .callout.exam-tip .callout-title { color: var(--exam-tip-title); }
+  .callout.exam-tip .callout-title::before { background: var(--exam-tip-border); }
+  .callout.exam-tip p, .callout.exam-tip li { color: var(--exam-tip-text); font-size: 17px; }
+
+  .callout.instructor {
+    background: var(--instructor-bg);
+    border-left-color: var(--instructor-border);
+    border-color: #bbf7d0;
+  }
+  .callout.instructor .callout-title { color: var(--instructor-title); }
+  .callout.instructor .callout-title::before { background: var(--instructor-border); }
+  .callout.instructor p, .callout.instructor li { color: var(--instructor-text); font-size: 17px; font-style: italic; }
+
+  .callout.warning {
+    background: var(--warning-bg);
+    border-left-color: var(--warning-border);
+    border-color: #fed7aa;
+  }
+  .callout.warning .callout-title { color: var(--warning-title); }
+  .callout.warning .callout-title::before { background: var(--warning-border); }
+  .callout.warning p, .callout.warning li { color: var(--warning-text); font-size: 17px; }
+
+  /* ── LISTS ── */
+  ul.content-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+  }
+  ul.content-list li {
+    padding: 0.3rem 0 0.3rem 1.4rem;
+    position: relative;
+    font-size: 17px;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+  ul.content-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0.3rem;
+    color: var(--text-muted);
+  }
+  ul.content-list li strong {
+    color: var(--text-dark);
+    font-weight: 600;
+  }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 1rem 0; border-radius: var(--radius-md); border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 16px; }
+  th {
+    background: #1e1b4b;
+    color: #fff;
+    padding: 0.7rem 0.9rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+  }
+  td {
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-mid);
+    vertical-align: top;
+    font-size: 16px;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #fafafa; }
+  td strong { color: var(--text-dark); font-weight: 600; }
+  td.highlight { color: #dc2626; font-weight: 600; }
+
+  /* ── TAGS ── */
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 99px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+  .tag.intrinsic { background: var(--tag-intrinsic-bg); color: var(--tag-intrinsic-text); }
+  .tag.extrinsic { background: var(--tag-extrinsic-bg); color: var(--tag-extrinsic-text); }
+  .tag.common { background: var(--tag-common-bg); color: var(--tag-common-text); }
+  .tag.liver { background: var(--tag-liver-bg); color: var(--tag-liver-text); }
+  .tag.vitk { background: var(--tag-vitk-bg); color: var(--tag-vitk-text); }
+
+  /* ── MNEMONIC BOX ── */
+  .mnemonic {
+    background: #fdf4ff;
+    border: 2px dashed #c084fc;
+    border-radius: var(--radius-md);
+    padding: 0.9rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .mnemonic-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #7e22ce;
+    margin-bottom: 0.4rem;
+  }
+  .mnemonic p { color: #581c87; font-size: 17px; font-weight: 500; }
+
+  /* ── FORMULA BOX ── */
+  .formula-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-family: 'Merriweather', serif;
+    font-size: 17px;
+    color: #0f172a;
+  }
+  .formula-box .formula-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+  .formula-example {
+    margin-top: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: var(--text-mid);
+  }
+
+  /* ── PATHWAY DIAGRAM ── */
+  .pathway-diagram {
+    background: #f8f9ff;
+    border: 2px solid #c7d2fe;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin: 1.25rem 0;
+    overflow-x: auto;
+  }
+  .pathway-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #4338ca;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  /* flow SVG styles */
+  .flow-svg { display: block; margin: 0 auto; max-width: 100%; }
+
+  /* ── SELF-CHECK ── */
+  .self-check {
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin: 1.5rem 0 0;
+  }
+  .self-check-toggle {
+    background: #f3f4f6;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    user-select: none;
+  }
+  .self-check-toggle:hover { background: #e5e7eb; }
+  .self-check-body {
+    display: none;
+    padding: 1rem 1.25rem;
+    background: var(--white);
+  }
+  .self-check-body.open { display: block; }
+  .self-check-body ul { padding-left: 0; list-style: none; }
+  .self-check-body li {
+    font-size: 16px;
+    color: var(--text-mid);
+    margin: 0.45rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    line-height: 1.5;
+  }
+  .self-check-body li input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    border: 2px solid #9ca3af;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    margin-top: 2px;
+    position: relative;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .self-check-body li input[type="checkbox"]:checked {
+    background: #6b7280;
+    border-color: #6b7280;
+  }
+  .self-check-body li input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 0px;
+    width: 6px;
+    height: 10px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+  }
+  .self-check-body li label { cursor: pointer; flex: 1; }
+  .self-check-body li input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+    color: #9ca3af;
+  }
+
+  /* ── EXPAND ALL ── */
+  .controls-bar {
+    display: flex;
+    gap: 0.75rem;
+    margin: 1.5rem 0 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .ctrl-btn {
+    padding: 0.45rem 1rem;
+    border-radius: 99px;
+    border: 1px solid var(--border-strong);
+    background: var(--white);
+    color: var(--text-mid);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .ctrl-btn:hover { background: #f3f4f6; }
+  .ctrl-btn.primary { background: var(--nav-bg); color: #fff; border-color: var(--nav-bg); }
+  .ctrl-btn.primary:hover { background: #2d2a5e; }
+
+  /* ── EXAM QUICK REF (section 16) ── */
+  .quick-ref-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+    margin: 1rem 0;
+  }
+  @media (max-width: 640px) { .quick-ref-grid { grid-template-columns: 1fr; } }
+  .qr-card {
+    background: #f8f9ff;
+    border: 1px solid #c7d2fe;
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1rem;
+  }
+  .qr-card h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #3730a3;
+    margin-bottom: 0.5rem;
+  }
+  .qr-card p, .qr-card li { font-size: 15px; color: var(--text-mid); line-height: 1.55; }
+  .qr-card ul { padding-left: 1.1rem; }
+  .qr-card ul li { margin: 0.2rem 0; }
+
+  /* ── DRUG TABLE COLORS ── */
+  .drug-heparin { background: #fffbeb; }
+  .drug-warfarin { background: #fdf4ff; }
+  .drug-doac { background: #eff6ff; }
+  .drug-antiplatelet { background: #fff7ed; }
+  .drug-reversal { background: #f0fdf4; }
+
+  /* ── COMPATIBILITY TABLE ── */
+  .compat-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+  .compat-cell {
+    text-align: center;
+    padding: 0.5rem 0.25rem;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .compat-header { background: #1e1b4b; color: #fff; }
+  .compat-yes { background: #dcfce7; color: #166534; }
+  .compat-no { background: #fee2e2; color: #991b1b; }
+
+  /* step boxes */
+  .steps-row {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+  }
+  .step-box {
+    flex: 1;
+    min-width: 140px;
+    padding: 0.9rem 1rem;
+    text-align: center;
+    position: relative;
+  }
+  .step-box:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -0.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    z-index: 1;
+  }
+  .step-box .step-num {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .step-box .step-name { font-size: 0.9rem; font-weight: 700; }
+  .step-box .step-detail { font-size: 13px; margin-top: 0.3rem; line-height: 1.4; }
+  .step-adhesion { background: #ede9fe; border-radius: var(--radius-md); }
+  .step-adhesion .step-num { color: #6d28d9; }
+  .step-adhesion .step-name { color: #4c1d95; }
+  .step-adhesion .step-detail { color: #5b21b6; }
+  .step-activation { background: #fce7f3; border-radius: var(--radius-md); }
+  .step-activation .step-num { color: #be185d; }
+  .step-activation .step-name { color: #831843; }
+  .step-activation .step-detail { color: #9d174d; }
+  .step-aggregation { background: #dcfce7; border-radius: var(--radius-md); }
+  .step-aggregation .step-num { color: #15803d; }
+  .step-aggregation .step-name { color: #14532d; }
+  .step-aggregation .step-detail { color: #166534; }
+  .step-result { background: #fff7ed; border-radius: var(--radius-md); }
+  .step-result .step-num { color: #c2410c; }
+  .step-result .step-name { color: #7c2d12; }
+  .step-result .step-detail { color: #9a3412; }
+
+  /* ── HIGHLIGHT SPANS ── */
+  .hl-yellow { background: #fef08a; color: #713f12; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .hl-red { background: #fee2e2; color: #991b1b; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .hl-green { background: #dcfce7; color: #14532d; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .hl-blue { background: #dbeafe; color: #1e3a8a; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .hl-purple { background: #ede9fe; color: #4c1d95; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .underline-key { text-decoration: underline; text-decoration-color: #d97706; text-decoration-thickness: 2px; font-weight: 600; }
+
+  /* back to top */
+  .back-top {
+    display: inline-block;
+    margin: 1rem 0 0;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.75rem;
+    border-radius: 99px;
+  }
+  .back-top:hover { background: #f3f4f6; }
+
+  p { font-size: 17px; color: var(--text-mid); margin: 0.5rem 0; line-height: 1.7; }
+  h3 { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin: 1.25rem 0 0.5rem; }
+  h4 { font-size: 0.9rem; font-weight: 700; color: var(--text-dark); margin: 0.75rem 0 0.35rem; }
+
+  /* toc */
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  @media (max-width: 640px) { .toc-grid { grid-template-columns: 1fr; } }
+  .toc-grid li a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    color: var(--text-mid);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    background: var(--white);
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .toc-grid li a:hover { border-color: #818cf8; background: #f5f3ff; }
+  .toc-grid li a .toc-num {
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .toc-grid li.pt1 a .toc-num { background: var(--pt1-light); color: var(--pt1-accent); }
+  .toc-grid li.pt2 a .toc-num { background: var(--pt2-light); color: var(--pt2-accent); }
+  .toc-grid li a span.toc-label { flex: 1; }
+
+  /* drug-label */
+  .drug-label {
+    display: inline-block;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius-sm);
+    padding: 2px 7px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+    font-family: 'Merriweather', serif;
+  }
+
+  /* taco-trali comparison */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-card {
+    border-radius: var(--radius-md);
+    padding: 1rem 1.1rem;
+    border: 2px solid;
+  }
+  .compare-card h4 { font-size: 0.95rem; font-weight: 700; margin: 0 0 0.6rem; }
+  .compare-card ul { padding-left: 1.1rem; }
+  .compare-card li { font-size: 16px; margin: 0.25rem 0; }
+  .compare-trali { border-color: #f97316; background: #fff7ed; }
+  .compare-trali h4 { color: #9a3412; }
+  .compare-trali li { color: #7c2d12; }
+  .compare-taco { border-color: #2563eb; background: #eff6ff; }
+  .compare-taco h4 { color: #1e3a8a; }
+  .compare-taco li { color: #1e40af; }
+</style>
+</head>
+<body>
+<a id="top"></a>
+
+<!-- SITE HEADER -->
+<header class="site-header">
+  <h1>Blood &amp; Hemostasis</h1>
+  <div class="subtitle">Parts 1 &amp; 2 — Complete Interactive Study Roadmap</div>
+  <div class="legend-bar">
+    <div class="legend-item"><div class="legend-swatch" style="background:#D97706"></div> High Yield — likely exam content</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#2563EB"></div> Exam Tip</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#16a34a"></div> Instructor Note (from audio)</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#c084fc; border: 2px dashed #c084fc;"></div> Mnemonic</div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav" aria-label="Section navigation">
+  <ul>
+    <li><a href="#s1">1. Vessel Layers</a></li>
+    <li><a href="#s2">2. Platelet Plug</a></li>
+    <li><a href="#s3">3. Clotting Factors</a></li>
+    <li><a href="#s4">4. Coag Cascade</a></li>
+    <li><a href="#s5">5. Thrombin &amp; Fibrinolysis</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- Controls -->
+  <div class="controls-bar">
+    <button class="ctrl-btn primary" onclick="expandAll()">Expand All</button>
+    <button class="ctrl-btn" onclick="collapseAll()">Collapse All</button>
+  </div>
+  <div style="text-align:center;margin-bottom:0.5rem;">
+    <span style="font-size:13px;color:var(--text-muted);">Click any section header to expand/collapse</span>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="section">
+    <div class="section-header open" onclick="toggleSection(this)" id="toc-header">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">TOC</span>
+        <span class="sec-title">Contents — All 16 Sections</span>
+      </div>
+      <span class="chevron open">▾</span>
+    </div>
+    <div class="section-body open" id="toc-body">
+      <ul class="toc-grid">
+        <li class="pt1"><a href="#s1"><span class="toc-num">1</span><span class="toc-label">Vessel Layers &amp; Endothelial Cell Function</span></a></li>
+        <li class="pt1"><a href="#s2"><span class="toc-num">2</span><span class="toc-label">Primary Hemostasis — Platelet Plug Formation</span></a></li>
+        <li class="pt1"><a href="#s3"><span class="toc-num">3</span><span class="toc-label">Clotting Factors (I–XIII)</span></a></li>
+        <li class="pt1"><a href="#s4"><span class="toc-num">4</span><span class="toc-label">Coagulation Cascade — Extrinsic, Intrinsic &amp; Common</span></a></li>
+        <li class="pt1"><a href="#s5"><span class="toc-num">5</span><span class="toc-label">Thrombin &amp; Fibrinolysis</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PART 1 BANNER -->
+  <div class="part-banner pt1">PART 1 — Blood &amp; Hemostasis</div>
+
+  <!-- ═══ SECTION 1 ═══ -->
+  <div class="section" id="s1">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.1 · 1</span>
+        <span class="sec-title">Vessel Layers &amp; Endothelial Cell Function</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Vessel Layers (Memorize All Three)</div>
+        <div class="table-wrap" style="margin:0;">
+          <table>
+            <thead><tr><th>Layer</th><th>Position</th><th>Composition</th><th>Key Function</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Tunica Intima</strong></td><td>Innermost</td><td>Endothelial cells + elastic &amp; connective tissue; sub-endothelium beneath</td><td>Separates blood from highly <span class="hl-red">thrombogenic</span> material below</td></tr>
+              <tr><td><strong>Tunica Media</strong></td><td>Middle</td><td>Smooth muscle, collagen, elastic tissue</td><td><span class="hl-red">VERY THROMBOGENIC</span> — collagen &amp; fibronectin anchor platelets to injury sites. Under control of vasoactive mediators</td></tr>
+              <tr><td><strong>Tunica Adventitia</strong></td><td>Outermost</td><td>Primarily connective &amp; elastic tissue</td><td>Structural support; under control of vasoactive mediators from endothelial cells</td></tr>
+              <tr><td><strong>Capillaries</strong></td><td>Exception</td><td>Intima ONLY — no elastic tissue</td><td>Very thin → allows diffusion of gas &amp; substances (gas exchange)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout instructor">
+        <div class="callout-title">Instructor Note</div>
+        <p>The media contains collagen and fibronectin which <strong>anchor platelets to sites of injury</strong> — this is how the clotting cascade begins. Capillaries only have the intima — this is why they facilitate gas exchange.</p>
+      </div>
+
+      <h3>Endothelial Cell Products</h3>
+      <p>Endothelial cells separate fluid from thrombogenic subendothelial material and synthesize/secrete a <em>balance</em> of procoagulants, anticoagulants, and fibrinolytics:</p>
+      <ul class="content-list">
+        <li><strong>von Willebrand factor (vWF)</strong> — adheres platelets to subendothelial layer</li>
+        <li><strong>Tissue factor (III)</strong> — activates the clotting cascade</li>
+        <li><strong>Tissue factor pathway inhibitor (TFPI)</strong> — aids in suppression of coagulation</li>
+        <li><strong>TPA &amp; urokinase</strong> — activate plasminogen to initiate fibrinolysis</li>
+      </ul>
+      <p>The smoothness of the endothelial lining + the <strong>glycocalyx layer</strong> (gel-like glycoprotein coat) both <span class="hl-green">PREVENT</span> clotting in the normal vascular system.</p>
+
+      <h3>Mediators of Vessel Tone (After Injury)</h3>
+      <ul class="content-list">
+        <li>Upon injury, the vessel wall contracts via <strong>myogenic spasm</strong>, platelet autocoids, and autonomic reflexes</li>
+        <li><strong>Thromboxane A₂ &amp; ADP</strong> — released from platelets → <span class="hl-red">VASOCONSTRICTION</span> at injury site</li>
+        <li><strong>Nitric oxide &amp; Prostacyclin</strong> — released from <em>adjacent healthy</em> endothelial cells → <span class="hl-green">VASODILATION</span> (diverts blood flow away from injury to healthy tissues)</li>
+      </ul>
+      <div class="callout instructor">
+        <div class="callout-title">Instructor Note</div>
+        <p>NO pathway: L-arginine → (NOS) → NO → diffuses into smooth muscle cell → activates soluble guanylate cyclase → GTP → cGMP → vasodilation. This pathway has pharmacological implications — it relates to <strong>how nitroglycerin works</strong>.</p>
+      </div>
+      <p>Three stages of primary hemostasis then follow: <span class="hl-purple">Adhesion</span> → <span class="hl-purple">Activation</span> → <span class="hl-purple">Aggregation</span></p>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-1"><label for="sc-1">Tunica Media = most thrombogenic layer; contains collagen &amp; fibronectin that anchor platelets</label></li>
+            <li><input type="checkbox" id="sc-2"><label for="sc-2">Capillaries = intima ONLY — enables gas exchange</label></li>
+            <li><input type="checkbox" id="sc-3"><label for="sc-3">Glycocalyx + smooth endothelium → PREVENT clotting normally</label></li>
+            <li><input type="checkbox" id="sc-4"><label for="sc-4">TXA₂ &amp; ADP (from platelets) → vasoconstriction; NO &amp; Prostacyclin (from endothelium) → vasodilation</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2 ═══ -->
+  <div class="section" id="s2">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.1 · 2</span>
+        <span class="sec-title">Primary Hemostasis — Platelet Plug Formation</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Platelet Properties</div>
+        <ul class="content-list">
+          <li>Formed from <strong>megakaryocytes</strong> in the bone marrow</li>
+          <li><strong>1–4 micrometers</strong> in diameter — <span class="underline-key">smaller than RBCs, WBCs, electrolytes, proteins</span> → strategically pushed to vessel wall edges near endothelium (exactly where needed)</li>
+          <li>Half-life: <span class="hl-yellow">8–12 days</span>; removed primarily by the spleen</li>
+          <li>Normal count: <span class="hl-yellow">150,000–350,000/mm³</span></li>
+          <li>Largely <strong>inactive</strong> until stimulated by vessel trauma</li>
+          <li>Do <span class="hl-red">NOT</span> contain a nucleus and cannot reproduce — similar to whole cells but anucleate</li>
+          <li>Contain <strong>actin &amp; myosin</strong> (contraction), can make ATP</li>
+          <li>Contain <strong>alpha &amp; dense granules</strong> storing proteins and non-proteins</li>
+          <li>Granule contents: fibrinogen, serotonin, ADP, TXA₂, histamine, epinephrine, phospholipids, HMWK, pre-kallikrein</li>
+          <li>~<strong>7,100 platelets</strong> used daily to patch microscopic vascular injuries</li>
+          <li>Adequate <strong>numbers AND function</strong> both required — normal count ≠ normal function</li>
+        </ul>
+      </div>
+
+      <h3>3 Steps of Platelet Plug Formation</h3>
+      <div class="steps-row">
+        <div class="step-box step-adhesion">
+          <span class="step-num">Step 1</span>
+          <div class="step-name">Adhesion</div>
+          <div class="step-detail">vWF → GP1B receptor; platelets change shape: disc → spiky oval</div>
+        </div>
+        <div class="step-box step-activation">
+          <span class="step-num">Step 2</span>
+          <div class="step-name">Activation</div>
+          <div class="step-detail">vWF outside-in signaling → phospholipase C + Ca²⁺ → granule release (TXA₂, ADP, thrombin)</div>
+        </div>
+        <div class="step-box step-aggregation">
+          <span class="step-num">Step 3</span>
+          <div class="step-name">Aggregation</div>
+          <div class="step-detail">GP2B/3A receptors link platelets via fibrin/fibrinogen → white clot forms</div>
+        </div>
+        <div class="step-box step-result">
+          <span class="step-num">Result</span>
+          <div class="step-name">Red Clot</div>
+          <div class="step-detail">Fibrin mesh strengthens white clot → secondary (red) clot</div>
+        </div>
+      </div>
+
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Step Details</div>
+        <h4>Step 1 — Adhesion</h4>
+        <ul class="content-list">
+          <li>vWF emerges from endothelial cells and attaches to <strong>glycoprotein 1B (GP1B) receptors</strong> on platelet surface</li>
+          <li>vWF also attracts more platelets and increases stickiness</li>
+          <li>Platelets change shape: disc → oval with irregular spiky pseudopod protrusions</li>
+        </ul>
+        <h4>Step 2 — Activation</h4>
+        <ul class="content-list">
+          <li>vWF binding initiates <strong>outside-in signaling</strong> → activates phospholipase C</li>
+          <li>Tissue factor, thrombin, ADP, TXA₂ all stimulate GP receptors → more phospholipase C activation</li>
+          <li>Phospholipase C + calcium → change in platelet shape</li>
+          <li>Contractile proteins release contents of alpha &amp; dense granules (thrombin, TXA₂, procoagulant mediators)</li>
+          <li>Granule release <strong>initiates the coagulation cascade</strong> and fibrin formation</li>
+        </ul>
+        <h4>Step 3 — Aggregation</h4>
+        <ul class="content-list">
+          <li><strong>GP2B/3A receptors</strong> (fibrinogen fiber receptors) change shape and link platelets together with fibrin/fibrinogen</li>
+          <li>Activated phospholipase C → inside-out signaling → stimulates GP2B/3A shape change</li>
+          <li>Initial clump = <span class="hl-yellow">white clot</span> (primary/initial clot)</li>
+          <li>ADP &amp; TXA₂ from granules act on nearby platelets → stimulate adherence</li>
+          <li>After full coagulation: fibrinogen &amp; fibrin strengthen clot → <span class="hl-red">red clot / secondary clot</span></li>
+        </ul>
+      </div>
+
+      <div class="callout instructor">
+        <div class="callout-title">Instructor Note</div>
+        <p>Normal uninjured endothelium nearby releases <strong>prostacyclin (PGI₂) + NO</strong> to INHIBIT platelet aggregation — prevents the clot from growing too far from the site of injury. This is a critical limiting mechanism.</p>
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-5"><label for="sc-5">Adhesion: vWF binds GP1B. Activation: phospholipase C + Ca²⁺ + granule release. Aggregation: GP2B/3A + fibrin.</label></li>
+            <li><input type="checkbox" id="sc-6"><label for="sc-6">White clot = primary (platelet plug). Red clot = secondary (fibrin-strengthened).</label></li>
+            <li><input type="checkbox" id="sc-7"><label for="sc-7">Adjacent healthy endothelium releases PGI₂ + NO to LIMIT clot size.</label></li>
+            <li><input type="checkbox" id="sc-8"><label for="sc-8">Platelets: no nucleus, no reproduction, 150–350k normal, 8–12 day half-life, ~7,100 used daily.</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3 ═══ -->
+  <div class="section" id="s3">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.1 · 3</span>
+        <span class="sec-title">Clotting Factors (I–XIII)</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Know Number AND Name (Exam uses either!)</div>
+        <ul class="content-list">
+          <li>Active form = factor number + "a" (e.g., Factor IIa = <strong>thrombin</strong>)</li>
+          <li>Factor IV (Calcium) is required in <span class="hl-yellow">ALMOST ALL</span> coagulation events</li>
+          <li>No Factor VI — originally listed, found to be a duplicate of Factor V, removed</li>
+          <li>Vitamin K-dependent factors: <span class="hl-purple">II, VII, IX, X</span> — mnemonic: <strong>"1972"</strong></li>
+          <li>Most clotting factors are <strong>zymogens</strong> (inactive enzyme precursors) until activated</li>
+        </ul>
+      </div>
+
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Mnemonic — Liver vs. Non-Liver</div>
+        <p>"Three and four, the liver does not store" — Factors III (tissue factor, from tissue cells) and IV (calcium, from plasma) are NOT made in the liver. All others are liver-made.</p>
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Mnemonic — Pathway Factors (Instructor)</div>
+        <p><strong>Extrinsic:</strong> "For 37 cents you can purchase the extrinsic pathway" = Factors 3 &amp; 7<br>
+        <strong>Intrinsic:</strong> "$12 to $11.98" = Factors 12, 11, 9, 8<br>
+        <strong>Common:</strong> "5 and 10 store for $1 or $2 on the 13th" = Factors 5, 10, 1, 2, 13</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Name(s)</th><th>Pathway</th><th>Source</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>I</strong></td><td>Fibrinogen</td><td><span class="tag common">Common</span></td><td>Liver</td><td>Converted to fibrin (insoluble) by thrombin</td></tr>
+            <tr><td><strong>II</strong></td><td>Prothrombin</td><td><span class="tag common">Common</span></td><td>Liver <span class="tag vitk">Vit K</span></td><td>Converted to thrombin (IIa) — the rate-limiting product</td></tr>
+            <tr><td><strong>III</strong></td><td>Tissue Thromboplastin / Tissue Factor</td><td><span class="tag extrinsic">Extrinsic</span></td><td class="highlight">Tissue cells (NOT liver)</td><td>Initiates extrinsic pathway; released upon injury</td></tr>
+            <tr><td><strong>IV</strong></td><td>Calcium</td><td><span class="tag intrinsic">All</span></td><td class="highlight">Plasma (NOT liver)</td><td>Required in nearly every coagulation step</td></tr>
+            <tr><td><strong>V</strong></td><td>Proaccelerin / Labile Factor</td><td><span class="tag common">Common</span></td><td>Liver</td><td>Forms prothrombin activator complex with Xa</td></tr>
+            <tr><td><strong>VI</strong></td><td colspan="4" style="color:#9ca3af;font-style:italic;">Does not exist — originally listed, found to be duplicate of V, removed</td></tr>
+            <tr><td><strong>VII</strong></td><td>Proconvertin / Stable Factor</td><td><span class="tag extrinsic">Extrinsic</span></td><td>Liver <span class="tag vitk">Vit K</span></td><td>Shortest half-life of all factors (~6 hrs)</td></tr>
+            <tr><td><strong>VIII</strong></td><td>Antihemophilic Factor (AHF-A)</td><td><span class="tag intrinsic">Intrinsic</span></td><td>Liver</td><td>Deficiency = <strong>Hemophilia A</strong></td></tr>
+            <tr><td><strong>IX</strong></td><td>Christmas Factor / AHF-B / PTC</td><td><span class="tag intrinsic">Intrinsic</span></td><td>Liver <span class="tag vitk">Vit K</span></td><td>Deficiency = <strong>Hemophilia B</strong></td></tr>
+            <tr><td><strong>X</strong></td><td>Stuart-Prower Factor</td><td><span class="tag common">Common</span></td><td>Liver <span class="tag vitk">Vit K</span></td><td>Convergence point of both pathways</td></tr>
+            <tr><td><strong>XI</strong></td><td>Plasma Thromboplastin Antecedent / AHF-C</td><td><span class="tag intrinsic">Intrinsic</span></td><td>Liver</td><td>Deficiency = <strong>Hemophilia C</strong></td></tr>
+            <tr><td><strong>XII</strong></td><td>Hageman Factor</td><td><span class="tag intrinsic">Intrinsic</span></td><td>Liver</td><td>First factor activated in intrinsic pathway (by collagen)</td></tr>
+            <tr><td><strong>XIII</strong></td><td>Fibrin Stabilizing Factor (FSF)</td><td><span class="tag common">Common</span></td><td>Liver / Platelets</td><td>Cross-links fibrin fibers → stable clot; activated by thrombin</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout instructor">
+        <div class="callout-title">Instructor Note</div>
+        <p><strong>Protein C and S are ANTICOAGULANTS</strong> — the Nagelhout textbook INCORRECTLY lists them as procoagulants. Do not be confused. Calcium (Factor IV) is important in every step — diluting it with citrated blood products can impair clotting.</p>
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-9"><label for="sc-9">Vit K-dependent factors: II, VII, IX, X ("1972")</label></li>
+            <li><input type="checkbox" id="sc-10"><label for="sc-10">NOT liver-made: III (tissue cells) and IV (plasma)</label></li>
+            <li><input type="checkbox" id="sc-11"><label for="sc-11">Factor IIa = thrombin. Factor Ia = fibrin. Factor XIIIa = cross-links fibrin.</label></li>
+            <li><input type="checkbox" id="sc-12"><label for="sc-12">No Factor VI. Hemophilia: A=VIII, B=IX, C=XI</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4 ═══ -->
+  <div class="section" id="s4">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.1 · 4</span>
+        <span class="sec-title">Coagulation Cascade — Extrinsic, Intrinsic &amp; Common Pathways</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+
+      <!-- PATHWAY DIAGRAM -->
+      <div class="pathway-diagram">
+        <div class="pathway-title">Coagulation Cascade — Full Visual</div>
+        <svg class="flow-svg" viewBox="0 0 820 420" width="820" height="420" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif" font-size="13">
+          <!-- BACKGROUND LANES -->
+          <rect x="10" y="10" width="250" height="400" rx="10" fill="#fce7f3" stroke="#f9a8d4" stroke-width="1.5"/>
+          <rect x="280" y="10" width="250" height="400" rx="10" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.5"/>
+          <rect x="550" y="10" width="260" height="400" rx="10" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1.5"/>
+
+          <!-- LANE LABELS -->
+          <text x="135" y="34" text-anchor="middle" fill="#831843" font-weight="700" font-size="12" letter-spacing="1">EXTRINSIC</text>
+          <text x="405" y="34" text-anchor="middle" fill="#1e3a8a" font-weight="700" font-size="12" letter-spacing="1">INTRINSIC</text>
+          <text x="680" y="34" text-anchor="middle" fill="#064e3b" font-weight="700" font-size="12" letter-spacing="1">COMMON</text>
+
+          <!-- TRIGGER BOXES -->
+          <rect x="30" y="48" width="210" height="38" rx="6" fill="#f9a8d4" stroke="#db2777" stroke-width="1.5"/>
+          <text x="135" y="63" text-anchor="middle" fill="#831843" font-weight="600">Tissue damage</text>
+          <text x="135" y="79" text-anchor="middle" fill="#831843">(outside vessel)</text>
+
+          <rect x="300" y="48" width="210" height="38" rx="6" fill="#93c5fd" stroke="#2563eb" stroke-width="1.5"/>
+          <text x="405" y="63" text-anchor="middle" fill="#1e3a8a" font-weight="600">Vessel wall damage</text>
+          <text x="405" y="79" text-anchor="middle" fill="#1e3a8a">(collagen exposed)</text>
+
+          <!-- EXTRINSIC CHAIN -->
+          <line x1="135" y1="86" x2="135" y2="108" stroke="#db2777" stroke-width="2" marker-end="url(#arrowPink)"/>
+          <rect x="50" y="108" width="170" height="34" rx="6" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+          <text x="135" y="128" text-anchor="middle" fill="#831843" font-weight="600">III + VII + Ca²⁺ (IV)</text>
+
+          <!-- INTRINSIC CHAIN -->
+          <line x1="405" y1="86" x2="405" y2="108" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowBlue)"/>
+          <rect x="300" y="108" width="210" height="34" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+          <text x="405" y="123" text-anchor="middle" fill="#1e3a8a" font-weight="600">XII → XI → IX → VIII</text>
+          <text x="405" y="137" text-anchor="middle" fill="#1e3a8a" font-size="11">(+ Ca²⁺ + platelet phospholipids)</text>
+
+          <!-- Both converge on X -->
+          <line x1="220" y1="142" x2="285" y2="175" stroke="#db2777" stroke-width="2" stroke-dasharray="4,3"/>
+          <line x1="405" y1="142" x2="570" y2="175" stroke="#2563eb" stroke-width="2" stroke-dasharray="4,3"/>
+          <text x="490" y="170" text-anchor="middle" fill="#064e3b" font-size="11" font-weight="700">Both activate ↓</text>
+
+          <!-- COMMON PATHWAY -->
+          <rect x="570" y="178" width="220" height="34" rx="6" fill="#6ee7b7" stroke="#059669" stroke-width="2"/>
+          <text x="680" y="193" text-anchor="middle" fill="#064e3b" font-weight="700">Factor Xa (Stuart-Prower)</text>
+          <text x="680" y="207" text-anchor="middle" fill="#064e3b" font-size="11">↑ Xa + Va + Ca²⁺ (IV) ↓</text>
+
+          <line x1="680" y1="212" x2="680" y2="232" stroke="#059669" stroke-width="2" marker-end="url(#arrowGreen)"/>
+          <rect x="585" y="232" width="190" height="34" rx="6" fill="#a7f3d0" stroke="#059669" stroke-width="1.5"/>
+          <text x="680" y="247" text-anchor="middle" fill="#064e3b" font-weight="700">Prothrombin Activator</text>
+          <text x="680" y="261" text-anchor="middle" fill="#064e3b" font-size="11">⬅ RATE-LIMITING STEP</text>
+
+          <line x1="680" y1="266" x2="680" y2="286" stroke="#059669" stroke-width="2" marker-end="url(#arrowGreen)"/>
+          <rect x="600" y="286" width="160" height="34" rx="6" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+          <text x="680" y="300" text-anchor="middle" fill="#064e3b" font-weight="600">II (Prothrombin)</text>
+          <text x="680" y="315" text-anchor="middle" fill="#064e3b">→ IIa = Thrombin</text>
+
+          <line x1="680" y1="320" x2="680" y2="340" stroke="#059669" stroke-width="2" marker-end="url(#arrowGreen)"/>
+          <rect x="600" y="340" width="160" height="34" rx="6" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+          <text x="680" y="355" text-anchor="middle" fill="#064e3b" font-weight="600">I (Fibrinogen)</text>
+          <text x="680" y="370" text-anchor="middle" fill="#064e3b">→ Ia = Fibrin</text>
+
+          <line x1="680" y1="374" x2="680" y2="390" stroke="#059669" stroke-width="2" marker-end="url(#arrowGreen)"/>
+          <rect x="590" y="390" width="180" height="22" rx="6" fill="#059669"/>
+          <text x="680" y="405" text-anchor="middle" fill="#fff" font-weight="700">XIII → STABLE CLOT</text>
+
+          <!-- DEFS -->
+          <defs>
+            <marker id="arrowPink" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#db2777"/>
+            </marker>
+            <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#2563eb"/>
+            </marker>
+            <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#059669"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Extrinsic Pathway</div>
+        <ul class="content-list">
+          <li>Activated by: damage <strong>outside the vessel</strong> (traumatized tissue contacts blood)</li>
+          <li>Tissue factor (III) released from endothelial cells + <strong>Factor VII (Proconvertin) + Calcium (IV)</strong> → activate Factor X</li>
+          <li>Simultaneously: TFPI released → immediately begins to INHIBIT tissue factor (limits clot size)</li>
+          <li>Speed: <span class="hl-green">~30 seconds</span> — FASTER (fewer steps)</li>
+        </ul>
+        <div class="mnemonic" style="margin:0.75rem 0 0;">
+          <div class="mnemonic-label">Mnemonic</div>
+          <p>"For <strong>37 cents</strong> you can purchase the extrinsic pathway" = Factors <strong>3 &amp; 7</strong></p>
+        </div>
+      </div>
+
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Intrinsic Pathway</div>
+        <ul class="content-list">
+          <li>Activated by: exposure of blood to <strong>collagen</strong> within traumatized vessels (damage inside the vessel)</li>
+          <li>Initiated by: platelet phospholipids (platelet factor 3), HMWK, pre-kallikrein (all from platelets)</li>
+          <li>Hageman Factor (XII) activated → XI → IX (Christmas factor) → VIII (antihemophilic)</li>
+          <li>VIII + IX + calcium + platelet phospholipids → activate Factor X</li>
+          <li>Speed: <span class="hl-red">few minutes</span> (more steps = SLOWER)</li>
+        </ul>
+        <div class="mnemonic" style="margin:0.75rem 0 0;">
+          <div class="mnemonic-label">Mnemonic</div>
+          <p>"<strong>$12 to $11.98</strong>" = Factors 12, 11, 9, 8</p>
+        </div>
+      </div>
+
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Common Pathway</div>
+        <ul class="content-list">
+          <li>Both pathways converge at <span class="hl-yellow">Factor X activation</span></li>
+          <li>Xa + Va + Calcium (IV) → form <strong>Prothrombin Activator</strong> = <span class="underline-key">RATE-LIMITING STEP</span></li>
+          <li>Prothrombin activator cleaves II (Prothrombin) → IIa (<strong>Thrombin</strong>)</li>
+          <li>Thrombin activates I (Fibrinogen) → Ia (<strong>Fibrin</strong>)</li>
+          <li>Factor XIII (activated by thrombin) → covalent bonding + crosslinking of fibrin fibers → <span class="hl-green">STABLE CLOT</span></li>
+          <li>Early fibrin: held by weak hydrogen bonds. After few minutes: covalent bonds → much stronger</li>
+          <li>Clot retraction: contractile proteins + calcium within platelets extrude serum, pull vessel walls together</li>
+          <li><strong>Failure of clot retraction</strong> = indicator of low platelet levels</li>
+        </ul>
+        <div class="mnemonic" style="margin:0.75rem 0 0;">
+          <div class="mnemonic-label">Mnemonic</div>
+          <p>"<strong>5 and 10 store for $1 or $2 on the 13th</strong>" = Factors 5, 10, 1, 2, 13</p>
+        </div>
+      </div>
+
+      <div class="callout instructor">
+        <div class="callout-title">Instructor Note</div>
+        <p>Pathways once believed to work independently — now understood to work in <strong>conjunction / simultaneously</strong>. Extrinsic = damage outside vessel; Intrinsic = damage inside vessel. Suggestion: write factor numbers AND names beside cascade diagrams while studying. Add calcium, phospholipids, and prothrombin activator to your diagrams.</p>
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-13"><label for="sc-13">Extrinsic: III + VII + Ca → Xa. Fast (~30 sec). Outside vessel damage.</label></li>
+            <li><input type="checkbox" id="sc-14"><label for="sc-14">Intrinsic: XII→XI→IX→VIII + Ca + phospholipids → Xa. Slower (minutes). Inside vessel damage.</label></li>
+            <li><input type="checkbox" id="sc-15"><label for="sc-15">Common: Xa + Va + Ca → prothrombin activator (rate-limiting) → II → IIa (thrombin) → I → Ia (fibrin) + XIII → stable clot</label></li>
+            <li><input type="checkbox" id="sc-16"><label for="sc-16">Clot retraction failure = low platelets.</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 5 ═══ -->
+  <div class="section" id="s5">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="sec-num">PT.1 · 5</span>
+        <span class="sec-title">Thrombin &amp; Fibrinolysis</span>
+      </div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Thrombin Roles (Factor IIa)</div>
+        <p><strong>Thrombin is a POSITIVE FEEDBACK mechanism:</strong></p>
+        <ul class="content-list">
+          <li>Proteolytic actions on many clotting factors — assists activation of: <span class="hl-yellow">Factors I, V, VIII, IX, X, XI, XII, and XIII</span></li>
+          <li>Recruits more platelets to site of injury</li>
+          <li>Aids in acceleration of clot retraction</li>
+          <li><strong>85–90%</strong> becomes bound within fibrin fibers — <span class="hl-green">PREVENTS excess clot formation</span></li>
+          <li>Binds to <strong>thrombomodulin</strong> (on endothelial membrane) → begins ANTICOAGULATION processes</li>
+          <li>Activates <strong>Protein C</strong> → inactivates Factors V &amp; VIII</li>
+          <li>Protein S increases the ability of Protein C</li>
+          <li><span class="hl-red">Proteins C &amp; S = ANTICOAGULANTS</span> (Nagelhout textbook incorrectly lists as procoagulants)</li>
+        </ul>
+      </div>
+
+      <h3>Fibrinolysis</h3>
+      <p>Once the vessel is sealed, the fibrinolytic system takes over to break down the fibrin clot over days.</p>
+
+      <div class="callout high-yield">
+        <div class="callout-title">High Yield — Fibrinolysis Pathway</div>
+        <ul class="content-list">
+          <li><strong>Major pathway:</strong> TPA + urokinase (from endothelial cells, released days after clot forms) → convert plasminogen → <strong>plasmin</strong> → degrades fibrin</li>
+          <li><strong>Minor pathway:</strong> Factors XIa, XIIa, and kallikrein</li>
+          <li>Plasmin also inactivates: Factors I, II, V, VIII, XIII</li>
+          <li>Heparin (from basophils &amp; mast cells) alone = little anticoagulant ability. Binding to <strong>Antithrombin III (AT-III)</strong> → <span class="hl-yellow">increases AT-III action 1000×</span></li>
+          <li>AT-III inhibits: Factors IX, X, XI, XII + thrombin</li>
+          <li>Once clot digested: <strong>alpha-antiplasmin + tPA activator inhibitor</strong> stop fibrinolysis</li>
+        </ul>
+        <div style="margin-top:0.75rem;">
+          <strong style="font-size:15px;color:#78350f;">Promoters of fibrinolysis:</strong> <span class="hl-blue">TPA, urokinase → plasminogen → plasmin → fibrin degradation products</span><br>
+          <strong style="font-size:15px;color:#78350f;">Inhibitors of fibrinolysis:</strong> <span class="hl-red">PAI-1, PAI-2, alpha-2 antiplasmin, alpha-2 macroglobulin, TAFI</span>
+        </div>
+      </div>
+
+      <div class="callout instructor">
+        <div class="callout-title">Instructor Note</div>
+        <p>Write down all enzymes and their functions to avoid confusion between procoagulants, anticoagulants, fibrinolytic activators, and fibrinolytic inhibitors. Protein C &amp; S: anticoagulants. Protein C inhibits V &amp; VIII. Protein S augments Protein C.</p>
+      </div>
+
+      <div class="self-check">
+        <div class="self-check-toggle" onclick="toggleSelfCheck(this)">✓ Self-Check <span>▾</span></div>
+        <div class="self-check-body">
+          <ul>
+            <li><input type="checkbox" id="sc-17"><label for="sc-17">Thrombin activates: I, V, VIII, IX, X, XI, XII, XIII. 85-90% bound in fibrin (self-limiting).</label></li>
+            <li><input type="checkbox" id="sc-18"><label for="sc-18">Thrombin + thrombomodulin → Protein C activation → inactivates V &amp; VIII → anticoagulation.</label></li>
+            <li><input type="checkbox" id="sc-19"><label for="sc-19">Major fibrinolysis: TPA + urokinase → plasminogen → plasmin → degrades fibrin.</label></li>
+            <li><input type="checkbox" id="sc-20"><label for="sc-20">Heparin + AT-III → 1000× anticoagulant effect.</label></li>
+            <li><input type="checkbox" id="sc-21"><label for="sc-21">Fibrinolysis stops when: alpha-antiplasmin + tPA inhibitor activated.</label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  function toggleSection(header) {
+    const body = header.nextElementSibling;
+    const chevron = header.querySelector('.chevron');
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    header.classList.toggle('open', !isOpen);
+    chevron.classList.toggle('open', !isOpen);
+  }
+
+  function expandAll() {
+    document.querySelectorAll('.section-body').forEach(b => b.classList.add('open'));
+    document.querySelectorAll('.section-header').forEach(h => h.classList.add('open'));
+    document.querySelectorAll('.chevron').forEach(c => c.classList.add('open'));
+  }
+
+  function collapseAll() {
+    document.querySelectorAll('.section-body').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.section-header').forEach(h => h.classList.remove('open'));
+    document.querySelectorAll('.chevron').forEach(c => c.classList.remove('open'));
+  }
+
+  function toggleSelfCheck(toggle) {
+    const body = toggle.nextElementSibling;
+    const arrow = toggle.querySelector('span');
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    arrow.textContent = isOpen ? '▾' : '▴';
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 60;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+        // Auto-open the section being navigated to
+        const sectionBody = target.querySelector('.section-body');
+        const sectionHeader = target.querySelector('.section-header');
+        if (sectionBody && !sectionBody.classList.contains('open')) {
+          sectionBody.classList.add('open');
+          sectionHeader.classList.add('open');
+          sectionHeader.querySelector('.chevron').classList.add('open');
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
